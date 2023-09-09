@@ -1,6 +1,9 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/home/home",
+    "pages/cate/cate",
+    "pages/my/my"
   ],
   "subPackages": [],
   "window": {

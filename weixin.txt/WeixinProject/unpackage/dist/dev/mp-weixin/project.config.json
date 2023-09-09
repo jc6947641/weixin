@@ -6,7 +6,7 @@
   },
   "setting": {
     "urlCheck": false,
-    "es6": true,
+    "es6": false,
     "postcss": false,
     "minified": false,
     "newFeature": true,
@@ -16,8 +16,7 @@
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
-    },
-    "enhance": true
+    }
   },
   "compileType": "miniprogram",
   "libVersion": "3.0.2",
