@@ -1,1 +1,0 @@
-<view class="container"><view class="intro">666。</view><text class="intro">详见：</text><uni-link vue-id="8dd740cc-1" href="{{href}}" text="{{href}}" bind:__l="__l"></uni-link></view>

@@ -1,44 +1,48 @@
 {
-	"pages": [{
-		"path": "pages/index/index",
-		"style": {
-			"navigationBarTitleText": "uni-app"
-		}
-	}    ,{
-            "path" : "pages/home/home",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/cate/cate",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/my/my",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
-	"globalStyle": {
+	"pages": 
+	[
+		{
+		"path": "pages/home/home",//创建页面首页
+		"style": {}
+	}, {  
+		"path": "pages/cate/cate", //创建页面推文
+		"style": {}
+	}, {
+		"path": "pages/my/my",//创建页面我的
+		"style": {}
+	}],
+	"globalStyle": 
+	{
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
+		"navigationBarTitleText": "老年医养",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8",
-		"app-plus": {
+		"app-plus": 
+		{
 			"background": "#efeff4"
 		}
+    },
+		// 创建页面 下面三个图标
+	"tabBar":{
+		"list": [
+			{
+				"pagePath": "pages/home/home",
+				"text": "首页",
+				"iconPath": "static/c1.png",
+				"selectedIconPath": "static/c1.png"
+			},
+			{
+				"pagePath": "pages/cate/cate",
+				"text": "健康养生",
+				"iconPath": "static/c2.png",
+				"selectedIconPath": "static/c2.png"
+			},
+			{
+				"pagePath": "pages/my/my",
+				"text": "我的",
+				"iconPath": "static/c3.png",
+				"selectedIconPath": "static/c3.png"
+			}
+		]
 	}
 }

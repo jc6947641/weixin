@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/home/home",
     "pages/cate/cate",
     "pages/my/my"
@@ -8,9 +7,31 @@
   "subPackages": [],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "uni-app",
+    "navigationBarTitleText": "老年医养",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "static/c1.png",
+        "selectedIconPath": "static/c1.png"
+      },
+      {
+        "pagePath": "pages/cate/cate",
+        "text": "健康养生",
+        "iconPath": "static/c2.png",
+        "selectedIconPath": "static/c2.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "static/c3.png",
+        "selectedIconPath": "static/c3.png"
+      }
+    ]
   },
   "usingComponents": {}
 }

@@ -6,13 +6,12 @@
   },
   "setting": {
     "urlCheck": false,
-    "es6": false,
+    "es6": true,
     "postcss": false,
     "minified": false,
     "newFeature": true,
     "bigPackageSizeSupport": true,
     "checkSiteMap": false,
-    "ignoreUploadUnusedFiles": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -21,7 +20,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "3.0.2",
-  "appid": "wx1e272e8834ef2e70",
+  "appid": "wx38c7479ae69844a2",
   "projectname": "WeixinProject",
   "condition": {},
   "editorSetting": {
