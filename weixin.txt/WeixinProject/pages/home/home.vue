@@ -1,6 +1,6 @@
 <template>
 	<view>
-		Home
+		Home 测试
 	</view>
 </template>
 
