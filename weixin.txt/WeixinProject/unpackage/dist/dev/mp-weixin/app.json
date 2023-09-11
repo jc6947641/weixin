@@ -12,24 +12,25 @@
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {
+    "selectedColor": "#000099",
     "list": [
       {
         "pagePath": "pages/home/home",
         "text": "首页",
-        "iconPath": "static/c1.png",
-        "selectedIconPath": "static/c1.png"
+        "iconPath": "static/icon_home.png",
+        "selectedIconPath": "static/icon_home_active.png"
       },
       {
         "pagePath": "pages/cate/cate",
         "text": "健康养生",
-        "iconPath": "static/c2.png",
-        "selectedIconPath": "static/c2.png"
+        "iconPath": "static/icon_notebook.png",
+        "selectedIconPath": "static/icon_notebook_active.png"
       },
       {
         "pagePath": "pages/my/my",
         "text": "我的",
-        "iconPath": "static/c3.png",
-        "selectedIconPath": "static/c3.png"
+        "iconPath": "static/icon_me.png",
+        "selectedIconPath": "static/icon_me_active.png"
       }
     ]
   },
