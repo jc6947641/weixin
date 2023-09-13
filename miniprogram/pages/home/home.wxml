@@ -1,2 +1,40 @@
 <!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+
+<!-- 插入背景图片 -->
+<view class="home-background">
+<image src="/images/linphoto1.png"></image>
+</view>
+
+
+  <!-- 自定义1 -->
+  <view class="Lin">
+  <navigator  class="Lin-item" url="/pages/shoplist/shoplist">
+    <image src="/images/button.jpg"></image>
+  <text>健康商城</text>
+ </navigator>
+ </view>
+
+
+ <!-- 自定义2 -->
+ <view class="Lin">
+  <navigator  class="Lin-item" url="/pages/pill/pill">
+  <image src="/images/button.jpg"></image>
+  <text>医疗药品</text>
+ </navigator>
+ </view>
+
+<!-- 自定义3 -->
+<view class="Lin">
+  <navigator  class="Lin-item" url="/pages/pill/pill">
+    <image src="/images/button.jpg"></image>
+  <text>服 务</text>
+ </navigator>
+ </view>
+
+
+
+ 
+
+
+
+

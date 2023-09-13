@@ -2,12 +2,14 @@
   "pages": [
     "pages/home/home",
     "pages/cate/cate",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/shoplist/shoplist",
+    "pages/pill/pill"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarBackgroundColor": "#04085B",
     "navigationBarTitleText": "云开发 QuickStart",
     "navigationBarTextStyle": "black"
   },
