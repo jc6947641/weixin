@@ -1,2 +1,5 @@
 <!--pages/shoplist/shoplist.wxml-->
 <text>pages/shoplist/shoplist.wxml</text>
+<view>
+<text>养生洗脚盆</text>
+</view>
