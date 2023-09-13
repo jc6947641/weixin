@@ -1,15 +1,10 @@
-// pages/home/home.js
+// pages/shoplist01/shoplist01.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    // 创建一个轮播图的数组,存放轮播图数据的列表
-    swiperList:[],
-    //存放九宫格数据的列表
-    gridList:[],
- 
 
   },
 
@@ -18,28 +13,7 @@ Page({
    */
   onLoad(options) {
 
-    /*轮播图获取*/
-    this.getSwiperList()
-    
-
   },
-
-
-  //获取轮播图数据的方法函数 
-  getSwiperList(){
-    wx.request({
-      url: 'file:///D:/Liiin/html_project/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230907180142.jpg',
-      method:'GET',
-      success:(res) =>{
-        console.log(res)
-
-        this.setData({
-          swiperList:res.data
-        })
-      }
-    })
-  },
-  
 
   /**
    * 生命周期函数--监听页面初次渲染完成

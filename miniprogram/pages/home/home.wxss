@@ -1,1 +1,35 @@
 /* pages/home/home.wxss */
+image{
+  width: 100%;
+  height: 100px;
+
+}
+/*最外层框框*/
+.Lin{
+  display:flex;
+  flex-wrap:wrap;
+  border-right: 1rpx solid #efefef;
+  border-bottom: 1rpx solid #efefef;
+} 
+/*每项（图片文字）占50%，高度200px*/
+.Lin-item{
+  width: 50%;
+  height:200px;
+  /*居中对齐*/
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /*边框*/
+  border-right: 1rpx solid #efefef;
+  border-bottom: 1rpx solid #efefef;
+}
+/*图案大小限制*/
+.Lin-item image{
+  width:100px;
+  height:100px;
+}
+/*字体大小限制*/
+.Lin-item text{
+  font-size:30px;
+}

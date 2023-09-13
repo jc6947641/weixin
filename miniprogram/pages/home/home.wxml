@@ -1,2 +1,41 @@
 <!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+
+<!-- 插入背景图片 -->
+<image src="https://s1.imagehub.cc/images/2023/09/13/_1.png" ></image>
+
+
+  
+ <!-- <swiper>
+ <swiper-item wx:for="{(swiperList)}" wx:key="id" >
+ <image src="{{item.image}}"></image>
+ </swiper-item>
+ </swiper> -->
+
+ <!-- 九宫格区域--> 
+  <view class="grid-list">
+  <navigator class="grid-item" wx:for="{{gridList}}" wx:key="id" url="/miniprogram/pages/shoplist?id={{item.id}}&name={{item.name}}">
+  <!-- 需要一个图片和一个文本 -->
+   <image src="{{item.icon}}"></image>
+    <text>{{item.name}}</text>
+  </navigator>
+ </view> 
+
+ <!-- 自定义1 -->
+ <view class="Lin">
+ <navigation-bar  class="Lin-item" url="/pages/shoplist">
+  <image src="/images/icon_home_active.png"></image>
+  <text>健康商城</text>
+ </navigation-bar>
+ </view>
+
+ <!-- 自定义2 -->
+ <view class="Lin">
+  <navigation-bar  class="Lin-item" url="/pages/pill">
+  <image src="/images/icon_me_active.png"></image>
+  <text>医疗药品</text>
+ </navigation-bar>
+ </view>
+
+
+
+
