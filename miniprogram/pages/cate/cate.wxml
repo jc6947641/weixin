@@ -1,2 +1,2 @@
-<!--pages/cate/cate.wxml-->
-<text>pages/cate/cate.wxml</text>
+<button type="primary" bindtap="getData">点击获取数据</button>
+<view wx:for="{{dataObj}}">{{item.title}} - {{item.auther}}</view>

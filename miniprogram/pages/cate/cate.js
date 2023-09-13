@@ -1,18 +1,21 @@
-// pages/cate/cate.js
+const db = wx.cloud.database()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    dataObj:""
   },
-
+  getData(){
+    db.collection("news").where({auther:"大柳树生活日记"}).get().then(res=>{
+      console.log(res)
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
   },
 
   /**
