@@ -1,6 +1,11 @@
 const db = wx.cloud.database()
 Page({
-
+  //测试
+  openExternalLink: function () {
+    wx.openUrl({
+      url: 'https://www.baidu.com',
+    });
+  },
   /**
    * 页面的初始数据
    */
