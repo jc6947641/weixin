@@ -62,6 +62,10 @@
     "include": []
   },
   "appid": "wx38c7479ae69844a2",
+<<<<<<< Updated upstream
   "simulatorPluginLibVersion": {},
   "projectname": "weixin%202"
+=======
+  "simulatorPluginLibVersion": {}
+>>>>>>> Stashed changes
 }
