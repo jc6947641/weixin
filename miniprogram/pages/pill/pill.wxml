@@ -1,2 +1,5 @@
 <!--pages/pill/pill.wxml-->
 <text>pages/pill/pill.wxml</text>
+<view>
+<text>张恒溢不吃药</text>
+</view>

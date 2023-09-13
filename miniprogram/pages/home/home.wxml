@@ -8,27 +8,27 @@
 
   <!-- 自定义1 -->
   <view class="Lin">
-  <navigation  class="Lin-item" url="/pages/shoplist/shoplist">
+  <navigator  class="Lin-item" url="/pages/shoplist/shoplist">
     <image src="/images/button.jpg"></image>
   <text>健康商城</text>
- </navigation>
+ </navigator>
  </view>
 
 
  <!-- 自定义2 -->
  <view class="Lin">
-  <navigation  class="Lin-item" url="/pages/pill">
+  <navigator  class="Lin-item" url="/pages/pill/pill">
   <image src="/images/button.jpg"></image>
   <text>医疗药品</text>
- </navigation>
+ </navigator>
  </view>
 
 <!-- 自定义3 -->
 <view class="Lin">
-  <navigation  class="Lin-item" url="/pages/pill">
+  <navigator  class="Lin-item" url="/pages/pill/pill">
     <image src="/images/button.jpg"></image>
   <text>服 务</text>
- </navigation>
+ </navigator>
  </view>
 
 
