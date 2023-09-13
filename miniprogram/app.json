@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/cate/cate",
+    "pages/my/my"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#00008B",
+    "list": [
+    {
+      "pagePath": "pages/home/home",
+      "text": "首页",
+      "iconPath": "/images/icon_home.png",
+      "selectedIconPath": "/images/icon_home_active.png"
+    },
+    {
+      "pagePath": "pages/cate/cate",
+      "text": "健康养生",
+      "iconPath": "/images/icon_notebook.png",
+      "selectedIconPath": "/images/icon_notebook_active.png"
+    },
+    {
+      "pagePath": "pages/my/my",
+      "text": "我的",
+      "iconPath": "/images/icon_me.png",
+      "selectedIconPath": "/images/icon_me_active.png"
+    }
+  ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}
