@@ -1,1 +1,2 @@
-/* pages/cate/cate.wxss */
+.row{padding: 100rpx 30rpx; border-bottom:1px solid #cccccc;}
+.row .title{font-size: 50rpx;}

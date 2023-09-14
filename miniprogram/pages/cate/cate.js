@@ -1,26 +1,33 @@
-const db = wx.cloud.database()
+// pages/cate/cate.js
 Page({
-  //测试
-  openExternalLink: function () {
-    wx.openUrl({
-      url: 'https://www.baidu.com',
-    });
-  },
+
   /**
    * 页面的初始数据
    */
   data: {
-    dataObj:""
+    dataList:[]
   },
-  getData(){
-    db.collection("news").where({auther:"大柳树生活日记"}).get().then(res=>{
-      console.log(res)
+  getData(num = 5,page = 0){
+    wx.cloud.callFunction({
+      name:"getnews",
+      data:{
+        num:num,
+        page:page
+      }
+    }).then(res=>{
+      var oldData = this.data.dataList
+      var newData = oldData.concat(res.result.data);
+      this.setData({
+        dataList:newData
+      })
     })
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.getData()
   },
 
   /**
@@ -62,7 +69,8 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-
+    var page=this.data.dataList.length
+    this.getData(5,page)
   },
 
   /**

@@ -1,5 +1,4 @@
-<button type="primary" bindtap="getData">点击获取数据</button>
-<view wx:for="{{dataObj}}">{{item.title}} - {{item.auther}}</view>
-<view>
-  <image src="/images/linphoto1.png" bindtap="openExternalLink"></image>
+<view class="row" wx:for="{{dataList}}" wx:key="index"> 
+ <view class="title">{{index+1}}、{{item.title}}</view>
+  <view>阅读量:{{item.hits}}</view>
 </view>
