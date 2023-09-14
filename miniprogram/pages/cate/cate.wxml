@@ -1,2 +1,4 @@
-<!--pages/cate/cate.wxml-->
-<text>pages/cate/cate.wxml</text>
+<view class="row" wx:for="{{dataList}}" wx:key="index"> 
+ <view class="title">{{index+1}}、{{item.title}}</view>
+  <view>阅读量:{{item.hits}}</view>
+</view>
