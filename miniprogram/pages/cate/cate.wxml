@@ -1,4 +1,6 @@
-<view class="row" wx:for="{{dataList}}" wx:key="index"> 
- <view class="title">{{index+1}}、{{item.title}}</view>
+<view bindtap = "clickRow"data-id="{{item._id}}" data-idx="{{index}}" class="row" wx:for="{{dataList}}" wx:key="index"> 
+ <view class="title">{{index+1}}、{{item.title}} 
+         <image class="news-image" src="{{item.imagesurl}}"></image>
+ </view>
   <view>阅读量:{{item.hits}}</view>
 </view>

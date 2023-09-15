@@ -2,11 +2,15 @@
 const cloud = require('wx-server-sdk')
 
 cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV }) // 使用当前云环境
-const db=cloud.database();  
+const db=cloud.database();
+const _ = db.command;
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  var num = event.num;
-  var page=event.page;
-  return await db.collection("news").skip(page).limit(num).get()
+  var id = event.id;
+  return await db.collection("news").doc(id).update({
+    data:{
+      hits:_.inc(1)
+    }
+  })
 }

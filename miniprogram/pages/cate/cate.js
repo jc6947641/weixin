@@ -5,8 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    dataList:[]
+    dataList:[],
   },
+
+
   getData(num = 5,page = 0){
     wx.cloud.callFunction({
       name:"getnews",
@@ -20,6 +22,30 @@ Page({
       this.setData({
         dataList:newData
       })
+    })
+  },
+
+  //点击将阅读数增加
+  clickRow(res){
+    //获取点击的id和索引值 
+    //云函数更新操作
+    wx.showLoading({
+      title: '数据加载中...',
+    })
+
+    var {id,idx} = res.currentTarget.dataset
+    wx.cloud.callFunction({
+      name:"uphits",
+      data:{
+        id:id
+      }
+    }).then(res=>{
+      var rowData = this.data.dataList
+      rowData[idx].hits += 1;
+      this.setData({  
+        dataList:rowData  
+      })
+      wx.hideLoading()
     })
   },
 
