@@ -1,4 +1,4 @@
-.row{padding: 60rpx 30rpx; border-bottom:1px solid #cccccc;}
+.row{padding: 50rpx 20rpx; border-bottom:1px solid #cccccc;}
 .news-item {
   display: flex;
   align-items: center;
