@@ -5,7 +5,9 @@
     "pages/my/my",
     "pages/shoplist/shoplist",
     "pages/pill/pill",
-    "pages/newsDetail/newsDetail"
+    "pages/newsDetail/newsDetail",
+    "pages/people/people",
+    "pages/expend/expend"
   ],
   "window": {
     "backgroundColor": "#b0e57c",
@@ -37,6 +39,7 @@
     }
   ]
   },
-  "sitemapLocation": "sitemap.json",
+   "sitemapLocation": "sitemap.json",
   "style": "v2"
+ 
 }

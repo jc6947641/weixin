@@ -1,5 +1,3 @@
 <!--pages/shoplist/shoplist.wxml-->
-<text>pages/shoplist/shoplist.wxml</text>
-<view>
-<text>养生洗脚盆</text>
-</view>
+<button type="primary" bindtap="getData">点击获取数据</button>
+<view wx:for="{{dataObj}}">{{item.title}}</view>

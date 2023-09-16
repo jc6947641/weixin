@@ -1,4 +1,4 @@
-// pages/shoplist01/shoplist01.js
+// pages/people/people.js
 Page({
 
   /**

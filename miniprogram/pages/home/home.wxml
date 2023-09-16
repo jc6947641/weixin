@@ -25,6 +25,7 @@
 
 <!-- 自定义3 -->
 <view class="Lin">
+<!-- 切换地址 -->
   <navigator  class="Lin-item" url="/pages/pill/pill">
     <image src="/images/button.jpg"></image>
   <text>服 务</text>
