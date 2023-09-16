@@ -1,0 +1,13 @@
+<view class="news-detail">
+  <image class="news-image" src="{{newsDetail.imageurl}}"></image>
+  <view class="news-content">
+    <text class="news-title">{{newsDetail.title}}</text>
+    <view class="news-separator"></view>
+    <text class="news-hits">浏览: {{newsDetail.hits}}</text>
+  </view>
+  <view class="news-body">
+    <block wx:for="{{formattedContent}}" wx:key="index">
+      <text>{{item}}</text>
+    </block>
+  </view>
+</view>

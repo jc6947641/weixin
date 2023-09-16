@@ -29,6 +29,13 @@ Page({
   clickRow(res){
     //获取点击的id和索引值 
     //云函数更新操作
+    const newsId = res.currentTarget.dataset.id; // 获取新闻的唯一标识符
+    const index = res.currentTarget.dataset.idx; // 获取点击项的索引
+
+    // 使用 wx.navigateTo 跳转到新闻详情页面，并传递参数
+    wx.navigateTo({
+      url: '/pages/newsDetail/newsDetail?id=' + newsId + '&index=' + index,
+    });
     wx.showLoading({
       title: '数据加载中...',
     })

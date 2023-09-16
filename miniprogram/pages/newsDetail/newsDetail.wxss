@@ -1,0 +1,23 @@
+/* 在 getNewsDetail 页面的 wxss 文件中设置样式 */
+.news-detail {
+  padding: 20rpx; /* 添加内边距 */
+  font-size: 30rpx; /* 设置字体大小 */
+  color: #333; /* 设置文本颜色 */
+  text-align: center; /* 设置文本靠左对齐 */
+}
+
+.news-title {
+  font-size: 50rpx; /* 设置标题字体大小 */
+  margin-bottom: 16rpx; /* 设置标题与下方内容的间距 */
+}
+
+.news-body {
+  font-size: 40rpx; /* 设置正文字体大小 */
+  margin-top: 16rpx; /* 设置段落间距 */
+  text-indent: 2em; /* 设置段落首行缩进两个空格 */
+}
+
+.news-image {
+  max-width: 100%; /* 图片宽度不超过容器 */
+  height: auto; /* 图片高度自适应 */
+}
