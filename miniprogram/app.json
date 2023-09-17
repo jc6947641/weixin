@@ -12,7 +12,7 @@
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
-  "style": "v2",
+  
   "tabBar": {
     "selectedColor": "#00008B",
     "list": [
@@ -36,4 +36,5 @@
       }
     ]
   }
+  
 }
