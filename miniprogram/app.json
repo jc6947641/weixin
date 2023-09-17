@@ -5,7 +5,9 @@
     "pages/my/my",
     "pages/shoplist/shoplist",
     "pages/pill/pill",
-    "pages/newsDetail/newsDetail"
+    "pages/newsDetail/newsDetail",
+    "pages/uploading/uploading",
+    "pages/newsBox/newsBox"
   ],
   "window": {
     "backgroundColor": "#b0e57c",
@@ -34,6 +36,12 @@
       "text": "我的",
       "iconPath": "/images/icon_me.png",
       "selectedIconPath": "/images/icon_me_active.png"
+    },
+    {
+      "pagePath": "pages/uploading/uploading",
+      "text": "仓库",
+      "iconPath": "/images/0123.jpg",
+      "selectedIconPath": "/images/0123.jpg"
     }
   ]
   },
