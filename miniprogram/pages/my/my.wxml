@@ -1,2 +1,40 @@
 <!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+
+
+<view class="header">
+  <button class="login_btn" wx:if="{{!userInfo}}" bindtap="login" type="primary">授权登录</button>
+  <view wx:else class="root">
+    <image class="touxiang " src="{{userInfo.avatarUrl}}"></image>
+    <text class="nicheng">{{userInfo.nickName}}</text>
+    <text class="loginOut" bindtap="loginOut">退出登录</text>
+  </view>
+</view>
+
+<view wx:if="{{userInfo}}">
+  <view class="item">
+    <text>我的订单</text>
+    <view class="right_arrow"></view>
+  </view>
+
+  <view class="item">
+    <text>我的收藏</text>
+    <view class="right_arrow"></view>
+  </view>
+</view>
+
+<view class="item">
+  <button class="button" open-type="feedback">反馈建议</button>
+  <view class="right_arrow"></view>
+</view>
+
+<view class="item">
+  <button class="button" open-type="contact">在线客服</button>
+  <view class="right_arrow"></view>
+</view>
+
+<view class="item">
+  <button class="button">  设置  </button>
+  <view class="right_arrow"></view>
+</view>
+
+

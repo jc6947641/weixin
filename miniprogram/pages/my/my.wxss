@@ -1,1 +1,70 @@
 /* pages/my/my.wxss */
+/*登录背景*/
+.header{
+  height:  400rpx;
+  background: rgb(142, 233, 203);
+}
+/*登录键*/
+.login_btn{
+  margin-top:150rpx;
+}
+/*退出键*/
+.loginOut{
+  color: gray;
+  margin-top:50rpx;
+}
+/*图片，文字的位置键*/
+.root{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/*头像设置*/
+.touxiang{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  margin-top:30rpx ;
+  margin-bottom: 10rpx;
+}
+
+/*css画箭头*/
+.right_arrow{
+  border:solid black;
+  border-width:0 3px 3px 0;
+  padding: 3px;
+  position: absolute;
+  right: 15px;
+  transform: matrix(-45deg);
+  -webkit-transform: rotate(-45deg);
+
+}
+  
+.item{
+  display: flex;
+  padding: 20rpx;
+  background: white;
+  align-items: center;
+  justify-content: left;
+  border-bottom: 1px solid gainsboro;
+  
+}
+
+/*去边框*/
+.button{
+  width: 100%;
+  background: white;
+  border: none;
+  text-align: left;
+  padding: 0px;
+  margin:0px;
+  line-height: 1.3;
+  font-size: 16px;
+}
+
+/*关键去边框*/
+.button::after{
+  border: none;
+  border-radius: 0;
+}
+/*app.json 少了 "style": "v2"*/
