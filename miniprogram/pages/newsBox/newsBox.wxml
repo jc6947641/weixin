@@ -1,0 +1,11 @@
+<view>
+  <input placeholder="标题" bindinput="inputTitle" value="{{title}}" />
+  <input placeholder="作者" bindinput="inputAuther" value="{{auther}}" />
+  <input placeholder="日期" bindinput="inputDate" value="{{date}}" />
+  <input placeholder="点击量" bindinput="inputHits" value="{{hits}}" />
+  <textarea placeholder="内容" bindinput="inputContent" maxlength="-1">{{content}}</textarea>
+  <textarea placeholder="标题图片" bindinput="inputImagesUrl" maxlength="-1">{{imagesurl}}</textarea>
+  <textarea placeholder="内容图片1" bindinput="inputImage1" maxlength="-1">{{image1}}</textarea>
+  <textarea placeholder="内容图片2" bindinput="inputImage2" maxlength="-1">{{image2}}</textarea>
+  <button  type="primary" bindtap="uploadToDatabase">上传到数据库</button>
+</view>

@@ -1,0 +1,22 @@
+<view class="news-detail">
+  <image class="news-image" src="{{newsDetail.imagesurl}}"></image>
+  <view class="news-content">
+    <text class="news-title">{{newsDetail.title}}</text>
+    <view class="news-separator"></view>
+    <text class="news-hits">浏览: {{newsDetail.hits}}</text>
+  </view>
+  <view class="news-body">
+    <block wx:for="{{formattedContent}}" wx:key="index">
+      <template is="contentTemplate" data="{{item}}" />
+    </block>
+  </view>
+</view>
+
+<template name="contentTemplate">
+  <block wx:if="{{item.type === 'text'}}">
+    <rich-text nodes="{{item.content}}" />
+  </block>
+  <block wx:if="{{item.type === 'image'}}">
+    <image class="news-image-small" src="{{item.src}}" mode="widthFix" />
+  </block>
+</template>

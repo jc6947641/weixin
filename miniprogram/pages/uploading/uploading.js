@@ -1,4 +1,4 @@
-// pages/home/home.js
+// pages/uploading/uploading.js
 Page({
 
   /**
@@ -6,24 +6,20 @@ Page({
    */
   data: {
 
- 
-
   },
+  navigateToDetailPage: function () {
+    wx.navigateTo({
+      url: '/pages/newsBox/newsBox',
+    })
+  },
+  
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
 
-
-    
-
   },
-
-
-
-  
-  
 
   /**
    * 生命周期函数--监听页面初次渲染完成

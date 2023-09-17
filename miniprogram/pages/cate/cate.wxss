@@ -1,1 +1,31 @@
-/* pages/cate/cate.wxss */
+.row{padding: 50rpx 20rpx; border-bottom:1px solid #cccccc;}
+.news-item {
+  display: flex;
+  align-items: center;
+  padding: 10px; /* 根据需求调整间距 */
+}
+
+.news-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px; /* 设置标题和分隔线之间的间距，根据需求调整 */
+}
+
+.news-title {
+  font-size: 17px; /* 设置标题的字体大小 */
+}
+
+.news-separator {
+  width: 100%; /* 分隔线宽度 */
+  height: 1px; /* 分隔线高度 */
+  background-color: #ddd; /* 分隔线颜色 */
+  margin-top: 5px; /* 设置分隔线和图片之间的间距，根据需求调整 */
+}
+.news-image {
+  width: 100px; /* 设置图片的宽度，根据需求调整 */
+  height: 100px; /* 设置图片的高度，根据需求调整 */
+}
+.news-hits{
+  font-size: 10px;
+}

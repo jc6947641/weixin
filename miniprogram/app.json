@@ -2,15 +2,21 @@
   "pages": [
     "pages/home/home",
     "pages/cate/cate",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/shoplist/shoplist",
+    "pages/pill/pill",
+    "pages/newsDetail/newsDetail",
+    "pages/uploading/uploading",
+    "pages/newsBox/newsBox"
   ],
   "window": {
-    "backgroundColor": "#F6F6F6",
+    "backgroundColor": "#b0e57c",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarBackgroundColor": "#b0e57c",
+    "navigationBarTitleText": "老年医养",
     "navigationBarTextStyle": "black"
   },
+<<<<<<< HEAD
   "sitemapLocation": "sitemap.json",
   
   "tabBar": {
@@ -37,4 +43,37 @@
     ]
   }
   
+=======
+  "tabBar": {
+    "selectedColor": "#00008B",
+    "list": [
+    {
+      "pagePath": "pages/home/home",
+      "text": "首页",
+      "iconPath": "/images/icon_home.png",
+      "selectedIconPath": "/images/icon_home_active.png"
+    },
+    {
+      "pagePath": "pages/cate/cate",
+      "text": "健康养生",
+      "iconPath": "/images/icon_notebook.png",
+      "selectedIconPath": "/images/icon_notebook_active.png"
+    },
+    {
+      "pagePath": "pages/my/my",
+      "text": "我的",
+      "iconPath": "/images/icon_me.png",
+      "selectedIconPath": "/images/icon_me_active.png"
+    },
+    {
+      "pagePath": "pages/uploading/uploading",
+      "text": "仓库",
+      "iconPath": "/images/0123.jpg",
+      "selectedIconPath": "/images/0123.jpg"
+    }
+  ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+>>>>>>> de33bea7f141b3b5ec376d269003cf751b44fd46
 }
