@@ -4,7 +4,10 @@ Page({
     auther: "",
     date: "",
     hits: "",
-    content: ""
+    content: "",
+    imagesurl:"",
+    image1:"",
+    image2:""
   },
 
   // 用户输入标题
@@ -41,6 +44,22 @@ Page({
       content: e.detail.value
     });
   },
+  inputImagesUrl: function (e) {
+    this.setData({
+      imagesurl: e.detail.value
+    });
+  },
+  inputImage1: function (e) {
+    this.setData({
+      image1: e.detail.value
+    });
+  },
+  inputImage2: function (e) {
+    this.setData({
+      image2: e.detail.value
+    });
+  },
+
 
   uploadToDatabase: function () {
     // 初始化云开发
@@ -55,7 +74,10 @@ Page({
         auther: this.data.auther,
         date: this.data.date,
         hits: this.data.hits,
-        content: this.data.content
+        content: this.data.content,
+        imagesurl:this.data.imagesurl,
+        image1:this.data.image1,
+        image2:this.data.image2
       },
       success: function (res) {
         wx.showToast({
