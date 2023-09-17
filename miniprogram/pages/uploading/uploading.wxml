@@ -1,0 +1,1 @@
+<button bindtap="navigateToDetailPage">进入新闻数据库</button>
