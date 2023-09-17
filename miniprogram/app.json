@@ -16,7 +16,7 @@
     "navigationBarTitleText": "老年医养",
     "navigationBarTextStyle": "black"
   },
-<<<<<<< HEAD
+
   "sitemapLocation": "sitemap.json",
   
   "tabBar": {
@@ -41,9 +41,9 @@
         "selectedIconPath": "/images/icon_me_active.png"
       }
     ]
-  }
+  },
   
-=======
+
   "tabBar": {
     "selectedColor": "#00008B",
     "list": [
@@ -75,5 +75,5 @@
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"
->>>>>>> de33bea7f141b3b5ec376d269003cf751b44fd46
+
 }
