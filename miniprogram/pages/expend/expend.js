@@ -1,34 +1,17 @@
-// pages/shoplist/shoplist.js
-const db=wx.cloud.database()
+// pages/expend/expend.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    dataObj:""
-  },
-  getData(){
 
-    db.collection("shop").get({
-      success:res=>{
-        console.log(res)
-        this.setData({
-          dataObj:res.data
-        })
-      }
-    })
   },
 
-
-    
-    
-   
-  // },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad (options) {
+  onLoad(options) {
 
   },
 
