@@ -9,72 +9,60 @@ Page({
     this.getNewsDetail(newsId);
   },
 
- // 修改 getNewsDetail 函数
-getNewsDetail: function (newsId) {
-  wx.cloud.callFunction({
-    name: 'getNewsDetail',
-    data: {
-      id: newsId,
-    },
-    success: (res) => {
-      const newsDetail = res.result;
-      const content = newsDetail.content || '';
-      const paragraphs = content.split('\n\n');
-      const formattedContent = [];
-      if (newsDetail.someDynamicContent1) {
-        formattedContent.push({ type: 'text', content: newsDetail.someDynamicContent1 });
-      }
-      
-      // 插入 image1
-      if (newsDetail.image1) {
-        formattedContent.push({ type: 'image', src: newsDetail.image1 });
-      }
-      
-      // 添加第二段动态文本内容
-      if (newsDetail.someDynamicContent2) {
-        formattedContent.push({ type: 'text', content: newsDetail.someDynamicContent2 });
-      }
-      
-      // 插入 image2
-      if (newsDetail.image2) {
-        formattedContent.push({ type: 'image', src: newsDetail.image2 });
-      }
+  // 修改 getNewsDetail 函数
+  getNewsDetail: function (newsId) {
+    wx.cloud.callFunction({
+      name: 'getNewsDetail',
+      data: {
+        id: newsId,
+      },
+      success: (res) => {
+        const newsDetail = res.result;
+        const content = newsDetail.content || '';
 
-      let currentText = ''; // 用于存储当前文本内容
+        // 解析文本内容并在文章1/3和2/3的位置插入图片
+        this.parseContentWithImages(content, newsDetail);
+      },
+      fail: (err) => {
+        console.error('获取新闻详情失败', err);
+      },
+    });
+  },
 
-      for (const paragraph of paragraphs) {
-        if (paragraph.startsWith('[image1]')) {
-          if (currentText !== '') {
-            formattedContent.push({ type: 'text', content: `<div>${currentText}</div>` });
-            currentText = '';
-          }
-          formattedContent.push({ type: 'image', src: newsDetail.image1 });
-        } else if (paragraph.startsWith('[image2]')) {
-          if (currentText !== '') {
-            formattedContent.push({ type: 'text', content: `<div>${currentText}</div>` });
-            currentText = '';
-          }
-          formattedContent.push({ type: 'image', src: newsDetail.image2 });
-        } else {
-          if (currentText !== '') {
-            currentText += '<br>'; // 添加段落分隔符
-          }
-          currentText += paragraph;
-        }
-      }
-      
-      if (currentText !== '') {
-        formattedContent.push({ type: 'text', content: `<div>${currentText}</div>` });
-      }
-      this.setData({
-        newsDetail: newsDetail,
-        formattedContent: formattedContent,
-      });
-    },
-    fail: (err) => {
-      console.error('获取新闻详情失败', err);
-    },
-  });
-}
+  // 解析文本内容并在文章1/3和2/3的位置插入图片
+  parseContentWithImages: function (content, newsDetail) {
+    const paragraphs = content.split('\n\n');
+    const formattedContent = [];
 
+    for (const paragraph of paragraphs) {
+      // 将段落内容拆分为三部分，然后在1/3和2/3位置插入图片1和图片2
+      const paragraphLength = paragraph.length;
+      const oneThird = Math.floor(paragraphLength / 3);
+      const twoThirds = oneThird * 2;
+
+      const firstThird = paragraph.slice(0, oneThird);
+      const secondThird = paragraph.slice(oneThird, twoThirds);
+      const lastThird = paragraph.slice(twoThirds);
+
+      // 添加第一部分内容
+      formattedContent.push({ type: 'text', content: firstThird });
+
+      // 插入图片1
+      formattedContent.push({ type: 'image', src: newsDetail.image1 });
+
+      // 添加第二部分内容
+      formattedContent.push({ type: 'text', content: secondThird });
+
+      // 插入图片2
+      formattedContent.push({ type: 'image', src: newsDetail.image2 });
+
+      // 添加第三部分内容
+      formattedContent.push({ type: 'text', content: lastThird });
+    }
+
+    this.setData({
+      newsDetail: newsDetail,
+      formattedContent: formattedContent,
+    });
+  },
 });

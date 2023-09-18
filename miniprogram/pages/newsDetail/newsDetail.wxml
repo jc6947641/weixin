@@ -1,6 +1,6 @@
 <view class="news-detail">
-  <image class="news-image" src="{{newsDetail.imagesurl}}"></image>
-  <view class="news-content">
+  <view class="news-header">
+    <image class="news-image" src="{{newsDetail.imagesurl}}"></image>
     <text class="news-title">{{newsDetail.title}}</text>
     <view class="news-separator"></view>
     <text class="news-hits">浏览: {{newsDetail.hits}}</text>
