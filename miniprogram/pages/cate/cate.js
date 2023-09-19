@@ -55,8 +55,35 @@ Page({
   },
 
   // 点击将阅读数增加
-  clickRow(res) {
-    // ...（你的点击事件处理逻辑）
+  clickRow(res){
+    //获取点击的id和索引值 
+    //云函数更新操作
+    const newsId = res.currentTarget.dataset.id; // 获取新闻的唯一标识符
+    const index = res.currentTarget.dataset.idx; // 获取点击项的索引
+
+    // 使用 wx.navigateTo 跳转到新闻详情页面，并传递参数
+    wx.navigateTo({
+      url: '/pages/newsDetail/newsDetail?id=' + newsId + '&index=' + index,
+    });
+    wx.showLoading({
+      title: '数据加载中...',
+    })
+
+    var {id,idx} = res.currentTarget.dataset
+    wx.cloud.callFunction({
+      name:"uphits",
+      data:{
+        id:id
+      }
+    }).then(res=>{
+      var rowData = this.data.dataList
+      rowData[idx].hits += 1;
+      this.setData({  
+        dataList:rowData  
+      })
+      wx.hideLoading()
+      wx.stopPullDownRefresh()
+    })
   },
 
   /**
