@@ -1,116 +1,93 @@
 // pages/cate/cate.js
 
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    dataList:[],
+    dataList: [],
   },
 
-
-  getData(num = 5,page = 0){
+  // 获取数据函数
+  getData(num = 5, page = 0, isRandomOrder = false) {
     wx.cloud.callFunction({
-      name:"getnews",
-      data:{
-        num:num,
-        page:page
+      name: "getnews",
+      data: {
+        num: num,
+        page: page,
+      },
+    }).then((res) => {
+      var newData = res.result.data;
+
+      if (isRandomOrder) {
+        // 随机打乱新数据的顺序
+        newData = this.shuffleArray(newData);
       }
-    }).then(res=>{
-      var oldData = this.data.dataList
-      var newData = oldData.concat(res.result.data);
+
       this.setData({
-        dataList:newData
-      })
-    })
+        dataList: isRandomOrder ? newData : this.data.dataList.concat(newData),
+      });
+
+      if (isRandomOrder) {
+        wx.stopPullDownRefresh(); // 停止下拉刷新
+      }
+    });
   },
 
-  //点击将阅读数增加
-  clickRow(res){
-    //获取点击的id和索引值 
-    //云函数更新操作
-    const newsId = res.currentTarget.dataset.id; // 获取新闻的唯一标识符
-    const index = res.currentTarget.dataset.idx; // 获取点击项的索引
+  // 随机打乱数组的函数
+  shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  },
 
-    // 使用 wx.navigateTo 跳转到新闻详情页面，并传递参数
-    wx.navigateTo({
-      url: '/pages/newsDetail/newsDetail?id=' + newsId + '&index=' + index,
-    });
-    wx.showLoading({
-      title: '数据加载中...',
-    })
+  // 下拉刷新事件
+  onPullDownRefresh() {
+    this.getData(1000000000, 0, true); // 调用获取数据函数并要求随机顺序
+  },
 
-    var {id,idx} = res.currentTarget.dataset
-    wx.cloud.callFunction({
-      name:"uphits",
-      data:{
-        id:id
-      }
-    }).then(res=>{
-      var rowData = this.data.dataList
-      rowData[idx].hits += 1;
-      this.setData({  
-        dataList:rowData  
-      })
-      wx.hideLoading()
-    })
+  // 页面上拉触底事件的处理函数
+  onReachBottom() {
+    var page = this.data.dataList.length // 计算下一页的页码
+    this.getData(5, page);
+  },
+
+  // 点击将阅读数增加
+  clickRow(res) {
+    // ...（你的点击事件处理逻辑）
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.getData()
+    this.getData(); // 初始加载数据
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() {
-
-  },
+  onReady() {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow() {
-
-  },
+  onShow() {},
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide() {
-
-  },
+  onHide() {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-    var page=this.data.dataList.length
-    this.getData(5,page)
-  },
+  onUnload() {},
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage() {
-
-  }
-})
+  onShareAppMessage() {},
+});

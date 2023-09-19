@@ -4,6 +4,7 @@
       <view class="news-content">
         <view class="news-title">{{index+1}}、{{ item.title }}</view>
         <view class="news-separator"></view> <!-- 分隔线 -->
+        <view class="news-date">日期: {{ item.date }}</view> <!-- 显示日期 -->
       </view>
       <image class="news-image" src="{{ item.imagesurl }}"></image>
     </view>
