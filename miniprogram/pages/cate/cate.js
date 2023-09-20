@@ -6,7 +6,8 @@ Page({
     dataList: [],
     currentPage: 0, // 当前页码
     pageSize: 5,    // 每页显示的数据条数
-    totalData: [],   // 存储所有数据的数组
+    totalData: [],
+    shouldRefresh: true,   // 存储所有数据的数组
   },
 
   // 获取数据函数
@@ -104,7 +105,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.getData(); // 初始加载数据
+    wx.startPullDownRefresh();
   },
 
   /**
@@ -116,10 +117,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    // 在页面显示时，可以手动触发下拉刷新以加载初始数据
-    wx.startPullDownRefresh();
   },
-
   /**
    * 生命周期函数--监听页面隐藏
    */
