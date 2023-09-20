@@ -1,6 +1,9 @@
 Page({
   data: {
-    newsDetail: {},
+    newsDetail: {
+      // 在数据对象中添加一个属性来存储作者信息
+      author: '',
+    },
     formattedContent: [],
   },
 
@@ -22,6 +25,11 @@ Page({
 
         // 解析文本内容并在文章1/3和2/3的位置插入图片
         this.parseContentWithImages(content, newsDetail);
+
+        // 设置作者信息
+        this.setData({
+          'newsDetail.author': newsDetail.author || '', // 从云函数结果中获取作者信息
+        });
       },
       fail: (err) => {
         console.error('获取新闻详情失败', err);

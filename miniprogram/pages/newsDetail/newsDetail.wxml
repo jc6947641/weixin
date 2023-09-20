@@ -3,7 +3,7 @@
     <image class="news-image" src="{{newsDetail.imagesurl}}"></image>
     <text class="news-title">{{newsDetail.title}}</text>
     <view class="news-separator"></view>
-    <text class="news-hits">浏览: {{newsDetail.hits}}</text>
+    <text class="news-author">作者: {{newsDetail.auther}}</text>
   </view>
   <view class="news-body">
     <block wx:for="{{formattedContent}}" wx:key="index">
@@ -11,6 +11,7 @@
     </block>
   </view>
 </view>
+
 
 <template name="contentTemplate">
   <block wx:if="{{item.type === 'text'}}">

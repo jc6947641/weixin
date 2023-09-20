@@ -6,7 +6,7 @@
   text-align: left;
 }
 
-.news-image{
+.news-image {
   object-fit: cover; 
   width: 100%;
 }
@@ -14,7 +14,6 @@
 .news-header {
   text-align: center;
 }
-
 
 .news-title {
   font-size: 36rpx;
@@ -28,7 +27,7 @@
   background-color: #ddd;
 }
 
-.news-hits {
+.news-author {
   font-size: 28rpx;
   color: #999;
 }

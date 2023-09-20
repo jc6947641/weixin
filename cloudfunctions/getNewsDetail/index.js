@@ -18,8 +18,12 @@ exports.main = async (event, context) => {
     // 解析文本内容并将<img>标签替换为<image>
     const textWithImages = content.replace(/<img src='(.*?)' \/>/g, "<image src='$1' />");
 
-    // 将解析后的文本内容添加到结果中
+    // 获取作者信息，假设作者信息存储在数据库中的 author 字段中
+    const author = res.data.author;
+
+    // 将解析后的文本内容和作者信息添加到结果中
     res.data.content = textWithImages;
+    res.data.author = author;
 
     return res.data;
   } catch (error) {
