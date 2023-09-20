@@ -65,7 +65,7 @@ Page({
   // 页面上拉触底事件的处理函数
   onReachBottom() {
     var page = this.data.currentPage + 1; // 计算下一页的页码
-    this.getData(this.data.pageSize, page);
+    this.getData(this.data.pageSize, page, false); // 请求普通顺序的数据
   },
 
   // 点击将阅读数增加
@@ -115,7 +115,10 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow() {},
+  onShow() {
+    // 在页面显示时，可以手动触发下拉刷新以加载初始数据
+    wx.startPullDownRefresh();
+  },
 
   /**
    * 生命周期函数--监听页面隐藏
