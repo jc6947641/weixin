@@ -1,0 +1,20 @@
+/* pages/shops/shops.wxss */
+
+/* 轮播图配置 */
+.banner{
+  width: 100%;
+  height: 350rpx;
+}
+.banner swiper{
+  height: 100%;
+  width: 100%;
+}
+.banner image{
+  width: 100%;
+  height: 350rpx;
+}
+/* 介绍页面配置 */
+.bannerpro image{
+  width:100%;
+  
+}

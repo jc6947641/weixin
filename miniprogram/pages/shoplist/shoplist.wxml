@@ -1,3 +1,14 @@
 <!--pages/shoplist/shoplist.wxml-->
 <button type="primary" bindtap="getData">点击获取数据</button>
-<view wx:for="{{dataObj}}">{{item.title}}</view>
+
+<!-- 商品导航 -->
+
+<view  class="shop" wx:for="{{dataObj}}"> 
+<!-- 商品导航 -->
+<navigator  class="shops" url="/pages/shops/shops">
+<!-- 图片 -->
+<image src='{{item.up1}}'></image>
+<!-- 文字描述 -->
+{{item.title}} 
+</navigator>
+</view>
