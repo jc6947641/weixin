@@ -1,1 +1,7 @@
-<button type="primary" bindtap="navigateToDetailPage">进入新闻数据库</button>
+<view>
+  <button type="primary" bindtap="navigateToDetailPage">进入新闻数据库</button>
+</view>
+
+<view style="margin-bottom: 20px;">
+  <button type="primary" bindtap="navigateToShopBoxPage">进入商城数据库</button>
+</view>

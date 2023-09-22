@@ -12,6 +12,12 @@ Page({
       url: '/pages/newsBox/newsBox',
     })
   },
+  navigateToShopBoxPage() {
+    // 进入商城数据库页面的逻辑
+    wx.navigateTo({
+      url: '/pages/shopBox/shopBox'
+    });
+  },
   
 
   /**

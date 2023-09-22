@@ -7,7 +7,8 @@
     "pages/pill/pill",
     "pages/newsDetail/newsDetail",
     "pages/uploading/uploading",
-    "pages/newsBox/newsBox"
+    "pages/newsBox/newsBox",
+    "pages/shopBox/shopBox"
   ],
   "window": {
     "backgroundColor": "#b0e57c",

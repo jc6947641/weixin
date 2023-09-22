@@ -80,9 +80,6 @@ Page({
     wx.navigateTo({
       url: '/pages/newsDetail/newsDetail?id=' + newsId + '&index=' + index,
     });
-    wx.showLoading({
-      title: '数据加载中...',
-    })
 
     var { id, idx } = res.currentTarget.dataset
     wx.cloud.callFunction({
