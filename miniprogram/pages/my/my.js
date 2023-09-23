@@ -37,7 +37,15 @@ Page({
       userInfo:''
     })
     wx.setStorageSync('user', null)
+  },
+
+//转跳
+  goPage(){
+    wx.navigateTo({
+      url: '/pages/set/set',
+    })
   }
+
 })
 
 

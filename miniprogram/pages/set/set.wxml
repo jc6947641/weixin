@@ -1,0 +1,7 @@
+<!--pages/set/set.wxml-->
+<view class="item">
+  <button class="button" bind:tap="goPage">  个人信息  </button>
+  <view class="right_arrow"></view>
+</view>
+
+

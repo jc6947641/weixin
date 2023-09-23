@@ -33,7 +33,7 @@
 </view>
 
 <view class="item">
-  <button class="button">  设置  </button>
+  <button class="button" bind:tap="goPage">  设置  </button>
   <view class="right_arrow"></view>
 </view>
 
