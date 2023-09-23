@@ -1,0 +1,7 @@
+<view>
+  <input placeholder="标题" bindinput="inputTitle" value="{{title}}" />
+  <textarea placeholder="介绍图片1" bindinput="inputUp1" maxlength="-1">{{up1}}</textarea>
+  <textarea placeholder="介绍图片2" bindinput="inputUp2" maxlength="-1">{{up2}}</textarea>
+  <textarea placeholder="长图片2" bindinput="inputDown" maxlength="-1">{{down}}</textarea>
+  <button type="primary" bindtap="uploadToDatabase">上传到数据库</button>
+</view>
