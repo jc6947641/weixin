@@ -1,5 +1,3 @@
-<!--pages/shoplist/shoplist.wxml-->
-<!-- pages/shoplist/shoplist.wxml -->
 <view class="shop-list">
   <!-- 遍历展示数据库中的数据 -->
   <block wx:for="{{shopData}}" wx:for-item="item" wx:for-index="index">

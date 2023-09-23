@@ -1,48 +1,46 @@
-const app = getApp();
+// pages/shoplist/shoplist.js
+const db = wx.cloud.database();
 
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    title: '', // 用于存储从云函数返回的title
+    shopData: [], // 用于存储数据库中的数据
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    // 在页面加载时，获取数据库中的"title"
-    this.fetchShopTitle();
+    // 在页面加载时获取数据库信息
+    this.getData();
   },
 
-  // 点击图片时触发的函数
-  handleImageClick() {
-    this.fetchShopTitle(); // 调用云函数获取"title"
-  },
-
-  // 调用云函数获取"title"的函数
-  fetchShopTitle() {
-    // 调用云函数shoplistyun并传递参数（如果需要）
+  // 获取数据库信息的函数
+  getData() {
+    // 通过云函数 "shoplist" 获取数据库中的数据
     wx.cloud.callFunction({
-      name: 'shoplistyun',
-      data: {
-        // 如果需要传递参数，请在这里添加
-      },
+      name: 'shoplist', // 云函数名称为 "shoplist"
+      data: {},
     }).then(res => {
-      // 从云函数返回的数据中获取"title"字段
-      const title = res.result.title;
+      // 从云函数返回的数据中获取 "title" 和 "up1" 字段值
+      const shopData = res.result.data;
       
-      // 更新页面数据，显示title
+      // 更新页面数据，显示 "title" 和 "up1"
       this.setData({
-        title: title,
+        shopData: shopData,
       });
     }).catch(err => {
       console.error('云函数调用失败', err);
     });
   },
 
-  // 用户点击右上角分享
+  // 其他生命周期函数和页面相关事件处理函数可以根据需求进行添加
+
+  /**
+   * 用户点击右上角分享
+   */
   onShareAppMessage() {
     // 可以在这里配置分享的内容
   },
