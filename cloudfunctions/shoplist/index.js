@@ -10,10 +10,12 @@ exports.main = async (event, context) => {
     // 查询数据库中的 "shop" 集合，获取所有文档数据
     const result = await db.collection('shop').get();
 
-    // 从查询结果中提取 "title" 和 "up1" 字段的值
+    // 从查询结果中提取值
     const data = result.data.map(item => ({
       title: item.title,
       up1: item.up1,
+      up2:item.up2,
+      down:item.down,
     }));
 
     return {

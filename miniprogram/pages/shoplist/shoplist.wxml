@@ -1,12 +1,13 @@
-<view class="shop-list">
+<view class="shoplist">
   <!-- 遍历展示数据库中的数据 -->
   <block wx:for="{{shopData}}" wx:for-item="item" wx:for-index="index">
-    <view class="shop-item">
-      <!-- 显示 title 字段 -->
-      <text class="shop-title">{{item.title}}</text>
-
-      <!-- 显示 up1 图片 -->
-      <image class="shop-image" src="{{item.up1}}"></image>
+    <view class="shoplist-item">
+    <navigator  class="shoplistbutton" url="/pages/shops/shops">
+     <!-- 显示 up1 图片 -->
+     <image class="shop-image" src="{{item.up1}}"></image>
+     <!-- 显示 title 字段 -->
+     <text class="shop-title">{{item.title}}</text>
+    </navigator>
     </view>
   </block>
 </view>

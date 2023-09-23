@@ -1,0 +1,10 @@
+/* 轮播图美化 */
+swiper{
+    width: 100%;
+    
+    height: calc(100vw*442/810);
+}
+image{
+  
+    width: 100%;
+}
