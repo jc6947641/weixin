@@ -8,7 +8,7 @@
     "pages/newsDetail/newsDetail",
     "pages/uploading/uploading",
     "pages/newsBox/newsBox",
-    "pages/shops/shops"
+    "pages/shopBox/shopBox"
   ],
   "window": {
     "backgroundColor": "#b0e57c",
