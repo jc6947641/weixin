@@ -24,6 +24,6 @@ autoplay="{{true}}"
   <!-- 介绍 -->
   <image class="down" src="{{item.down}}"></image>
 
-    </view>
+  </view>
   </block>
 </view>
