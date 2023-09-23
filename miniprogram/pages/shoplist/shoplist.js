@@ -1,84 +1,49 @@
-// pages/shoplist/shoplist.js
-var db=wx.cloud.database()
-// const db=wx.cloud.database()
-Page({
+const app = getApp();
 
+Page({
   /**
    * 页面的初始数据
    */
   data: {
-    dataObj:""
-  },
-  getData(){
-
-    db.collection("shop").get({
-      success:res=>{
-        console.log(res)
-        this.setData({
-          dataObj:res.data
-        })
-      }
-    })
+    title: '', // 用于存储从云函数返回的title
   },
 
-
-    
-    
-   
-  // },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad (options) {
-
+  onLoad(options) {
+    // 在页面加载时，获取数据库中的"title"
+    this.fetchShopTitle();
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+  // 点击图片时触发的函数
+  handleImageClick() {
+    this.fetchShopTitle(); // 调用云函数获取"title"
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
+  // 调用云函数获取"title"的函数
+  fetchShopTitle() {
+    // 调用云函数shoplistyun并传递参数（如果需要）
+    wx.cloud.callFunction({
+      name: 'shoplistyun',
+      data: {
+        // 如果需要传递参数，请在这里添加
+      },
+    }).then(res => {
+      // 从云函数返回的数据中获取"title"字段
+      const title = res.result.title;
+      
+      // 更新页面数据，显示title
+      this.setData({
+        title: title,
+      });
+    }).catch(err => {
+      console.error('云函数调用失败', err);
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
+  // 用户点击右上角分享
   onShareAppMessage() {
-
-  }
-})
+    // 可以在这里配置分享的内容
+  },
+});
