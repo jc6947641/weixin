@@ -8,13 +8,10 @@
     "pages/newsDetail/newsDetail",
     "pages/uploading/uploading",
     "pages/newsBox/newsBox",
-<<<<<<< HEAD
     "pages/shops/shops",
     "pages/set/set",
-    "pages/pinfor/pinfor"
-=======
+    "pages/pinfor/pinfor",
     "pages/shopBox/shopBox"
->>>>>>> 9a745b640fa0907114ea32f71594b2d16b696ecb
   ],
   "window": {
     "backgroundColor": "#b0e57c",
