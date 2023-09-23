@@ -1,19 +1,2 @@
 <!--pages/shops/shops.wxml-->
-<button type="primary" bindtap="getData">点击获取数据</button>
-
-<view class="inshop"  wx:for="{{dataObj}}">
-<!-- 轮播图 -->
-<view class="banner" wx:for="{{dataObj}}" >
-   <swiper indicator-dots indicator-color="rgba(255,255,255,0.5)"
-   indicator-active-color="#fff" circular autoplay interval="4000">
-   <swiper-item><image src="{{item.up1}}"></image></swiper-item>
-   <swiper-item><image src="{{item.up2}}"></image></swiper-item>
-   </swiper>
-</view>
-<!-- 商品名 -->
-{{item.title}}
-<!-- 商品介绍 -->
-<view class="bannerpro" wx:for="{{dataObj}}" >
-<image src="{{item.down}}" mode="widthFix"></image>
-</view>
-</view>
+<text>pages/shops/shops.wxml</text>

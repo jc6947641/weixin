@@ -1,4 +1,4 @@
-// pages/shops/shops.js
+// pages/expend/expend.js
 Page({
 
   /**
