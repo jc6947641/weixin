@@ -8,7 +8,9 @@
     "pages/newsDetail/newsDetail",
     "pages/uploading/uploading",
     "pages/newsBox/newsBox",
-    "pages/shops/shops"
+    "pages/shops/shops",
+    "pages/set/set",
+    "pages/pinfor/pinfor"
   ],
   "window": {
     "backgroundColor": "#b0e57c",
@@ -74,7 +76,7 @@
     }
   ]
   },
-  "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "sitemapLocation": "sitemap.json"
+  
 
 }
