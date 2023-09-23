@@ -1,11 +1,13 @@
-// pages/cate/cate.js
-
 Page({
   /**
    * 页面的初始数据
    */
   data: {
     dataList: [],
+    currentPage: 0, // 当前页码
+    pageSize: 5,    // 每页显示的数据条数
+    totalData: [],
+    shouldRefresh: true,   // 存储所有数据的数组
   },
 
   // 获取数据函数
@@ -24,9 +26,22 @@ Page({
         newData = this.shuffleArray(newData);
       }
 
-      this.setData({
-        dataList: isRandomOrder ? newData : this.data.dataList.concat(newData),
-      });
+      if (page === 0) {
+        // 下拉刷新，重置数据列表
+        this.setData({
+          totalData: newData,
+          dataList: newData.slice(0, this.data.pageSize),
+          currentPage: 0,
+        });
+      } else {
+        // 上拉加载更多，追加数据
+        const startIdx = page * this.data.pageSize;
+        const endIdx = startIdx + this.data.pageSize;
+        this.setData({
+          dataList: this.data.totalData.slice(0, endIdx),
+          currentPage: page,
+        });
+      }
 
       if (isRandomOrder) {
         wx.stopPullDownRefresh(); // 停止下拉刷新
@@ -45,19 +60,19 @@ Page({
 
   // 下拉刷新事件
   onPullDownRefresh() {
-    this.getData(1000000000, 0, true); // 调用获取数据函数并要求随机顺序
+    this.getData(10000000000000, 0, true); // 调用获取数据函数并要求随机顺序
   },
 
   // 页面上拉触底事件的处理函数
   onReachBottom() {
-    var page = this.data.dataList.length // 计算下一页的页码
-    this.getData(5, page);
+    var page = this.data.currentPage + 1; // 计算下一页的页码
+    this.getData(this.data.pageSize, page, false); // 请求普通顺序的数据
   },
 
   // 点击将阅读数增加
-  clickRow(res){
-    //获取点击的id和索引值 
-    //云函数更新操作
+  clickRow(res) {
+    // 获取点击的 id 和索引值
+    // 云函数更新操作
     const newsId = res.currentTarget.dataset.id; // 获取新闻的唯一标识符
     const index = res.currentTarget.dataset.idx; // 获取点击项的索引
 
@@ -69,17 +84,17 @@ Page({
       title: '数据加载中...',
     })
 
-    var {id,idx} = res.currentTarget.dataset
+    var { id, idx } = res.currentTarget.dataset
     wx.cloud.callFunction({
-      name:"uphits",
-      data:{
-        id:id
+      name: "uphits",
+      data: {
+        id: id
       }
-    }).then(res=>{
+    }).then(res => {
       var rowData = this.data.dataList
       rowData[idx].hits += 1;
-      this.setData({  
-        dataList:rowData  
+      this.setData({
+        dataList: rowData
       })
       wx.hideLoading()
       wx.stopPullDownRefresh()
@@ -90,7 +105,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.getData(); // 初始加载数据
+    wx.startPullDownRefresh();
   },
 
   /**
@@ -101,8 +116,8 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow() {},
-
+  onShow() {
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -116,5 +131,5 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage() {},
+  onShareAppMessage() { },
 });

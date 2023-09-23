@@ -8,8 +8,7 @@
     "pages/newsDetail/newsDetail",
     "pages/uploading/uploading",
     "pages/newsBox/newsBox",
-    "pages/set/set",
-    "pages/pinfor/pinfor"
+    "pages/shops/shops"
   ],
   "window": {
     "backgroundColor": "#b0e57c",
@@ -18,34 +17,64 @@
     "navigationBarTitleText": "老年医养",
     "navigationBarTextStyle": "black"
   },
+
   "sitemapLocation": "sitemap.json",
+  
   "tabBar": {
     "selectedColor": "#00008B",
     "list": [
       {
         "pagePath": "pages/home/home",
-        "text": "首页",
         "iconPath": "/images/icon_home.png",
+        "text": "首页",
         "selectedIconPath": "/images/icon_home_active.png"
       },
       {
         "pagePath": "pages/cate/cate",
-        "text": "健康养生",
         "iconPath": "/images/icon_notebook.png",
+        "text": "健康养生",
         "selectedIconPath": "/images/icon_notebook_active.png"
       },
       {
         "pagePath": "pages/my/my",
-        "text": "我的",
         "iconPath": "/images/icon_me.png",
+        "text": "我的",
         "selectedIconPath": "/images/icon_me_active.png"
-      },
-      {
-        "pagePath": "pages/uploading/uploading",
-        "text": "仓库",
-        "iconPath": "/images/0123.jpg",
-        "selectedIconPath": "/images/0123.jpg"
       }
     ]
-  }
+  },
+  
+
+  "tabBar": {
+    "selectedColor": "#00008B",
+    "list": [
+    {
+      "pagePath": "pages/home/home",
+      "text": "首页",
+      "iconPath": "/images/icon_home.png",
+      "selectedIconPath": "/images/icon_home_active.png"
+    },
+    {
+      "pagePath": "pages/cate/cate",
+      "text": "健康养生",
+      "iconPath": "/images/icon_notebook.png",
+      "selectedIconPath": "/images/icon_notebook_active.png"
+    },
+    {
+      "pagePath": "pages/my/my",
+      "text": "我的",
+      "iconPath": "/images/icon_me.png",
+      "selectedIconPath": "/images/icon_me_active.png"
+    },
+    {
+      "pagePath": "pages/uploading/uploading",
+      "text": "仓库",
+      "iconPath": "/images/0123.jpg",
+      "selectedIconPath": "/images/0123.jpg"
+    }
+  ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+
 }
