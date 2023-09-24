@@ -1,66 +1,29 @@
 // pages/pillDetail/pillDetail.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    itemDetail: {}, // 存储商品详情数据
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
+  onLoad: function (options) {
+    const itemId = options.itemId; // 从URL参数中获取商品ID
+    this.fetchItemDetail(itemId); // 调用函数获取商品详情
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+  // 示例函数，用于获取商品详情数据
+  fetchItemDetail(itemId) {
+    wx.cloud.callFunction({
+      name: 'getpills', // 云函数的名称
+      data: { productId: itemId }, // 传递商品ID给云函数
+      success: res => {
+        const itemDetail = res.result.data[0]; // 假设返回的数据是一个对象
+        this.setData({
+          itemDetail: itemDetail,
+        });
+      },
+      fail: error => {
+        console.error('获取商品详情失败：', error);
+        // 在失败情况下可以添加适当的用户提示或错误处理逻辑
+      },
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
-})
+});

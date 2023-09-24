@@ -1,2 +1,16 @@
-<!--pages/pillDetail/pillDetail.wxml-->
-<text>pages/pillDetail/pillDetail.wxml</text>
+<!-- pages/pillDetail/pillDetail.wxml -->
+
+<view class="detail-container">
+  <!-- 显示图片1 -->
+  <image src="{{itemDetail.image1}}" mode="aspectFit"></image>
+
+  <!-- 显示图片2 -->
+  <image src="{{itemDetail.image2}}" mode="aspectFit"></image>
+
+  <!-- 显示其他信息 -->
+  <view class="other-details">
+    <text class="item-name">{{itemDetail.name}}</text>
+    <text class="item-description">{{itemDetail.description}}</text>
+    <!-- 其他详情页内容 -->
+  </view>
+</view>
