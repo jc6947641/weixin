@@ -1,1 +1,44 @@
 /* pages/pill/pill.wxss */
+
+.item-list {
+  padding: 10px;
+}
+
+.item {
+  width: 100%; /* 控制每个列表项的宽度，使其占满一行 */
+  margin-bottom: 10px; /* 调整下方外边距 */
+  background-color: #fff; /* 背景颜色 */
+  border-radius: 8px; /* 圆角边框 */
+  overflow: hidden; /* 隐藏溢出的内容 */
+  display: flex; /* 使用Flex布局 */
+}
+
+.item-image-container {
+  width: 45%; /* 左侧图片容器宽度，占据近一半 */
+  padding: 0; /* 清除内边距 */
+  box-sizing: border-box; /* 防止内边距撑开容器 */
+}
+
+.item-image {
+  width: 100%;
+  max-height: 150px; /* 控制商品图片的最大高度 */
+  border-radius: 0; /* 清除圆角 */
+}
+
+.item-details {
+  width: 55%; /* 右侧商品详情容器宽度，占据近一半 */
+  padding: 10px; /* 给文字容器添加内边距 */
+  box-sizing: border-box; /* 防止内边距撑开容器 */
+}
+
+.item-name {
+  font-size: 16px; /* 商品名称的字体大小 */
+  font-weight: bold; /* 商品名称加粗 */
+  margin-bottom: 10px; /* 底部外边距 */
+  color: #333; /* 文字颜色 */
+}
+
+/* 鼠标悬停时改变背景颜色 */
+.item:hover {
+  background-color: #f5f5f5;
+}
