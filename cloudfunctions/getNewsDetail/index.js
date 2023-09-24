@@ -23,7 +23,7 @@ exports.main = async (event, context) => {
 
     // 将解析后的文本内容和作者信息添加到结果中
     res.data.content = textWithImages;
-    res.data.author = author;
+    res.data.authozr = author;
 
     return res.data;
   } catch (error) {

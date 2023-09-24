@@ -11,7 +11,8 @@
     "pages/shops/shops",
     "pages/set/set",
     "pages/pinfor/pinfor",
-    "pages/shopBox/shopBox"
+    "pages/shopBox/shopBox",
+    "pages/pillDetail/pillDetail"
   ],
   "window": {
     "backgroundColor": "#b0e57c",
