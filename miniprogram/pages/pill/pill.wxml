@@ -3,16 +3,19 @@
 <view class="item-list">
   <!-- 使用wx:for遍历从云数据库中获取的数据并渲染商品列表 -->
   <block wx:for="{{itemList}}" wx:key="id">
-    <view class="item">
-      <!-- 图片容器，占据左侧的三分之一 -->
-      <view class="item-image-container">
-        <image class="item-image" src="{{item.image1}}" mode="aspectFit"></image>
+    <!-- 点击列表项跳转到详情页，并传递商品信息 -->
+    <navigator url="/pages/pillDetail/pillDetail?id={{item._id}}&name={{item.name}}&image1={{item.image1}}" hover-class="navigator-hover">
+      <view class="item">
+        <!-- 图片容器，占据左侧的三分之一 -->
+        <view class="item-image-container">
+          <image class="item-image" src="{{item.image1}}" mode="aspectFit"></image>
+        </view>
+        <!-- 商品详情容器，占据右侧的两分之一 -->
+        <view class="item-details">
+          <text class="item-name">{{item.name}}</text>
+          <!-- 可以添加其他商品详情信息 -->
+        </view>
       </view>
-      <!-- 商品详情容器，占据右侧的两分之一 -->
-      <view class="item-details">
-        <text class="item-name">{{item.name}}</text>
-        <!-- 可以添加其他商品详情信息 -->
-      </view>
-    </view>
+    </navigator>
   </block>
 </view>
