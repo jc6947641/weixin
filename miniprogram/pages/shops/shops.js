@@ -7,6 +7,22 @@ Page({
   data: {
     shopData: [], // 用于存储数据库中的数据
   },
+  // 支付导航
+  gotoAlipay: function() {
+    wx.navigateTo({
+      url: '/pages/wechatpay/wechatpay',
+    })
+  },
+  gotoWechatPay: function() {
+    wx.navigateTo({
+      url: '/pages/wechatpay/wechatpay',
+    })
+  },
+  gotoUnionPay: function() {
+    wx.navigateTo({
+      url: '/pages/wechatpay/wechatpay',
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载

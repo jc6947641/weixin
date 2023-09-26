@@ -1,0 +1,18 @@
+<!--pages/wechatpay/wechatpay.wxml-->
+
+<view class="container">
+  <view class="title">微信支付</view>
+  <view class="form-item">
+    <text>订单金额：</text>
+    <input type="number" placeholder="请输入订单金额"></input>
+  </view>
+  <view class="form-item">
+    <text>微信账号：</text>
+    <input type="text" placeholder="请输入微信账号"></input>
+  </view>
+  <view class="form-item">
+    <text>支付密码：</text>
+    <input type="password" placeholder="请输入支付密码"></input>
+  </view>
+  <button class="btn-pay" bindtap="pay">确认支付</button>
+</view>
