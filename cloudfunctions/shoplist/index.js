@@ -18,6 +18,8 @@ exports.main = async (event, context) => {
       down:item.down,
     }));
 
+    
+
     return {
       code: 0, // 自定义返回码，可根据需要修改
       data: data, // 返回查询结果中的 "title" 和 "up1" 字段值

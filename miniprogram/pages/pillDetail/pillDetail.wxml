@@ -24,6 +24,8 @@
     <text class="product-price">价格: ¥{{ pillDetail.price }}</text>
 
     <!-- 购买按钮 -->
-    <button class="buy-button" bindtap="buyProduct">立即购买</button>
+    <navigator url="/pages/order/order" open-type="navigate">
+      <button class="buy-button" bindtap="gotoWechatPay">立即购买</button>
+    </navigator>
   </view>
 </view>

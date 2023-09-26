@@ -12,7 +12,8 @@
     "pages/set/set",
     "pages/pinfor/pinfor",
     "pages/shopBox/shopBox",
-    "pages/pillDetail/pillDetail"
+    "pages/pillDetail/pillDetail",
+    "pages/wechatpay/wechatpay"
   ],
   "window": {
     "backgroundColor": "#b0e57c",

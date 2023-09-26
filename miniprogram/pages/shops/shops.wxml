@@ -1,29 +1,37 @@
-<!--pages/shops/shops.wxml-->
-<view class="shops">
-  <!-- 遍历展示数据库中的数据 -->
-  <block wx:for="{{shopData}}" wx:for-item="item" wx:for-index="index">
-    <view class="shops-item">
-    
-  <!-- 轮播图设置 -->
-  <swiper
-autoplay="{{true}}"
- circular="{{true}}"
- indicator-dots="{{true}}"
- interval="2000">
-	  <swiper-item>
-		  <image src="{{item.up1}}" />
-	  </swiper-item>
-	  <swiper-item>
-		  <image src="{{item.up2}}" />
-	  </swiper-item>	
-  </swiper>
+<block wx:for="{{shopData[0].items}}" wx:for-item="item" wx:for-index="index">
+  <view class="shops-item">
+    <!-- 轮播图设置 -->
+    <swiper autoplay="{{true}}" circular="{{true}}" indicator-dots="{{true}}" interval="2000}">
+      <swiper-item>
+        <image src="{{item.up1}}" ></image>
+      </swiper-item>
+      <swiper-item>
+        <image src="{{item.up2}}" ></image>
+      </swiper-item>  
+    </swiper>
   </view>
   <view>
-  <!-- 商品名称 -->
-  {{item.title}}
-  <!-- 介绍 -->
-  <image class="down" src="{{item.down}}"></image>
-
+    <!-- 商品名称 -->
+    {{item.title}}
+    <!-- 介绍 -->
+    <image class="down" src="{{item.down}}"></image>
   </view>
-  </block>
+</block>
+<!-- 底部支付导航 -->
+<view class="nav-container">
+  <view class="nav-item" bindtap="gotoAlipay">
+    <image src="/images/zfb.png"></image>
+    <text>支付宝</text>
+  </view>
+  <view class="nav-item" bindtap="gotoWechatPay">
+    <image src="/images/wx.jpg"></image>
+    <text>微信支付</text>
+  </view>
+  <view class="nav-item" bindtap="gotoUnionPay">
+    <image src="/images/yinlian.jpg"></image>
+    <text>银联支付</text>
+  </view>
 </view>
+
+
+
