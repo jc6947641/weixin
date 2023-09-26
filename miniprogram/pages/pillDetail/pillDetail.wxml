@@ -1,5 +1,23 @@
 <view>
-  <image src="{{ pillDetail.image1 }}" />
-  <image src="{{ pillDetail.image2 }}" />
-  <text>{{ pillDetail.name }}</text>
+  <!-- 商品图片轮播 -->
+  <swiper indicator-dots="{{true}}" autoplay="{{true}}">
+    <swiper-item>
+      <image src="{{ pillDetail.image1 }}" mode="aspectFill"/>
+    </swiper-item>
+    <swiper-item>
+      <image src="{{ pillDetail.image2 }}" mode="aspectFill"/>
+    </swiper-item>
+  </swiper>
+
+  <!-- 商品名称 -->
+  <text class="product-name">{{ pillDetail.name }}</text>
+
+  <!-- 商品描述 -->
+  <text class="product-description">{{ pillDetail.description }}</text>
+
+  <!-- 商品价格 -->
+  <text class="product-price">价格: ¥{{ pillDetail.price }}</text>
+
+  <!-- 购买按钮 -->
+  <button class="buy-button" bindtap="buyProduct">立即购买</button>
 </view>

@@ -28,7 +28,6 @@ Page({
   onItemClick(res) {
     const selectedItemIndex = res.currentTarget.dataset.index; // 使用 data-index 属性获取索引
     const selectedItem = this.data.itemList[selectedItemIndex]; // 根据索引获取选中的商品
-    console.log('Selected Item:', selectedItem); // 添加这行
 
     // 跳转到详情页，并传递商品的id参数
     wx.navigateTo({

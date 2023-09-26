@@ -1,1 +1,10 @@
-/* pages/pillDetail/pillDetail.wxss */
+/* 在您的.wxss文件中添加以下样式 */
+.image-container {
+  width: 100%; /* 设置图片容器的宽度为100% */
+  height: auto; /* 自动计算图片容器的高度，以保持图片的原始纵横比 */
+}
+
+.image-container image {
+  width: 100%; /* 设置图片的宽度为100% */
+  height: auto; /* 自动计算图片的高度，以保持图片的原始纵横比 */
+}
