@@ -24,4 +24,9 @@ Page({
       },
     });
   },
+  gotoWechatPay: function() {
+    wx.navigateTo({
+      url: '/pages/wechatpay/wechatpay',
+    })
+  },
 });
