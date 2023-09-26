@@ -1,16 +1,29 @@
-<!-- pages/pillDetail/pillDetail.wxml -->
+<view>
+  <!-- 商品图片轮播 -->
+  <swiper class="swiper" autoplay="{{true}}"
+ circular="{{true}}"
+ indicator-dots="{{true}}"
+ interval="3000">
+    <swiper-item>
+      <image src="{{ pillDetail.image1 }}" mode="aspectFill" class="swiper-image" />
+    </swiper-item>
+    <swiper-item>
+      <image src="{{ pillDetail.image2 }}" mode="aspectFill" class="swiper-image" />
+    </swiper-item>
+  </swiper>
 
-<view class="detail-container">
-  <!-- 显示图片1 -->
-  <image src="{{itemDetail.image1}}" mode="aspectFit"></image>
+  <!-- 商品信息 -->
+  <view class="product-info">
+    <!-- 商品名称 -->
+    <text class="product-name">{{ pillDetail.name }}</text>
 
-  <!-- 显示图片2 -->
-  <image src="{{itemDetail.image2}}" mode="aspectFit"></image>
+    <!-- 商品描述 -->
+    <text class="product-description">{{ pillDetail.description }}</text>
 
-  <!-- 显示其他信息 -->
-  <view class="other-details">
-    <text class="item-name">{{itemDetail.name}}</text>
-    <text class="item-description">{{itemDetail.description}}</text>
-    <!-- 其他详情页内容 -->
+    <!-- 商品价格 -->
+    <text class="product-price">价格: ¥{{ pillDetail.price }}</text>
+
+    <!-- 购买按钮 -->
+    <button class="buy-button" bindtap="buyProduct">立即购买</button>
   </view>
 </view>

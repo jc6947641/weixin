@@ -1,17 +1,18 @@
-  <!-- pages/pill/pill.wxml -->
-  <view class="item-list">
-    <!-- 使用wx:for遍历从云数据库中获取的数据并渲染商品列表 -->
-    <block wx:for="{{itemList}}" wx:key="id">
-      <view class="item" bind:tap="onListItemClick" data-index="{{index}}">
-        <!-- 图片容器，占据左侧的三分之一 -->
-        <view class="item-image-container">
-          <image class="item-image" src="{{item.image1}}" mode="aspectFit"></image>
-        </view>
-        <!-- 商品详情容器，占据右侧的两分之一 -->
-        <view class="item-details">
-          <text class="item-name">{{item.name}}</text>
-          <!-- 可以添加其他商品详情信息 -->
-        </view>
+<!-- pages/pill/pill.wxml -->
+
+<view class="item-list">
+  <!-- 使用wx:for遍历从云数据库中获取的数据并渲染商品列表 -->
+  <block wx:for="{{itemList}}" wx:key="id">
+    <view class="item" bind:tap="onItemClick" data-index="{{index}}">
+      <!-- 图片容器，占据左侧的三分之一 -->
+      <view class="item-image-container">
+        <image class="item-image" src="{{item.image1}}" mode="aspectFit"></image>
       </view>
-    </block>
-  </view>
+      <!-- 商品详情容器，占据右侧的两分之一 -->
+      <view class="item-details">
+        <text class="item-name">{{item.name}}</text>
+        <!-- 可以添加其他商品详情信息 -->
+      </view>
+    </view>
+  </block>
+</view>

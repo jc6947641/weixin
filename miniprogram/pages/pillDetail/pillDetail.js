@@ -1,27 +1,25 @@
-// pages/pillDetail/pillDetail.js
+// pillDetail.js
+
 Page({
   data: {
-    itemDetail: {}, // 存储商品详情数据
+    pillDetail: {}, // 存储详情页数据
   },
 
   onLoad: function (options) {
-    const itemId = options.itemId; // 从URL参数中获取商品ID
-    this.fetchItemDetail(itemId); // 调用函数获取商品详情
-  },
-
-  // 示例函数，用于获取商品详情数据
-  fetchItemDetail(itemId) {
+    const { id } = options; // 从参数中获取id
+    // 调用云函数获取详情页数据
     wx.cloud.callFunction({
-      name: 'getpills', // 云函数的名称
-      data: { productId: itemId }, // 传递商品ID给云函数
+      name: 'getpillsDetail',
+      data: {
+        id: id,
+      },
       success: res => {
-        const itemDetail = res.result.data[0]; // 假设返回的数据是一个对象
         this.setData({
-          itemDetail: itemDetail,
+          pillDetail: res.result.data,
         });
       },
       fail: error => {
-        console.error('获取商品详情失败：', error);
+        console.error('获取详情数据失败：', error);
         // 在失败情况下可以添加适当的用户提示或错误处理逻辑
       },
     });
