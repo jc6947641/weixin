@@ -20,15 +20,15 @@
 <!-- 底部支付导航 -->
 <view class="nav-container">
   <view class="nav-item" bindtap="gotoAlipay">
-    <image src="/images/alipay.png"></image>
+    <image src="/images/zfb.png"></image>
     <text>支付宝</text>
   </view>
   <view class="nav-item" bindtap="gotoWechatPay">
-    <image src="/images/wechatpay.png"></image>
+    <image src="/images/wx.jpg"></image>
     <text>微信支付</text>
   </view>
   <view class="nav-item" bindtap="gotoUnionPay">
-    <image src="/images/unionpay.png"></image>
+    <image src="/images/yinlian.jpg"></image>
     <text>银联支付</text>
   </view>
 </view>
