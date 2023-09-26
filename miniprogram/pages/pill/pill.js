@@ -1,4 +1,5 @@
-// pages/pill/pill.js
+// pill.js
+
 Page({
   data: {
     itemList: [], // 存储列表项数据的数组
@@ -24,12 +25,14 @@ Page({
       },
     });
   },
+  onItemClick(res) {
+    const selectedItemIndex = res.currentTarget.dataset.index; // 使用 data-index 属性获取索引
+    const selectedItem = this.data.itemList[selectedItemIndex]; // 根据索引获取选中的商品
+    console.log('Selected Item:', selectedItem); // 添加这行
 
-  // 点击列表项跳转到详情页
-  onListItemClick(event) {
-    const itemId = event.currentTarget.dataset.itemId;
+    // 跳转到详情页，并传递商品的id参数
     wx.navigateTo({
-      url: `/pages/pillDetail/pillDetail?itemId=${itemId}`,
+      url: '/pages/pillDetail/pillDetail?id=' + selectedItem._id + '&image1=' + selectedItem.image1,
     });
-  },
+  }
 });
