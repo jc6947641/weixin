@@ -1,0 +1,31 @@
+<view>
+  <!-- 商品图片轮播 -->
+  <swiper class="swiper" autoplay="{{true}}"
+ circular="{{true}}"
+ indicator-dots="{{true}}"
+ interval="3000">
+    <swiper-item>
+      <image src="{{ pillDetail.image1 }}" mode="aspectFill" class="swiper-image" />
+    </swiper-item>
+    <swiper-item>
+      <image src="{{ pillDetail.image2 }}" mode="aspectFill" class="swiper-image" />
+    </swiper-item>
+  </swiper>
+
+  <!-- 商品信息 -->
+  <view class="product-info">
+    <!-- 商品名称 -->
+    <text class="product-name">{{ pillDetail.name }}</text>
+
+    <!-- 商品描述 -->
+    <text class="product-description">{{ pillDetail.description }}</text>
+
+    <!-- 商品价格 -->
+    <text class="product-price">价格: ¥{{ pillDetail.price }}</text>
+
+    <!-- 购买按钮 -->
+    <navigator url="/pages/order/order" open-type="navigate">
+      <button class="buy-button" bindtap="gotoWechatPay">立即购买</button>
+    </navigator>
+  </view>
+</view>

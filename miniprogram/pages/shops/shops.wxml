@@ -1,19 +1,37 @@
-<!--pages/shops/shops.wxml-->
-<button type="primary" bindtap="getData">点击获取数据</button>
+<block wx:for="{{shopData[0].items}}" wx:for-item="item" wx:for-index="index">
+  <view class="shops-item">
+    <!-- 轮播图设置 -->
+    <swiper autoplay="{{true}}" circular="{{true}}" indicator-dots="{{true}}" interval="2000}">
+      <swiper-item>
+        <image src="{{item.up1}}" ></image>
+      </swiper-item>
+      <swiper-item>
+        <image src="{{item.up2}}" ></image>
+      </swiper-item>  
+    </swiper>
+  </view>
+  <view>
+    <!-- 商品名称 -->
+    {{item.title}}
+    <!-- 介绍 -->
+    <image class="down" src="{{item.down}}"></image>
+  </view>
+</block>
+<!-- 底部支付导航 -->
+<view class="nav-container">
+  <view class="nav-item" bindtap="gotoAlipay">
+    <image src="/images/zfb.png"></image>
+    <text>支付宝</text>
+  </view>
+  <view class="nav-item" bindtap="gotoWechatPay">
+    <image src="/images/wx.jpg"></image>
+    <text>微信支付</text>
+  </view>
+  <view class="nav-item" bindtap="gotoUnionPay">
+    <image src="/images/yinlian.jpg"></image>
+    <text>银联支付</text>
+  </view>
+</view>
 
-<view class="inshop"  wx:for="{{dataObj}}">
-<!-- 轮播图 -->
-<view class="banner" wx:for="{{dataObj}}" >
-   <swiper indicator-dots indicator-color="rgba(255,255,255,0.5)"
-   indicator-active-color="#fff" circular autoplay interval="4000">
-   <swiper-item><image src="{{item.up1}}"></image></swiper-item>
-   <swiper-item><image src="{{item.up2}}"></image></swiper-item>
-   </swiper>
-</view>
-<!-- 商品名 -->
-{{item.title}}
-<!-- 商品介绍 -->
-<view class="bannerpro" wx:for="{{dataObj}}" >
-<image src="{{item.down}}" mode="widthFix"></image>
-</view>
-</view>
+
+
