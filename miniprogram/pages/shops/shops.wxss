@@ -13,10 +13,7 @@
   height: 100%; /* 图片高度填充轮播图容器 */
 }
 
-/* 商品信息样式 */
-.product-info {
-  padding: 20px; /* 添加内边距，增加商品详情的空白间距 */
-}
+
 
 .product-name {
   font-size: 18px;
