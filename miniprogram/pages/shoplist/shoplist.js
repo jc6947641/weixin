@@ -1,4 +1,3 @@
-// pages/shoplist/shoplist.js
 // pill.js
 
 Page({
@@ -32,7 +31,7 @@ Page({
 
     // 跳转到详情页，并传递商品的id参数
     wx.navigateTo({
-      url: '/pages/shops/shops?id=' + selectedItem._id + '&image1=' + selectedItem.image1,
+      url: '/pages/shops/shops?id=' + selectedItem._id + '&up1=' + selectedItem.up1,
     });
   }
 });
