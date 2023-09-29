@@ -77,7 +77,7 @@
 
 /* 立即购买按钮样式 */
 .buy-button {
-  background-color: #FFB6C1;
+  background-color: #f87488;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -90,16 +90,15 @@
 }
 
 .cart111-button {
-  background-color: #fdd835;
+  background-color: #ddc03e;
   color: #fff;
-  padding: 10px 20px; /* 增加内边距，使按钮更大 */
+  padding: 10px 0.01px; /* 增加内边距，使按钮更大 */
   border: none;
   border-radius: 25px; /* 增加圆角 */
   font-size: 16px;
-  margin-right: 50rpx; /* 减小右侧间距 */
-  width: 100%;
+  margin-right: 20rpx; /* 减小右侧间距 */
+  width: 40%;
   bottom: 0.4px;
-  height: 70%;
 }
 
 .divider {
