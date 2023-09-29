@@ -44,3 +44,10 @@
   font-size: 12px; /* 调整日期字体大小 */
   color: #888; /* 调整颜色为灰色 */
 }
+
+/* 在.wxss文件中 */
+.item-hover {
+  background-color: #CCCCCC; /* 点击时的背景颜色 */
+  color: #333; /* 点击时的文字颜色 */
+  transition: background-color 0.2s ease, color 0.2s ease; /* 添加过渡效果 */
+}

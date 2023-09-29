@@ -1,5 +1,5 @@
 <view wx:for="{{dataList}}" wx:key="index">
-  <view bindtap="clickRow" data-id="{{item._id}}" data-idx="{{index}}" class="row">
+  <view bindtap="clickRow" data-id="{{item._id}}" data-idx="{{index}}" class="row"hover-class="item-hover">
     <view class="news-item">
       <view class="news-content">
         <view class="news-title">{{index+1}}、{{ item.title }}</view>
