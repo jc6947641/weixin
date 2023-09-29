@@ -16,6 +16,7 @@ exports.main = async (event, context) => {
       up1: item.up1,
       up2:item.up2,
       down:item.down,
+      price:item.price,
     }));
 
     

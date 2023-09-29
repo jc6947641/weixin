@@ -13,7 +13,8 @@
     "pages/pinfor/pinfor",
     "pages/shopBox/shopBox",
     "pages/pillDetail/pillDetail",
-    "pages/wechatpay/wechatpay"
+    "pages/wechatpay/wechatpay",
+    "pages/cart/cart"
   ],
   "window": {
     "backgroundColor": "#b0e57c",

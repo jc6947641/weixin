@@ -1,47 +1,38 @@
 // pages/shoplist/shoplist.js
-const db = wx.cloud.database();
+// pill.js
 
 Page({
-  /**
-   * 页面的初始数据
-   */
   data: {
-    shopData: [], // 用于存储数据库中的数据
+    itemList: [], // 存储列表项数据的数组
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-    // 在页面加载时获取数据库信息
-    this.getData();
+  // 生命周期函数--监听页面加载
+  onLoad: function (options) {
+    this.fetchPills(); // 调用获取数据的函数
   },
 
-  // 获取数据库信息的函数
-  getData() {
-    // 通过云函数 "shoplist" 获取数据库中的数据
+  // 示例函数，用于获取列表项数据
+  fetchPills() {
     wx.cloud.callFunction({
-      name: 'shoplist', // 云函数名称为 "shoplist"
-      data: {},
-    }).then(res => {
-      // 从云函数返回的数据中获取 "title" 和 "up1" 字段值
-      const shopData = res.result.data;
-      
-      // 更新页面数据，显示 "title" 和 "up1"
-      this.setData({
-        shopData: shopData,
-      });
-    }).catch(err => {
-      console.error('云函数调用失败', err);
+      name: 'shoplist', // 云函数的名称
+      success: res => {
+        this.setData({
+          itemList: res.result.data,
+        });
+      },
+      fail: error => {
+        console.error('获取数据失败：', error);
+        // 在失败情况下可以添加适当的用户提示或错误处理逻辑
+      },
     });
   },
+  onItemClick(res) {
+    const selectedItemIndex = res.currentTarget.dataset.index; // 使用 data-index 属性获取索引
+    const selectedItem = this.data.itemList[selectedItemIndex]; // 根据索引获取选中的商品
 
-  // 其他生命周期函数和页面相关事件处理函数可以根据需求进行添加
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-    // 可以在这里配置分享的内容
-  },
+    // 跳转到详情页，并传递商品的id参数
+    wx.navigateTo({
+      url: '/pages/shops/shops?id=' + selectedItem._id + '&image1=' + selectedItem.image1,
+    });
+  }
 });
