@@ -3,7 +3,7 @@
 <view class="item-list">
   <!-- 使用wx:for遍历从云数据库中获取的数据并渲染商品列表 -->
   <block wx:for="{{itemList}}" wx:key="id">
-    <view class="item" bind:tap="onItemClick" data-index="{{index}}">
+    <view class="item" bind:tap="onItemClick" data-index="{{index}}" hover-class="item-hover">
       <!-- 图片容器，占据左侧的三分之一 -->
       <view class="item-image-container">
         <image class="item-image" src="{{item.up1}}" mode="aspectFit"></image>

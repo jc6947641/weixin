@@ -39,7 +39,8 @@
   color: #333; /* 文字颜色 */
 }
 
-/* 鼠标悬停时改变背景颜色 */
-.item:hover {
-  background-color: #f5f5f5;
+.item-hover {
+  background-color: #CCCCCC; /* 点击时的背景颜色 */
+  color: #333; /* 点击时的文字颜色 */
+  transition: background-color 0.2s ease, color 0.2s ease; /* 添加过渡效果 */
 }
