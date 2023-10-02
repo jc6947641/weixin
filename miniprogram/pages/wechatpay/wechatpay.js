@@ -1,78 +1,39 @@
-// pillDetail.js
-
 Page({
-  data: {
-    
-    pillDetail: {}, // 存储详情页数据
+  onLoad(options) {
+    const price = options.price;
+    const title = options.title;
+    const up1 = options.up1;
+    this.setData({
+      goods: {
+        name: title,
+        cover: up1,
+        price: price
+      }
+    })
   },
-
-  onLoad: function (options) {
-    const { id } = options // 从参数中获取id
-    // 调用云函数获取详情页数据
-    wx.cloud.callFunction({
-      name: 'getshopDetail',
-      data: {
-        id: id,
+  onPay() {
+    const price = this.data.goods.price;
+    // 调用微信支付接口
+    wx.requestPayment({
+      nonceStr: '随机字符串',
+      package: '统一下单接口返回的 prepay_id',
+      paySign: '签名',
+      timeStamp: '时间戳',
+      success(res) {
+        // 支付成功，跳转到订单页面
+        wx.navigateTo({
+          url: '/pages/order/index'
+        })
       },
-      success: res => {
-        this.setData({
-          pillDetail: res.result.data,
-        });
-      },
-      fail: error => {
-        console.error('获取详情数据失败：', error);
-        // 在失败情况下可以添加适当的用户提示或错误处理逻辑
-      },
-    });
-  },
-
-  addToCart: function () {
-    const { id, name, price } = this.data.pillDetail; // 从商品详情页获取商品信息
-    const userId = wx.getStorageSync('userId'); // 获取当前登录用户的ID，假设使用缓存存储用户ID
-
-    // 构建购物车商品对象
-    const cartItem = { id, name, price, quantity: 1, userId };
-    
-    const cart = wx.getStorageSync('cart') || [];
-
-    // 检查购物车中是否已存在相同商品，如果存在，则更新数量
-    const existingItemIndex = cart.findIndex(item => item.id === id);
-    if (existingItemIndex !== -1) {
-      cart[existingItemIndex].quantity++;
-    } else {
-      // 否则，将商品添加到购物车
-      cart.push(cartItem);
-    }
-
-    // 更新购物车数据并提示用户
-    wx.setStorageSync('cart', cart);
-    wx.showToast({
-      title: '已添加到购物车',
-      icon: 'success',
-    });
-
-    // 跳转到购物车页面
-
-    // 调用云函数或其他逻辑将商品添加到购物车
-    wx.cloud.callFunction({
-      name: 'addToCart',
-      data: cartItem,
-      success: res => {
+      fail(res) {
+        // 支付失败，提示用户
         wx.showToast({
-          title: '已添加到购物车',
-          icon: 'success',
-        });
-      },
-      fail: error => {
-        console.error('添加到购物车失败：', error);
-        // 在失败情况下可以添加适当的用户提示或错误处理逻辑
-      },
-    });
-  },
+          title: '支付失败',
+          icon: 'none'
+        })
+      }
+    })
+  }
+})
 
-  gotoWechatPay: function () {
-    wx.navigateTo({
-      url: '/pages/wechatpay/wechatpay',
-    });
-  },
-});
+

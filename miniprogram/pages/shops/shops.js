@@ -25,6 +25,15 @@ Page({
       },
     });
   },
+  onPay() {
+    const price = this.data.shops.pillDetail.price;
+    const title = this.data.shops.pillDetail.title;
+    const up1 = this.data.shops.pillDetail.up1;
+    wx.navigateTo({
+      url: `/pages/wetchatpay/index?price=${price}&title=${title}&up1=${up1}`
+      
+    })
+  },
 
   addToCart: function () {
     const { id, name, price } = this.data.pillDetail; // 从商品详情页获取商品信息
