@@ -1,0 +1,39 @@
+<!--pages/show/show.wxml-->
+<text>pages/show/show.wxml</text>
+<!-- show.wxml -->
+<view class="container">
+  <view class="info-card">
+    <view class="info-item">
+      <view class="info-label">姓名：</view>
+      <view class="info-value">{{healthRecord.name}}</view>
+    </view>
+    <view class="info-item">
+      <view class="info-label">性别：</view>
+      <view class="info-value">{{healthRecord.gender}}</view>
+    </view>
+    <view class="info-item">
+      <view class="info-label">年龄：</view>
+      <view class="info-value">{{healthRecord.age}}</view>
+    </view>
+    <view class="info-item">
+      <view class="info-label">身高：</view>
+      <view class="info-value">{{healthRecord.height}}cm</view>
+    </view>
+    <view class="info-item">
+      <view class="info-label">体重：</view>
+      <view class="info-value">{{healthRecord.weight}}kg</view>
+    </view>
+    <view class="info-item">
+      <view class="info-label">血型：</view>
+      <view class="info-value">{{healthRecord.bloodType}}</view>
+    </view>
+    <view class="info-item">
+      <view class="info-label">疾病史：</view>
+      <view class="info-value">{{healthRecord.diseaseHistory}}</view>
+    </view>
+    <view class="info-item">
+      <view class="info-label">过敏史：</view>
+      <view class="info-value">{{healthRecord.allergyHistory}}</view>
+    </view>
+  </view>
+</view>

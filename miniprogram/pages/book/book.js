@@ -1,3 +1,4 @@
+// collect.js
 Page({
   data: {
     bloodTypes: ['A', 'B', 'AB', 'O'],
@@ -13,6 +14,12 @@ Page({
   submitForm: function(e) {
     const formData = e.detail.value;
     console.log('表单数据：', formData);
-    // 在这里可以将表单数据提交到服务器或进行其他处理
+    // 将表单数据保存到本地存储中
+    wx.setStorageSync('healthRecord', formData);
+    // 跳转到健康档案展示页面
+    wx.navigateTo({
+      url: '/pages/show/show'
+    })
   }
 })
+
