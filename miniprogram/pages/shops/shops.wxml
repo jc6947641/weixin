@@ -11,12 +11,13 @@
 <!-- 商品信息 -->
 <view class="product-info">
   <!-- 商品名称 -->
-
-  <!-- 商品描述 -->
-  <text class="product-description">{{ pillDetail.description }}</text>
-
+   <text class="title">{{pillDetail.title}}\n</text>
   <!-- 商品价格 -->
   <text class="product-price">价格: ¥{{ pillDetail.price }}</text>
+  <!-- 商品描述 -->
+  <image class="picture" src="{{pillDetail.down}}"  mode="widthFix"></image>
+
+
 </view>
 
 <view class="divider"></view>

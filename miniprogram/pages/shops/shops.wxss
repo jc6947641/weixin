@@ -107,6 +107,10 @@
   background-color: #ccc; /* 灰色虚线颜色 */
   margin: -10px 10px 5px; /* 调整虚线上下边距，将虚线向上移动 */
 }
+.picture {
+  width: 100%;
+  
+}
 
 
 
