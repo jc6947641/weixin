@@ -2,6 +2,7 @@
 
 Page({
   data: {
+    
     pillDetail: {}, // 存储详情页数据
   },
 

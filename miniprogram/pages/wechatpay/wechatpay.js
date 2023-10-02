@@ -1,75 +1,78 @@
-// pages/wechatpay/wechatpay.js
+// pillDetail.js
+
 Page({
-
-  // 支付接口
-  pay: function() {
-    // 调用支付宝支付接口
-    // 请根据支付宝支付接口的文档进行调用
-    wx.showToast({
-      title: '支付成功',
-    })
-  },
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    
+    pillDetail: {}, // 存储详情页数据
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
+  onLoad: function (options) {
+    const { id } = options // 从参数中获取id
+    // 调用云函数获取详情页数据
+    wx.cloud.callFunction({
+      name: 'getshopDetail',
+      data: {
+        id: id,
+      },
+      success: res => {
+        this.setData({
+          pillDetail: res.result.data,
+        });
+      },
+      fail: error => {
+        console.error('获取详情数据失败：', error);
+        // 在失败情况下可以添加适当的用户提示或错误处理逻辑
+      },
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
+  addToCart: function () {
+    const { id, name, price } = this.data.pillDetail; // 从商品详情页获取商品信息
+    const userId = wx.getStorageSync('userId'); // 获取当前登录用户的ID，假设使用缓存存储用户ID
 
+    // 构建购物车商品对象
+    const cartItem = { id, name, price, quantity: 1, userId };
+    
+    const cart = wx.getStorageSync('cart') || [];
+
+    // 检查购物车中是否已存在相同商品，如果存在，则更新数量
+    const existingItemIndex = cart.findIndex(item => item.id === id);
+    if (existingItemIndex !== -1) {
+      cart[existingItemIndex].quantity++;
+    } else {
+      // 否则，将商品添加到购物车
+      cart.push(cartItem);
+    }
+
+    // 更新购物车数据并提示用户
+    wx.setStorageSync('cart', cart);
+    wx.showToast({
+      title: '已添加到购物车',
+      icon: 'success',
+    });
+
+    // 跳转到购物车页面
+
+    // 调用云函数或其他逻辑将商品添加到购物车
+    wx.cloud.callFunction({
+      name: 'addToCart',
+      data: cartItem,
+      success: res => {
+        wx.showToast({
+          title: '已添加到购物车',
+          icon: 'success',
+        });
+      },
+      fail: error => {
+        console.error('添加到购物车失败：', error);
+        // 在失败情况下可以添加适当的用户提示或错误处理逻辑
+      },
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
+  gotoWechatPay: function () {
+    wx.navigateTo({
+      url: '/pages/wechatpay/wechatpay',
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
-})
+});
