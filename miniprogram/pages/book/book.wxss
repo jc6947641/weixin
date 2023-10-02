@@ -1,0 +1,87 @@
+/* pages/book/book.wxss */
+.container {
+  padding: 20rpx;
+}
+
+.form-group {
+  margin-bottom: 20rpx;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.form-label text {
+  font-size: 28rpx;
+  margin-right: 10rpx;
+}
+
+.form-label text:last-child {
+  margin-right: 0;
+}
+
+.form-label text:last-child:before {
+  content: '*';
+  color: red;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10rpx;
+  font-size: 28rpx;
+  border: 1rpx solid #ccc;
+  border-radius: 5rpx;
+  box-sizing: border-box;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  margin-right: 20rpx;
+}
+
+.radio-label text {
+  font-size: 28rpx;
+  margin-left: 10rpx;
+}
+
+.picker-text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.btn-submit {
+  display: block;
+  width: 100%;
+  padding: 20rpx;
+  font-size: 32rpx;
+  color: #fff;
+  background-color: #007aff;
+  border-radius: 5rpx;
+  text-align: center;
+  box-sizing: border-box;
+}
+.image-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10rpx;
+}
+
+.image-list image {
+  width: 100px;
+  height: 100px;
+  margin-right: 10rpx;
+}
+.btn-upload{
+  display: block;
+  width: 100%;
+  padding: 20rpx;
+  font-size: 32rpx;
+  color: #fff;
+  background-color: #007aff;
+  border-radius: 5rpx;
+  text-align: center;
+  box-sizing: border-box;
+}

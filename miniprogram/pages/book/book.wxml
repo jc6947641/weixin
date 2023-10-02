@@ -1,0 +1,74 @@
+<!--pages/book/book.wxml-->
+<view class="container">
+  <form bindsubmit="submitForm">
+    <view class="form-group">
+      <view class="form-label">
+        <text>姓名</text>
+        <text style="color: red;">*</text>
+      </view>
+      <input type="text" name="name" class="form-control" placeholder="请输入姓名" required />
+    </view>
+    <view class="form-group">
+      <view class="form-label">
+        <text>性别</text>
+        <text style="color: red;">*</text>
+      </view>
+      <radio-group name="gender" class="form-control" required>
+        <label class="radio-label">
+          <radio value="male" />男
+        </label>
+        <label class="radio-label">
+          <radio value="female" />女
+        </label>
+      </radio-group>
+    </view>
+    <view class="form-group">
+      <view class="form-label">
+        <text>年龄</text>
+        <text style="color: red;">*</text>
+      </view>
+      <input type="number" name="age" class="form-control" placeholder="请输入年龄" required />
+    </view>
+    <view class="form-group">
+      <view class="form-label">
+        <text>身高</text>
+        <text style="color: red;">*</text>
+      </view>
+      <input type="number" name="height" class="form-control" placeholder="请输入身高" required />
+    </view>
+    <view class="form-group">
+      <view class="form-label">
+        <text>体重</text>
+        <text style="color: red;">*</text>
+      </view>
+      <input type="number" name="weight" class="form-control" placeholder="请输入体重" required />
+    </view>
+    <view class="form-group">
+      <view class="form-label">
+        <text>血型</text>
+      </view>
+      <picker mode="selector" name="bloodType" class="form-control" range="{{bloodTypes}}" bindchange="bindBloodTypeChange">
+        <view class="picker-text">{{bloodTypes[bloodTypeIndex]}}</view>
+      </picker>
+    </view>
+    <view class="form-group">
+  <view class="form-label">
+    <text>疾病史</text>
+  </view>
+  <view class="image-list">
+    <image wx:for="{{diseaseImages}}" src="{{item}}" mode="aspectFill"></image>
+  </view>
+  <button class="btn-upload" bindtap="chooseImage">上传图片</button>
+  <textarea name="diseaseHistory" class="form-control" placeholder="请输入疾病史"></textarea>
+</view>
+
+    <view class="form-group">
+      <view class="form-label">
+        <text>过敏史</text>
+      </view>
+      <textarea name="allergyHistory" class="form-control" placeholder="请输入过敏史"></textarea>
+    </view>
+    <button type="submit" class="btn-submit">提交</button>
+  </form>
+</view>
+

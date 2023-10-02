@@ -14,7 +14,8 @@
     "pages/shopBox/shopBox",
     "pages/pillDetail/pillDetail",
     "pages/wechatpay/wechatpay",
-    "pages/cart/cart"
+    "pages/cart/cart",
+    "pages/book/book"
   ],
   "window": {
     "backgroundColor": "#b0e57c",
