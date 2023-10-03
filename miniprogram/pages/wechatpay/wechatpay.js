@@ -1,75 +1,39 @@
-// pages/wechatpay/wechatpay.js
 Page({
-
-  // 支付接口
-  pay: function() {
-    // 调用支付宝支付接口
-    // 请根据支付宝支付接口的文档进行调用
-    wx.showToast({
-      title: '支付成功',
+  onLoad(options) {
+    const price = options.price;
+    const title = options.title;
+    const up1 = options.up1;
+    this.setData({
+      goods: {
+        name: title,
+        cover: up1,
+        price: price
+      }
     })
   },
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+  onPay() {
+    const price = this.data.goods.price;
+    // 调用微信支付接口
+    wx.requestPayment({
+      nonceStr: '随机字符串',
+      package: '统一下单接口返回的 prepay_id',
+      paySign: '签名',
+      timeStamp: '时间戳',
+      success(res) {
+        // 支付成功，跳转到订单页面
+        wx.navigateTo({
+          url: '/pages/order/index'
+        })
+      },
+      fail(res) {
+        // 支付失败，提示用户
+        wx.showToast({
+          title: '支付失败',
+          icon: 'none'
+        })
+      }
+    })
   }
 })
+
+

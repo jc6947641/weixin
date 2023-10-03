@@ -2,6 +2,7 @@
 
 Page({
   data: {
+    
     pillDetail: {}, // 存储详情页数据
     productId: null, // 存储从 options 中获取的 id
   },
@@ -29,6 +30,15 @@ Page({
         // 在失败情况下可以添加适当的用户提示或错误处理逻辑
       },
     });
+  },
+  onPay() {
+    const price = this.data.shops.pillDetail.price;
+    const title = this.data.shops.pillDetail.title;
+    const up1 = this.data.shops.pillDetail.up1;
+    wx.navigateTo({
+      url: `/pages/wetchatpay/index?price=${price}&title=${title}&up1=${up1}`
+      
+    })
   },
 
   gotoWechatPay: function () {

@@ -42,7 +42,7 @@ Page({
 //转跳
   goPage(){
     wx.navigateTo({
-      url: '/pages/set/set',
+      url: '/pages/pinfor/pinfor',
     })
   }
 
