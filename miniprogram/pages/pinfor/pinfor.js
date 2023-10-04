@@ -89,9 +89,14 @@ Page({
 
   // pages/userinfo/userinfo.js
   
-const db = wx.cloud.database()
+//const db = wx.cloud.database()
 
-Page({
+
+
+
+//失败
+/*Page({
+
   data: {
     name: '',
     sex: '',
@@ -212,4 +217,170 @@ Page({
       address: e.detail.value
     })
   }
+
+  // 用户输入标题
+
+   
+
+  inputName: function (e) {
+    this.setData({
+      name: e.detail.value
+    });
+  },
+
+  // 用户输入作者
+  inputSex: function (e) {
+    this.setData({
+      sex: e.detail.value
+    });
+  },
+
+  // 用户输入日期
+  inputBirthday: function (e) {
+    this.setData({
+      birthday: e.detail.value
+    });
+  },
+
+  // 用户输入点击量
+  inputTel: function (e) {
+    this.setData({
+      tel: e.detail.value
+    });
+  },
+
+  // 用户输入内容
+  inputAddress: function (e) {
+    this.setData({
+      address: e.detail.value
+    });
+  },
+  
+
+
+  uploadToDatabase: function () {
+    // 初始化云开发
+    wx.cloud.init({
+      env: 'cloud1-8gwwknkg2de4d56d', // 小程序环境 ID
+    });
+
+    // 上传数据到云数据库
+    wx.cloud.database().collection('information').add({
+      data: {
+        name: this.data.name,
+        sex: this.data.sex,
+        birthday: this.data.birthday,
+        tel: this.data.tel,
+        address: this.data.address,
+        
+      },
+      success: function (res) {
+        wx.showToast({
+          title: '上传成功',
+          icon: 'success',
+          duration: 2000
+        });
+      },
+      fail: function (err) {
+        console.error('上传失败', err);
+        wx.showToast({
+          title: '上传失败',
+          icon: 'none',
+          duration: 2000
+        });
+      }
+    });
+  }})*/
+
+  //计划2
+
+//index.jsDB.get({
+    
+//获取应用实例
+/*page({
+  getData(){
+  DB.get({
+    success(res){
+    console.log("查询成功",res)
+  },
+    fail(res){
+      console.log("查询失败",res)
+    }
+  })
+}
+})*/
+
+
+const app = getApp()
+//数据库初始化
+const DB = wx.cloud.database().collection("list")
+let name = ""
+let age = ""
+let sex = ""
+let tel = ""
+let address = ""
+
+Page({
+
+//获取用户输入的名字
+addName(event){
+  name = event.detail.value
+},
+//获取用户输入的年龄
+addAge(event){
+  age = event.detail.value
+},
+//性别
+addSex(event) {
+  sex= event.detail.value
+},
+//电话
+addTel(event) {
+    tel= event.detail.value
+},
+//地址
+addAddress(event) {
+    address=event.detail.value
+},
+
+//添加数据
+addData(){
+  DB.add({
+    data:{
+      name: name,
+      age: age,
+      sex:sex,
+      tel:tel,
+      address:address
+    },
+    success(res){
+      console.log("添加成功", res)
+    },
+    fail(res){
+      console.log("添加失败", res)
+    }
+  })
+},
+
+//查询数据
+getData(){
+  DB.get({
+    success(res){
+      console.log("查询成功", res)
+    },
+    fail(res){
+      console.log("查询失败", res)
+    }
+  })
+}
+
 })
+  
+
+
+
+
+
+
+
+

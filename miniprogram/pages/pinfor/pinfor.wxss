@@ -156,6 +156,8 @@
   object-fit: cover;
 }*/
 
+
+
 .inputs{
   margin: 60rpx auto 60rpx;
 }
@@ -195,4 +197,31 @@
   color: #fff;
   margin: 60rpx auto;
 }
+
+
+/*旧的*/
+/**部分样式代码展示*/
+.form-group {
+  padding: 20rpx 10rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1rpx solid #dfdfdf;
+}
+
+.form-label {
+  color: #191919;
+  width: 150rpx;
+  padding-left: 15rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  letter-spacing: 1rpx;
+}
+
+.form-title{
+  font-size: 32rpx;
+  color: #7f7f7f;
+  width: 100%;
+}
+
 

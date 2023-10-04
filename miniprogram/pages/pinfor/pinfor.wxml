@@ -1,4 +1,3 @@
-
 <view class="bg"></view>
 <view class='wrap'>
   <view class="container"> 
@@ -9,33 +8,35 @@
     <!--姓名-->
     <view class="item">
       <view class="title">姓名:</view>
-      <input type="text" placeholder-class="placeholder-style" value=''/>
+      <input type="text"  bindinput="addName" value=''/>
     </view>
     <!--性别-->
     <view class="item">
       <view class="title">性别:</view>
-      <input type="text" placeholder-class="placeholder-style" value=''/>
+      <input type="text" placeholder="男/女" bindinput="addSex" value=''/>
     </view>   
-    <!--生日-->
+    <!--年龄-->
     <view class="item">
-      <view class="title">生日:</view>
-      <input type="text" placeholder-class="placeholder-style" value=''/>
+      <view class="title">年龄:</view>
+      <input type="text" placeholder="例如：60"  bindinput="addAge" value=''/>
     </view>   
     <!--电话-->
     <view class="item">
       <view class="title">电话:</view>
-      <input type="text" placeholder-class="placeholder-style" value=''/>
+      <input type="text" bindinput="addTel" value=''/>
     </view>
     <!--地址-->
     <view class="item">
       <view class="title">地址:</view>
-      <input type="text" placeholder-class="placeholder-style" value=''/>
+      <input type="text" placeholder="**省**市**区**镇**村" bindinput="addAddress" value=''/>
     </view>   
 
     </view>
     </view>
     <!-- 按钮 -->
-    <view class="btn" bindtap="save">确定并保存</view>
+    <button class="btn" type="primary" bindtap="addData">确定并保存</button>
+    
   </view>
 
 </view>
+
