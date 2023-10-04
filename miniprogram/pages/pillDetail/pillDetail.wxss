@@ -60,13 +60,11 @@
   color: #fff;
 }
 
-/* 购物车和立即购买按钮容器样式 */
 .action-buttons {
   position: fixed; /* 固定在屏幕底部 */
   bottom: 0; /* 距离底部的距离为0 */
   left: 0; /* 距离左边的距离为0 */
   width: 100%; /* 宽度占满整个屏幕 */
-  height: 40px; /* 减小容器的竖直高度 */
   display: flex; /* 使用弹性盒子布局，使图标和按钮水平排列 */
   justify-content: space-between; /* 两者之间的空间平均分布 */
   align-items: center; /* 垂直居中对齐 */
@@ -74,7 +72,6 @@
   background-color: #fff; /* 背景颜色，可以根据需要调整 */
   z-index: 999; /* 确保按钮位于其他内容的上方 */
 }
-
 /* 立即购买按钮样式 */
 .buy-button {
   background-color: #f87488;
