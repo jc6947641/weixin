@@ -1,8 +1,7 @@
-// cart.js
-
 Page({
   data: {
     cartItems: [], // 存储购物车中的商品项
+    isAllSelected: false, // 是否全选
   },
 
   onLoad: function () {
@@ -20,8 +19,14 @@ Page({
       },
       success: res => {
         if (res.result.success) {
+          // 初始化购物车项的选中状态
+          const cartItems = res.result.cartItems.map(item => {
+            item.selected = false; // 初始状态为未选中
+            return item;
+          });
+
           this.setData({
-            cartItems: res.result.cartItems, // 将云函数返回的购物车内容存储在页面数据中
+            cartItems: cartItems, // 将云函数返回的购物车内容存储在页面数据中
           });
         } else {
           wx.showToast({
@@ -37,6 +42,22 @@ Page({
           icon: 'none',
         });
       },
+    });
+  },
+
+  // 全选按钮的点击事件处理函数
+  selectAllItems: function () {
+    const cartItems = this.data.cartItems;
+    const isAllSelected = this.data.isAllSelected;
+
+    // 遍历购物车中的商品项，更新选中状态
+    for (let i = 0; i < cartItems.length; i++) {
+      cartItems[i].selected = !isAllSelected;
+    }
+
+    this.setData({
+      cartItems: cartItems,
+      isAllSelected: !isAllSelected,
     });
   },
 });

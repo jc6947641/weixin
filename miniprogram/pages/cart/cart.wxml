@@ -1,13 +1,39 @@
-<!-- cart.wxml -->
-
-<view>
-  <!-- 遍历购物车中的商品项并显示 -->
-  <block wx:for="{{ cartItems }}" wx:key="_id">
-    <view>
-      <text>商品名称：{{ item.name }}</text>
-      <text>价格：{{ item.price }}</text>
-      <text>数量：{{ item.quantity }}</text>
-      <image src="{{ item.image1 }}" style="width: 100px; height: 100px;"></image>
+<block wx:for="{{ cartItems }}" wx:key="_id">
+  <view class="cart-item">
+    <view class="item-info">
+      <!-- 添加选择按钮 -->
+      <checkbox class="item-checkbox" bindchange="toggleCartItem" checked="{{ item.selected }}"></checkbox>
+      <!-- 商品图片 -->
+      <view class="item-image-container">
+        <image class="item-image" src="{{ item.image1 }}" mode="aspectFit"></image>
+      </view>
+      <!-- 商品详情 -->
+      <view class="item-details">
+        <text class="item-name">{{ item.name}}</text> <!-- 将商品名称转换为小写 -->
+        <!-- 价格 -->
+        <text class="item-price">价格：{{ item.price }}</text>
+        <!-- 数量 -->
+        <text class="item-quantity">数量：{{ item.quantity }}</text>
+      </view>
     </view>
-  </block>
+    <button class="delete-button" bindtap="deleteCartItem">删除</button>
+  </view>
+</block>
+
+<view class="action-buttons">
+  <!-- 购物车总计信息 -->
+  <view class="cart-header">
+    <view class="select-all">
+     <checkbox class="select-checkbox" bindchange="selectAllItems" checked="{{ isAllSelected }}"></checkbox>
+       <text>全选</text>
+    </view>
+  </view>
+  <view class="cart-summary">
+    <text>总计：{{ totalAmount }}</text>
+  </view>
+
+  <!-- 立即购买按钮 -->
+  <navigator url="/pages/order/order" open-type="navigate">
+    <button class="buy-button" bindtap="gotoWechatPay">结算</button>
+  </navigator>
 </view>

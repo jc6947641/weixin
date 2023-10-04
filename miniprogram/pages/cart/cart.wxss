@@ -1,46 +1,110 @@
-/* 遮罩层 */
-.mask {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
-  z-index: 9999; /* 遮罩层在最上层 */
-  display: none; /* 初始状态下隐藏遮罩层 */
-}
+/* 在你的 wxss 文件中添加以下样式 */
 
-/* 获取地址的弹窗 */
-.address-popup {
-  position: fixed;
-  top: 50%; /* 垂直居中 */
-  left: 50%; /* 水平居中 */
-  transform: translate(-50%, -50%); /* 居中定位 */
-  background-color: #fff;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+/* 整个购物车页面的容器 */
+.page-container {
   padding: 20px;
-  z-index: 10000; /* 弹窗在遮罩层之上 */
-  display: none; /* 初始状态下隐藏弹窗 */
 }
 
-/* 弹窗内容样式 */
-.popup-content {
-  text-align: center;
+/* 单个商品项的容器 */
+/* 单个商品项的容器 */
+/* 单个商品项的容器 */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #fff;
+  padding: 5px; /* 增大容器的内边距 */
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
-/* 弹窗按钮样式 */
-.popup-content button {
-  margin: 10px;
-  padding: 10px 20px;
-  background-color: #007aff;
+/* 商品信息区域 */
+.item-info {
+  display: flex;
+  align-items: center;
+}
+
+/* 包装商品图片的容器 */
+/* 商品图片容器 */
+.item-image-container {
+  width: 200px; /* 增大商品图片的宽度 */
+  height: 200px; /* 增大商品图片的高度 */
+  margin-right: 10px; /* 可以根据需要微调图片右边的间距 */
+}
+
+/* 商品图片 */
+.item-image {
+  width: 100%; /* 让商品图片填充容器 */
+  height: 100%; /* 让商品图片填充容器 */
+  object-fit: contain; /* 调整图片适应方式，可根据需要使用其他值 */
+}
+/* 商品详情容器 */
+.item-details {
+  display: flex;
+  flex-direction: column; /* 垂直排列子元素 */
+  justify-content: flex-start; /* 子元素在容器顶部对齐 */
+  margin-top: -5px; /* 商品名称上移 */
+}
+
+/* 商品名称 */
+.item-name {
+  font-size: 14px; /* 设置商品名称的字体大小 */
+  margin-top: 0; /* 清除商品名称默认的上边距 */
+}
+
+/* 价格和数量 */
+.item-price,
+.item-quantity {
+  font-size: 12px; /* 设置价格和数量的字体大小 */
+  margin-top: 0; /* 清除价格和数量默认的上边距 */
+}
+
+
+
+/* 数量区域 */
+.item-quantity {
+  font-size: 14px;
+}
+
+/* 删除按钮 */
+.delete-button {
+  background-color: #ff5500;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
+  padding: 5px 10px;
   cursor: pointer;
 }
 
-/* 弹窗按钮悬停样式 */
-.popup-content button:hover {
-  background-color: #0056b3;
+/* 购物车总计信息 */
+.cart-summary {
+  margin-top: -1px; /* 上移总计信息 */
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.action-buttons {
+  position: fixed; /* 固定在屏幕底部 */
+  bottom: 0; /* 距离底部的距离为0 */
+  left: 0; /* 距离左边的距离为0 */
+  width: 100%; /* 宽度占满整个屏幕 */
+  display: flex; /* 使用弹性盒子布局，使图标和按钮水平排列 */
+  justify-content: space-between; /* 两者之间的空间平均分布 */
+  align-items: center; /* 垂直居中对齐 */
+  padding: 10px; /* 添加内边距，增加按钮之间的间距 */
+  background-color: #fff; /* 背景颜色，可以根据需要调整 */
+  z-index: 999; /* 确保按钮位于其他内容的上方 */
+}
+
+.buy-button {
+  background-color: #f87488;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  margin-right: 100px; /* 调整右侧间距 */
+  width: 100%;
 }
