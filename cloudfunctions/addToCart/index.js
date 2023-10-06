@@ -1,5 +1,3 @@
-// 云函数 addToCart
-
 const cloud = require('wx-server-sdk');
 cloud.init();
 const db = cloud.database();
@@ -7,7 +5,7 @@ const cartCollection = db.collection('cart'); // 替换为您的购物车集合�
 
 exports.main = async (event, context) => {
   try {
-    const { id, name, price, quantity, userId, image1, totalPrice} = event;
+    const { id, name, price, userId, image1 } = event;
 
     // 在购物车中查找是否已存在相同的商品
     const existingItem = await cartCollection
@@ -18,36 +16,27 @@ exports.main = async (event, context) => {
       .get();
 
     if (existingItem.data.length > 0) {
-      // 如果已存在相同商品，则更新数量
+      // 如果已存在相同商品，更新数量和总价
       const cartItemId = existingItem.data[0]._id;
       await cartCollection.doc(cartItemId).update({
         data: {
-          quantity: existingItem.data[0].quantity + quantity,
-          totalPrice: existingItem.data[0].totalPrice + totalPrice,
+          quantity: existingItem.data[0].quantity + 1,
+          totalPrice: existingItem.data[0].totalPrice + price,
         },
       });
     } else {
-      // 否则，将商品添加到购物车
-      const result = await cartCollection.add({
+      // 否则，将商品添加到购物车，数量为1
+      await cartCollection.add({
         data: {
           id: id,
           name: name,
           price: price,
-          quantity: quantity,
+          quantity: 1,
           userId: userId,
           image1: image1,
-          totalPrice: totalPrice,
+          totalPrice: price,
         },
       });
-
-      // 获取刚添加的购物车商品信息
-      const addedCartItem = await cartCollection.doc(result._id).get();
-
-      return {
-        success: true,
-        message: '已成功添加到购物车',
-        cartItem: addedCartItem.data, // 返回添加的购物车商品信息
-      };
     }
 
     return {
