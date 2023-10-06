@@ -11,18 +11,20 @@
       <view class="item-details">
         <!-- 使用样式来限制商品名称的宽度，超出部分显示省略号 -->
         <text class="item-name">{{ item.name }}</text>
+        
+        <!-- 商品价格和数量排列在一行 -->
         <view class="item-price-quantity">
           <text class="item-totalPrice">价格：{{ item.totalPrice }}</text>
           <text class="item-quantity">数量：{{ item.quantity }}</text>
-          <!-- 添加增加和减少按钮 -->
-         <!-- 增加数量按钮 -->
-<!-- 增加数量按钮 -->
-<button class="quantity-button" bindtap="increaseQuantity" data-index="{{index}}">+</button>
-
-<!-- 减少数量按钮 -->
-<button class="quantity-button" bindtap="decreaseQuantity" data-index="{{index}}">-</button>
-
-
+        </view>
+        
+        <!-- 添加减少和增加按钮，横向排布，减号在左，加号在右 -->
+        <view class="quantity-buttons">
+          <!-- 减少数量按钮 -->
+          <button class="quantity-button" bindtap="decreaseQuantity" data-index="{{index}}">-</button>
+          
+          <!-- 增加数量按钮 -->
+          <button class="quantity-button" bindtap="increaseQuantity" data-index="{{index}}">+</button>
         </view>
       </view>
     </view>

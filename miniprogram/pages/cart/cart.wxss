@@ -44,7 +44,7 @@
 }
 
 .item-name {
-  max-width: 12em; /* 设置最大宽度为11个字符 */
+  max-width: 11em; /* 设置最大宽度为11个字符 */
   overflow: hidden; /* 隐藏超出部分 */
   white-space: nowrap; /* 防止文字换行 */
 }
@@ -54,10 +54,14 @@
   background-color: #ff5500;
   color: #fff;
   border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
+  border-radius: 10px; /* 增大圆角半径以增大按钮 */
+  padding: 10px 20px; /* 增大内边距，增加按钮的大小 */
   cursor: pointer;
+  display: flex;
+  justify-content: center; /* 文字水平居中 */
+  align-items: center; /* 文字垂直居中 */
 }
+
 
 /* 购物车总计信息 */
 .cart-summary {
@@ -108,4 +112,29 @@
 .item-quantity {
   font-size: 14px;
   color: initial; /* 保持数量文字的默认颜色 */
+}
+.quantity-buttons{
+  display: flex;
+  align-items: center; /* 水平垂直居中对齐 */
+  margin-top: 0.1px; /* 调整价格和数量与商品名称之间的间距 */
+}
+/* 减少数量按钮 */
+.quantity-button.decrease {
+  background-color: #ddd; /* 背景颜色 */
+  color: #333; /* 文字颜色 */
+  border: none;
+  border-radius: 10px; /* 圆角半径 */
+  padding: 10px 15px; /* 内边距，可以根据需要调整按钮大小 */
+  cursor: pointer;
+}
+
+/* 增加数量按钮 */
+.quantity-button.increase {
+  background-color: #ddd; /* 背景颜色 */
+  color: #333; /* 文字颜色 */
+  border: none;
+  border-radius: 10px; /* 圆角半径 */
+  padding: 10px 15px; /* 内边距，可以根据需要调整按钮大小 */
+  cursor: pointer;
+  margin-left: -5px; /* 进一步缩小左侧间距 */
 }
