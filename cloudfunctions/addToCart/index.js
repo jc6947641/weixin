@@ -7,7 +7,7 @@ const cartCollection = db.collection('cart'); // 替换为您的购物车集合�
 
 exports.main = async (event, context) => {
   try {
-    const { id, name, price, quantity, userId, image1 } = event;
+    const { id, name, price, quantity, userId, image1, totalPrice} = event;
 
     // 在购物车中查找是否已存在相同的商品
     const existingItem = await cartCollection
@@ -23,6 +23,7 @@ exports.main = async (event, context) => {
       await cartCollection.doc(cartItemId).update({
         data: {
           quantity: existingItem.data[0].quantity + quantity,
+          totalPrice: existingItem.data[0].totalPrice + totalPrice,
         },
       });
     } else {
@@ -35,6 +36,7 @@ exports.main = async (event, context) => {
           quantity: quantity,
           userId: userId,
           image1: image1,
+          totalPrice: totalPrice,
         },
       });
 

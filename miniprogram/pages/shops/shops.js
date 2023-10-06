@@ -50,7 +50,7 @@ Page({
   addToCart: function () {
     const { productId } = this.data; // 直接使用从 options 中获取的 productId
     const userId = wx.getStorageSync('userId');
-    const cartItem = { id: productId, quantity: 1, userId }; // 创建一个初始购物车项目对象
+    let cartItem = { id: productId, quantity: 1, userId, price: 0, totalPrice: 0 }; 
   
     // 调用云函数获取商品详细信息，包括 name, price, 和 image1
     wx.cloud.callFunction({
@@ -63,6 +63,7 @@ Page({
         cartItem.name = title; // 将商品名称添加到购物车项目
         cartItem.price = price; // 将商品价格添加到购物车项目
         cartItem.image1 = up1; // 将商品图片添加到购物车项目
+        cartItem.totalPrice = price; // 设置totalPrice等于price
   
         let cart = wx.getStorageSync('cart') || [];
   
@@ -74,11 +75,16 @@ Page({
         if (existingItemIndex !== -1) {
           // 如果商品已存在于购物车中，增加商品数量
           cart[existingItemIndex].quantity++;
+          // 更新购物车中的商品总价
+          cart[existingItemIndex].totalPrice = cart[existingItemIndex].quantity * price; // 使用最新的商品价格计算总价
+          console.log(cart[existingItemIndex].totalPrice);
+  
+          // 更新 cartItem，克隆 cart[existingItemIndex] 的值
+          cartItem = { ...cart[existingItemIndex] };
         } else {
           // 否则，将商品添加到购物车
           cart.push(cartItem);
         }
-  
         wx.setStorageSync('cart', cart);
         wx.showToast({
           title: '已添加到购物车',
