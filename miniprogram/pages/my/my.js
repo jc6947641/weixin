@@ -1,5 +1,6 @@
 // pages/my/my.js
 
+const db=wx.cloud.database()
 Page({
   data:{
     userInfo:''
@@ -41,11 +42,31 @@ Page({
 
 //转跳
   goPage(){
+    console.log("点击转跳至个人信息页面")
     wx.navigateTo({
       url: '/pages/pinfor/pinfor',
     })
-  }
+  },
 
+
+  
+  onLoad(options){
+    wx.cloud.callFunction({
+      name:"loginopenid"
+    }).then(res=>{
+      console.log("获取到的当前用户openid",res.result.openid)
+      wx.setStorageSync('openid', res.result.openid)
+      //查询已有数据 openid
+      db.collection("userlist").where({
+        openid:res.result.openid
+      }).get().then(res=>{
+        console.log("获取的用户信息",res.data)
+      })
+
+
+    })
+  },
+  
 })
 
 

@@ -1,37 +1,93 @@
+<view class="bg"></view>
+<view class="wrap">
+<view class="container">
+  <!--表单-->
 <view class="form">
+  <view class="inputs"></view>
+    <!-- 姓名 -->
+        <view class="item">
+        <view class="title">姓名:</view>
+        <input type="text" placeholder-class="placeholder-style" value="{{name}}" bindinput="name"/>
+        </view>
+        <!-- 性别 -->
+        <view class="item">
+        <view class="title">性别:</view>
+        <input type="text" placeholder="男/女" placeholder-class="placeholder-style" value="{{sex}}" bindinput="sex"/>
+        </view>
+        <!-- 年龄 -->
+        <view class="item">
+        <view class="title">年龄:</view>
+        <input type="text" placeholder="例如：60" placeholder-class="placeholder-style" value="{{age}}" bindinput="age"/>
+        </view>
+        <!-- 电话 -->
+        <view class="item">
+        <view class="title">电话:</view>
+        <input type="text" placeholder-class="placeholder-style" value="{{tel}}" bindinput="tel" bindinput="tel"/>
+        </view>
+        <!-- 地址 -->
+        <view class="item">
+        <view class="title">地址:</view>
+        <input type="text" placeholder="省市区镇**村" placeholder-class="placeholder-style" value="{{address}}" bindinput="address"/>
+        </view>
+</view>
+<!--按钮-->
+<view class="btn" bind:tap="save">确定并保存</view>
+</view>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<view class="form">
 <view class="inputs">
-<!-- 姓名 -->
+ 姓名 
 <view class="item">
 <view class="title">姓名:</view>
 <input type="text" bindinput="addName" value="{{name}}"/>
-</view>
-<!-- 性别 -->
+</view>-->
+<!-- 性别 
 <view class="item">
 <view class="title">性别:</view>
 <input type="text" placeholder="男/女" bindinput="addSex" value="{{sex}}"/>
-</view>
-<!-- 年龄 -->
+</view>-->
+<!-- 年龄 
 <view class="item">
 <view class="title">年龄:</view>
 <input type="text" placeholder="例如：60" bindinput="addAge" value="{{age}}"/>
-</view>
-<!-- 电话 -->
+</view>-->
+<!-- 电话 
 <view class="item">
 <view class="title">电话:</view>
 <input type="text" bindinput="addTel" value="{{tel}}"/>
-</view>
-<!-- 地址 -->
+</view>-->
+<!-- 地址 
 <view class="item">
 <view class="title">地址:</view>
 <input type="text" placeholder="省市区镇**村" bindinput="addAddress" value="{{address}}"/>
 </view>
 
-</view>
-<!-- 按钮 -->
+</view>-->
+<!-- 按钮 
 <button class="btn" type="primary" bindtap="addData">确定并保存</button>
 <button class="btn" type="primary" bindtap="upData">修改</button>
-<button class="btn" type="primary" bindtap="updateData">更新</button>
-<!-- 列表展示已保存的数据 -->
+<button class="btn" type="primary" bindtap="updateData">更新</button>-->
+<!-- 列表展示已保存的数据 
 <view class="list">
 <view class="title">已保存数据：</view>
 <view class="list-item" wx:for="{{dataList}}" wx:key="index">
@@ -39,4 +95,4 @@
 <view>{{item.sex}}，{{item.age}}，{{item.tel}}，{{item.address}}</view>
 </view>
 </view>
-</view>
+</view>-->
