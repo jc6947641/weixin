@@ -5,7 +5,7 @@ const cartCollection = db.collection('cart'); // 替换为您的购物车集合�
 
 exports.main = async (event, context) => {
   try {
-    const { id, name, price, userId, image1 } = event;
+    const { id, name, price, userId, image1, detailPagePath } = event;
 
     // 在购物车中查找是否已存在相同的商品
     const existingItem = await cartCollection
@@ -16,12 +16,13 @@ exports.main = async (event, context) => {
       .get();
 
     if (existingItem.data.length > 0) {
-      // 如果已存在相同商品，更新数量和总价
+      // 如果已存在相同商品，更新数量、总价和 detailPagePath
       const cartItemId = existingItem.data[0]._id;
       await cartCollection.doc(cartItemId).update({
         data: {
           quantity: existingItem.data[0].quantity + 1,
           totalPrice: existingItem.data[0].totalPrice + price,
+          detailPagePath: detailPagePath, // 更新 detailPagePath 字段
         },
       });
     } else {
@@ -35,6 +36,7 @@ exports.main = async (event, context) => {
           userId: userId,
           image1: image1,
           totalPrice: price,
+          detailPagePath: detailPagePath, // 添加 detailPagePath 字段
         },
       });
     }

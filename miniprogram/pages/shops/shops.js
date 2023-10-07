@@ -21,9 +21,15 @@ Page({
         id: id,
       },
       success: res => {
-        this.setData({
-          pillDetail: res.result.data,
-        });
+        const { data } = res.result;
+        if (data) {
+          this.setData({
+            pillDetail: data,
+          });
+        } else {
+          console.error('获取详情数据失败：数据为空');
+          // 在数据为空的情况下，可以添加适当的用户提示或处理逻辑
+        }
       },
       fail: error => {
         console.error('获取详情数据失败：', error);
@@ -31,14 +37,19 @@ Page({
       },
     });
   },
+
   onPay() {
-    const price = this.data.shops.pillDetail.price;
-    const title = this.data.shops.pillDetail.title;
-    const up1 = this.data.shops.pillDetail.up1;
-    wx.navigateTo({
-      url: `/pages/wetchatpay/index?price=${price}&title=${title}&up1=${up1}`
-      
-    })
+    const pillDetail = this.data.pillDetail;
+    if (pillDetail && pillDetail.price && pillDetail.title && pillDetail.up1) {
+      const price = pillDetail.price;
+      const title = pillDetail.title;
+      const up1 = pillDetail.up1;
+      wx.navigateTo({
+        url: `/pages/wetchatpay/index?price=${price}&title=${title}&up1=${up1}`
+      });
+    } else {
+      console.error('pillDetail 为 undefined 或缺少必要属性');
+    }
   },
 
   gotoWechatPay: function () {
@@ -50,7 +61,15 @@ Page({
   addToCart: function () {
     const { productId } = this.data; // 直接使用从 options 中获取的 productId
     const userId = wx.getStorageSync('userId');
-    let cartItem = { id: productId, quantity: 1, userId, price: 0, totalPrice: 0 }; 
+    let cartItem = {
+      id: productId,
+      quantity: 1,
+      userId,
+      price: 0,
+      totalPrice: 0,
+      detailPagePath: '', // 新增详情页路径字段
+    }; // 初始化 price 和 totalPrice
+  
     wx.showLoading({
       title: '加载中...',
     });
@@ -61,6 +80,7 @@ Page({
       data: {
         id: productId,
       },
+      // 获取商品详细信息成功后
       success: res => {
         wx.hideLoading();
         const { title, price, up1 } = res.result.data; // 获取商品详细信息
@@ -68,6 +88,9 @@ Page({
         cartItem.price = price; // 将商品价格添加到购物车项目
         cartItem.image1 = up1; // 将商品图片添加到购物车项目
         cartItem.totalPrice = price; // 设置totalPrice等于price
+  
+        // 设置商品详情页路径
+        cartItem.detailPagePath = `/pages/shops/shops`; // 请替换为你的详情页路径
   
         let cart = wx.getStorageSync('cart') || [];
   
@@ -103,8 +126,12 @@ Page({
               title: '已添加到购物车',
               icon: 'success',
             });
+  
+            // 在成功将商品添加到数据库后，也将 cartItem 的值传递给数据库存储
+            // 请确保云函数中的 addToCart 能够接收并存储 detailPagePath 字段
           },
           fail: error => {
+            wx.hideLoading();
             console.error('添加到购物车失败：', error);
           },
         });
@@ -114,6 +141,6 @@ Page({
         // 在失败情况下可以添加适当的用户提示或错误处理逻辑
       },
     });
-  },
+  },  
   
 });

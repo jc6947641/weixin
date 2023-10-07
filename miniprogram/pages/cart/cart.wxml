@@ -2,10 +2,10 @@
   <view class="cart-item">
     <view class="item-info">
       <checkbox-group data-id="{{item._id}}" class="item-checkbox" bindchange="toggleCartItem" data-index="{{index}}">
-      <checkbox class="item-checkbox-inner" checked="{{ item.selected }}"></checkbox>
-    </checkbox-group>
+        <checkbox class="item-checkbox-inner" checked="{{ item.selected }}"></checkbox>
+      </checkbox-group>
       <!-- 商品图片 -->
-      <view class="item-image-container">
+      <view class="item-image-container" bindtap="gotoProductDetail" data-index="{{index}}">
         <image class="item-image" src="{{ item.image1 }}" mode="aspectFit"></image>
       </view>
       <!-- 商品详情 -->
