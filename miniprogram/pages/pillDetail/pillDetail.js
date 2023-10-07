@@ -65,7 +65,6 @@ Page({
           cart[existingItemIndex].quantity++;
           // 更新购物车中的商品总价
           cart[existingItemIndex].totalPrice = cart[existingItemIndex].quantity * price; // 使用最新的商品价格计算总价
-          console.log(cart[existingItemIndex].totalPrice);
   
           // 更新 cartItem，克隆 cart[existingItemIndex] 的值
           cartItem = { ...cart[existingItemIndex] };
@@ -73,10 +72,6 @@ Page({
           // 否则，将商品添加到购物车
           cart.push(cartItem);
         }
-        console.log('existingItemIndex:', existingItemIndex);
-        console.log('cartItem:', cartItem);
-        console.log('cart[existingItemIndex]:', cart[existingItemIndex]);
-  
         wx.setStorageSync('cart', cart);
         wx.showToast({
           title: '已添加到购物车',

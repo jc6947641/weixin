@@ -3,7 +3,7 @@ Page({
     cartItems: [],     // 存储购物车中的商品项
     isAllSelected: false, // 是否全选
     MaxPrice: 0,
-    MaxNum: 0
+    MaxNum: 0,
   },
 
   onLoad: function () {
@@ -11,11 +11,10 @@ Page({
     this.getCartItems();
   },
 
-  // 获取购物车内容的函数
   getCartItems: function () {
     const userId = wx.getStorageSync('userId');
     wx.cloud.callFunction({
-      name: 'getCartItems', // 使用新创建的云函数名称
+      name: 'getCartItems',
       data: {
         userId: userId,
       },
@@ -24,12 +23,16 @@ Page({
           // 初始化购物车项的选中状态
           const cartItems = res.result.cartItems.map(item => {
             item.selected = true; // 初始状态为全选
+            item.productId = item._id; // 设置 productId 为购物车项的 _id
             return item;
           });
-
+  
+          // 设置全选状态为true，仅当购物车中有商品时
+          const isAllSelected = cartItems.length > 0;
+  
           this.setData({
             cartItems: cartItems, // 将云函数返回的购物车内容存储在页面数据中
-            isAllSelected: true, // 设置全选状态为true
+            isAllSelected: isAllSelected,
           });
         } else {
           wx.showToast({
@@ -49,15 +52,59 @@ Page({
   },
 // 增加数量按钮的点击事件处理函数
 increaseQuantity: function (event) {
-  const index = event.currentTarget.dataset.index; // 获取商品项在数组中的索引
-  const cartItems = this.data.cartItems;
+const index = event.currentTarget.dataset.index; // 获取商品项在数组中的索引
+let cartItems = this.data.cartItems;
 
-  // 确保购物车中存在相关的商品项
-  if (cartItems[index]) {
-    // 增加商品数量
-    cartItems[index].quantity += 1;
-    
-    // 增加商品价格（假设价格是 item.price）
+// 确保购物车中存在相关的商品项
+if (cartItems[index]) {
+  // 增加商品数量
+  cartItems[index].quantity += 1;
+  
+  // 增加商品价格（假设价格是 item.price）
+  cartItems[index].totalPrice = cartItems[index].price * cartItems[index].quantity;
+
+  // 更新数据
+  this.setData({
+    cartItems: cartItems,
+  });
+
+  // 更新总计和结算金额（只计算被勾选的商品）
+  this.updateTotalAmount();
+  
+  // 调用云函数来更新购物车项到数据库
+  wx.cloud.callFunction({
+    name: 'updateCartItem',
+    data: {
+      _id: cartItems[index]._id, // 购物车项的唯一标识
+      quantity: cartItems[index].quantity,
+      totalPrice: cartItems[index].totalPrice,
+    },
+    success: res => {
+      if (res.result.success) {
+        console.log('购物车项更新成功');
+      } else {
+        console.error('购物车项更新失败：', res.result.error);
+      }
+    },
+    fail: error => {
+      console.error('调用云函数更新购物车项失败：', error);
+    },
+  });
+}
+},
+
+// 减少数量按钮的点击事件处理函数
+decreaseQuantity: function (event) {
+const index = event.currentTarget.dataset.index; // 获取商品项在数组中的索引
+let cartItems = this.data.cartItems;
+
+// 确保购物车中存在相关的商品项
+if (cartItems[index]) {
+  // 减少商品数量，但要确保不小于1
+  if (cartItems[index].quantity > 1) {
+    cartItems[index].quantity -= 1;
+
+    // 减少商品价格（假设价格是 item.price）
     cartItems[index].totalPrice = cartItems[index].price * cartItems[index].quantity;
 
     // 更新数据
@@ -65,6 +112,9 @@ increaseQuantity: function (event) {
       cartItems: cartItems,
     });
 
+    // 更新总计和结算金额（只计算被勾选的商品）
+    this.updateTotalAmount();
+    
     // 调用云函数来更新购物车项到数据库
     wx.cloud.callFunction({
       name: 'updateCartItem',
@@ -85,107 +135,118 @@ increaseQuantity: function (event) {
       },
     });
   }
+}
 },
-// 减少数量按钮的点击事件处理函数
-decreaseQuantity: function (event) {
-  const index = event.currentTarget.dataset.index; // 获取商品项在数组中的索引
-  const cartItems = this.data.cartItems;
 
-  // 确保购物车中存在相关的商品项
-  if (cartItems[index]) {
-    // 减少商品数量，但要确保不小于1
-    if (cartItems[index].quantity > 1) {
-      cartItems[index].quantity -= 1;
+// 更新总计和结算金额的函数
+updateTotalAmount: function () {
+const cartItems = this.data.cartItems;
+let MaxPrice = 0;
+let MaxNum = 0;
 
-      // 减少商品价格（假设价格是 item.price）
-      cartItems[index].totalPrice = cartItems[index].price * cartItems[index].quantity;
-
-      // 更新数据
-      this.setData({
-        cartItems: cartItems,
-      });
-
-      // 调用云函数来更新购物车项到数据库
-      wx.cloud.callFunction({
-        name: 'updateCartItem',
-        data: {
-          _id: cartItems[index]._id, // 购物车项的唯一标识
-          quantity: cartItems[index].quantity,
-          totalPrice: cartItems[index].totalPrice,
-        },
-        success: res => {
-          if (res.result.success) {
-            console.log('购物车项更新成功');
-          } else {
-            console.error('购物车项更新失败：', res.result.error);
-          }
-        },
-        fail: error => {
-          console.error('调用云函数更新购物车项失败：', error);
-        },
-      });
-    }
+cartItems.forEach(v => {
+  // 确保 v 中的 totalPrice 和 quantity 存在且有效，同时商品处于被勾选状态
+  if (v.totalPrice && v.quantity && v.selected) { 
+    MaxPrice += v.totalPrice;
+    MaxNum += v.quantity;
   }
+});
+
+this.setData({
+  MaxPrice,
+  MaxNum
+});
 },
+
 deleteCartItem: function (event) {
-  const index = event.currentTarget.dataset.index;
-  const cartItems = this.data.cartItems;
+const index = event.currentTarget.dataset.index;
+let cartItems = this.data.cartItems;
 
-  // 检查索引是否有效
-  if (typeof index !== 'undefined' && index >= 0 && index < cartItems.length) {
-    // 获取要删除的购物车项的 _id
-    const cartItemId = cartItems[index]._id;
+// 检查索引是否有效
+if (typeof index !== 'undefined' && index >= 0 && index < cartItems.length) {
+  // 获取要删除的购物车项的 _id
+  const cartItemId = cartItems[index]._id;
 
-    // 调用云函数删除购物车项
-    wx.cloud.callFunction({
-      name: 'deleteCartItem', // 替换成你的云函数名称
-      data: {
-        cartItemId: cartItemId, // 传递要删除的购物车项的 _id
-      },
-      success: res => {
-        if (res.result.success) {
-          // 从页面的购物车项列表中移除已删除的购物车项
-          cartItems.splice(index, 1);
+  // 显示加载中提示
+  wx.showLoading({
+    title: '删除中...',
+    mask: true, // 遮罩层，防止用户点击其他操作
+  });
 
+  // 调用云函数删除购物车项
+  wx.cloud.callFunction({
+    name: 'deleteCartItem',
+    data: {
+      cartItemId: cartItemId,
+    },
+    success: res => {
+      if (res.result.success) {
+        // 从页面的购物车项列表中移除已删除的购物车项
+        cartItems.splice(index, 1);
+
+        // 手动计算总计金额和结算个数，只计算已勾选的商品
+        let MaxPrice = 0;
+        let MaxNum = 0;
+
+        cartItems.forEach(v => {
+          if (v.selected) {
+            MaxPrice += v.totalPrice;
+            MaxNum += v.quantity;
+          }
+        });
+
+        // 更新总计金额和结算个数
+        this.setData({
+          cartItems: cartItems,
+          MaxPrice: MaxPrice,
+          MaxNum: MaxNum,
+        });
+
+        // 如果购物车为空，则取消全选
+        if (cartItems.length === 0) {
           this.setData({
-            cartItems: cartItems,
-          });
-
-          // 清空对应的 storage
-          wx.removeStorageSync('cart');
-
-          wx.showToast({
-            title: '删除成功',
-            icon: 'success',
-          });
-        } else {
-          wx.showToast({
-            title: '删除失败',
-            icon: 'none',
+            isAllSelected: false,
           });
         }
-      },
-      fail: error => {
-        console.error('删除购物车项失败：', error);
+
+        // 更新 storage 中的购物车数据，只保留没有被删除的商品项
+        wx.setStorageSync('cart', cartItems);
+
+        wx.showToast({
+          title: '删除成功',
+          icon: 'success',
+        });
+      } else {
         wx.showToast({
           title: '删除失败',
           icon: 'none',
         });
-      },
-    });
-  } else {
-    // 如果索引无效，显示错误信息
-    console.error('无效的索引:', index);
-    wx.showToast({
-      title: '删除失败，无效的索引',
-      icon: 'none',
-    });
-  }
+      }
+    },
+    fail: error => {
+      console.error('删除购物车项失败：', error);
+      wx.showToast({
+        title: '删除失败',
+        icon: 'none',
+      });
+    },
+    complete: () => {
+      // 隐藏加载中提示，无论成功或失败都需要执行
+      wx.hideLoading();
+    },
+  });
+} else {
+  // 如果索引无效，显示错误信息
+  console.error('无效的索引:', index);
+  wx.showToast({
+    title: '删除失败，无效的索引',
+    icon: 'none',
+  });
+}
 },
 
-onShow() {
+onShow: function () {
   const cartItems = wx.getStorageSync('cart') || [];
-  let isAllSelected = true;
   let MaxPrice = 0;
   let MaxNum = 0;
 
@@ -194,75 +255,117 @@ onShow() {
     if (v.totalPrice && v.quantity) { 
       MaxPrice += v.totalPrice;
       MaxNum += v.quantity;
-    }else{
-      isAllSelected = false;
     }
   });
-  isAllSelected = cartItems.length!=0?isAllSelected:false; 
+
   this.setData({
     cartItems,
     MaxPrice,
-    MaxNum,
-    isAllSelected
+    MaxNum
   });
 },
 
 selectAllItems: function () {
-  const { cartItems, isAllSelected } = this.data;
-  const newIsAllSelected = !isAllSelected;
+let { cartItems, isAllSelected } = this.data;
+const newIsAllSelected = !isAllSelected;
 
-  // 更新每个商品的选中状态
-  const updatedCartItems = cartItems.map(item => {
-    item.selected = newIsAllSelected;
-    return item;
-  });
+// 更新每个商品的选中状态
+const updatedCartItems = cartItems.map(item => {
+  item.selected = newIsAllSelected;
+  return item;
+});
 
-  this.setData({
-    cartItems: updatedCartItems,
-    isAllSelected: newIsAllSelected,
-  });
+this.setData({
+  cartItems: updatedCartItems,
+  isAllSelected: newIsAllSelected,
+});
 
+wx.setStorageSync('cart', updatedCartItems);
+
+// 计算总计金额和结算个数
+let selectedMaxPrice = 0;
+let selectedMaxNum = 0;
+
+updatedCartItems.forEach(item => {
+  if (item.selected) {
+    selectedMaxPrice += item.totalPrice;
+    selectedMaxNum += item.quantity;
+  }
+});
+
+// 更新总计金额和结算个数
+this.setData({
+  MaxPrice: selectedMaxPrice,
+  MaxNum: selectedMaxNum
+});
 },
+
 
 toggleCartItem: function (e) {
   const _id = e.currentTarget.dataset.id;
   let { cartItems } = this.data;
   let index = cartItems.findIndex(v => v._id === _id);
+  cartItems[index].selected = !cartItems[index].selected;
+  this.setData({
+    cartItems
+  });
+  wx.setStorageSync('cart', cartItems);
 
-  // 检查索引是否有效以及 cartItems 中是否存在相关的对象
-  if (index !== -1 && cartItems[index]) {
-    cartItems[index].selected = !cartItems[index].selected;
-    
-    // 更新数据
-    this.setData({
-      cartItems,
-    });
+  // 计算被选中的商品的总价和数量
+  let selectedMaxPrice = 0;
+  let selectedMaxNum = 0;
 
-    wx.setStorageSync('cart', cartItems);
+  cartItems.forEach(item => {
+    if (item.selected) {
+      selectedMaxPrice += item.totalPrice;
+      selectedMaxNum += item.quantity;
+    }
+  });
 
-    // 重新计算 isAllSelected、MaxPrice 和 MaxNum
-    let isAllSelected = cartItems.every(item => item.selected);
-    let MaxPrice = 0;
-    let MaxNum = 0;
+  // 更新总计金额和结算个数
+  this.setData({
+    MaxPrice: selectedMaxPrice,
+    MaxNum: selectedMaxNum
+  });
 
-    cartItems.forEach(v => {
-      // 确保 v 中的 totalPrice 和 quantity 存在且有效
-      if (v.totalPrice && v.quantity) { 
-        MaxPrice += v.totalPrice;
-        MaxNum += v.quantity;
-      } else {
-        isAllSelected = false;
-      }
-    });
+  // 检查购物车中是否有未勾选的商品
+  const hasUnselectedItem = cartItems.some(item => !item.selected);
 
-    isAllSelected = cartItems.length !== 0 ? isAllSelected : false;
-    
-    this.setData({
-      isAllSelected,
-      MaxPrice,
-      MaxNum
+  this.setData({
+    isAllSelected: !hasUnselectedItem // 更新全选框状态
+  });
+},
+
+gotoProductDetail: function (event) {
+  const index = event.currentTarget.dataset.index; // 获取商品项在数组中的索引
+  const cartItems = this.data.cartItems;
+
+  if (index >= 0 && index < cartItems.length) {
+    const productId = cartItems[index].productId; // 从购物车商品项获取 productId
+    const pillDetail = cartItems[index].pillDetail; // 从购物车商品项获取 pillDetail
+
+    if (productId && pillDetail) {
+      // 构建商品详情页的 URL，并将 productId 和 pillDetail 作为参数传递
+      const url = `${cartItems[index].detailPagePath}?productId=${productId}&pillDetail=${pillDetail}`;
+
+      // 跳转到商品详情页
+      wx.navigateTo({
+        url: url,
+      });
+    } else {
+      // 如果 productId 或 pillDetail 无效，显示错误提示给用户
+      wx.showToast({
+        title: '商品信息无效',
+        icon: 'none',
+      });
+    }
+  } else {
+    // 如果索引无效，显示错误提示给用户
+    wx.showToast({
+      title: '无效的商品索引',
+      icon: 'none',
     });
   }
-},
+}
 
 });
