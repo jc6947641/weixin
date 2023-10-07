@@ -335,37 +335,26 @@ toggleCartItem: function (e) {
     isAllSelected: !hasUnselectedItem // 更新全选框状态
   });
 },
+gotoProductDetail(event) {
+  const selectedItemIndex = event.currentTarget.dataset.index; // 使用 data-index 属性获取索引
+  const selectedItem = this.data.cartItems[selectedItemIndex]; // 根据索引获取选中的商品
 
-gotoProductDetail: function (event) {
-  const index = event.currentTarget.dataset.index; // 获取商品项在数组中的索引
-  const cartItems = this.data.cartItems;
+  // 获取购物车项中的 detailPagePath 字段
+  const detailPagePath = selectedItem.detailPagePath;
 
-  if (index >= 0 && index < cartItems.length) {
-    const productId = cartItems[index].productId; // 从购物车商品项获取 productId
-    const pillDetail = cartItems[index].pillDetail; // 从购物车商品项获取 pillDetail
+  // 将商品的 _id 参数添加到 URL
+  const url = `${detailPagePath}?id=${selectedItem.id}`;
 
-    if (productId && pillDetail) {
-      // 构建商品详情页的 URL，并将 productId 和 pillDetail 作为参数传递
-      const url = `${cartItems[index].detailPagePath}?productId=${productId}&pillDetail=${pillDetail}`;
-
-      // 跳转到商品详情页
-      wx.navigateTo({
-        url: url,
-      });
-    } else {
-      // 如果 productId 或 pillDetail 无效，显示错误提示给用户
-      wx.showToast({
-        title: '商品信息无效',
-        icon: 'none',
-      });
-    }
-  } else {
-    // 如果索引无效，显示错误提示给用户
-    wx.showToast({
-      title: '无效的商品索引',
-      icon: 'none',
-    });
-  }
-}
+  // 跳转到详情页
+  wx.navigateTo({
+    url: url,
+    success: (res) => {
+      console.log('成功跳转到商品详情页');
+    },
+    fail: (error) => {
+      console.error('跳转到商品详情页失败：', error);
+    },
+  });
+},
 
 });

@@ -7,6 +7,7 @@ Page({
   },
 
   onLoad: function (options) {
+    console.log(options);
     // 直接从 options 中获取传递的 id 并存储到 data 中
     const { id } = options;
     this.setData({
@@ -33,7 +34,15 @@ Page({
   addToCart: function () {
     const { productId } = this.data; // 直接使用从 options 中获取的 productId
     const userId = wx.getStorageSync('userId');
-    let cartItem = { id: productId, quantity: 1, userId, price: 0, totalPrice: 0 }; // 初始化 price 和 totalPrice
+    let cartItem = {
+      id: productId,
+      quantity: 1,
+      userId,
+      price: 0,
+      totalPrice: 0,
+      detailPagePath: '', // 新增详情页路径字段
+    }; // 初始化 price 和 totalPrice
+  
     wx.showLoading({
       title: '加载中...',
     });
@@ -52,6 +61,9 @@ Page({
         cartItem.price = price; // 将商品价格添加到购物车项目
         cartItem.image1 = image1; // 将商品图片添加到购物车项目
         cartItem.totalPrice = price; // 设置totalPrice等于price
+  
+        // 设置商品详情页路径
+        cartItem.detailPagePath = `/pages/pillDetail/pillDetail`; // 请替换为你的详情页路径
   
         let cart = wx.getStorageSync('cart') || [];
   
@@ -87,6 +99,9 @@ Page({
               title: '已添加到购物车',
               icon: 'success',
             });
+  
+            // 在成功将商品添加到数据库后，也将 cartItem 的值传递给数据库存储
+            // 请确保云函数中的 addToCart 能够接收并存储 detailPagePath 字段
           },
           fail: error => {
             wx.hideLoading();
@@ -99,6 +114,5 @@ Page({
         // 在失败情况下可以添加适当的用户提示或错误处理逻辑
       },
     });
-  },
-  
+  },  
 });
