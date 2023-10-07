@@ -1,22 +1,35 @@
 <block wx:for="{{ cartItems }}" wx:key="_id">
   <view class="cart-item">
     <view class="item-info">
-      <!-- 添加选择按钮 -->
-      <checkbox class="item-checkbox" bindchange="toggleCartItem" checked="{{ item.selected }}"></checkbox>
+      <checkbox-group class="item-checkbox" bindchange="toggleCartItem" data-index="{{index}}">
+      <checkbox class="item-checkbox-inner" checked="{{ item.selected }}"></checkbox>
+    </checkbox-group>
       <!-- 商品图片 -->
       <view class="item-image-container">
         <image class="item-image" src="{{ item.image1 }}" mode="aspectFit"></image>
       </view>
       <!-- 商品详情 -->
       <view class="item-details">
-        <text class="item-name">{{ item.name}}</text> <!-- 将商品名称转换为小写 -->
-        <!-- 价格 -->
-        <text class="item-price">价格：{{ item.price }}</text>
-        <!-- 数量 -->
-        <text class="item-quantity">数量：{{ item.quantity }}</text>
+        <!-- 使用样式来限制商品名称的宽度，超出部分显示省略号 -->
+        <text class="item-name">{{ item.name }}</text>
+        
+        <!-- 商品价格和数量排列在一行 -->
+        <view class="item-price-quantity">
+          <text class="item-totalPrice">价格：{{ item.totalPrice }}</text>
+          <text class="item-quantity">数量：{{ item.quantity }}</text>
+        </view>
+        
+        <!-- 添加减少和增加按钮，横向排布，减号在左，加号在右 -->
+        <view class="quantity-buttons">
+          <!-- 减少数量按钮 -->
+          <button class="quantity-button" bindtap="decreaseQuantity" data-index="{{index}}">-</button>
+          
+          <!-- 增加数量按钮 -->
+          <button class="quantity-button" bindtap="increaseQuantity" data-index="{{index}}">+</button>
+        </view>
       </view>
     </view>
-    <button class="delete-button" bindtap="deleteCartItem">删除</button>
+    <button data-index="{{index}}" class="delete-button" bindtap="deleteCartItem">删除</button>
   </view>
 </block>
 
@@ -24,16 +37,19 @@
   <!-- 购物车总计信息 -->
   <view class="cart-header">
     <view class="select-all">
-     <checkbox class="select-checkbox" bindchange="selectAllItems" checked="{{ isAllSelected }}"></checkbox>
-       <text>全选</text>
+      <!-- 全选框 -->
+      <checkbox-group class="select-checkbox" bindchange="selectAllItems">
+        <checkbox class="select-checkbox-inner" checked="{{ isAllSelected }}"></checkbox>
+      </checkbox-group>
+      <text>全选</text>
     </view>
   </view>
   <view class="cart-summary">
-    <text>总计：{{ totalAmount }}</text>
+    <text>总计： ¥{{ MaxPrice }}</text>
   </view>
 
   <!-- 立即购买按钮 -->
   <navigator url="/pages/order/order" open-type="navigate">
-    <button class="buy-button" bindtap="gotoWechatPay">结算</button>
+    <button class="buy-button" bindtap="gotoWechatPay">结算{{MaxNum}}</button>
   </navigator>
 </view>
