@@ -1,7 +1,7 @@
 <block wx:for="{{ cartItems }}" wx:key="_id">
   <view class="cart-item">
     <view class="item-info">
-      <checkbox-group class="item-checkbox" bindchange="toggleCartItem" data-index="{{index}}">
+      <checkbox-group data-id="{{item._id}}" class="item-checkbox" bindchange="toggleCartItem" data-index="{{index}}">
       <checkbox class="item-checkbox-inner" checked="{{ item.selected }}"></checkbox>
     </checkbox-group>
       <!-- 商品图片 -->
@@ -50,6 +50,6 @@
 
   <!-- 立即购买按钮 -->
   <navigator url="/pages/order/order" open-type="navigate">
-    <button class="buy-button" bindtap="gotoWechatPay">结算{{MaxNum}}</button>
+    <button class="buy-button" bindtap="gotoWechatPay">结算({{MaxNum}})</button>
   </navigator>
 </view>

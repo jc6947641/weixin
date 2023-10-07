@@ -69,6 +69,7 @@
   font-size: 18px;
   font-weight: bold;
   margin-right: 10px;
+  color: #ff0000;
 }
 
 .action-buttons {
