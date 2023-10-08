@@ -4,6 +4,7 @@ Page({
     isAllSelected: false, // 是否全选
     MaxPrice: 0,
     MaxNum: 0,
+    selectedItems: [],
   },
 
   onLoad: function () {
@@ -246,6 +247,7 @@ if (typeof index !== 'undefined' && index >= 0 && index < cartItems.length) {
 },
 
 onShow: function () {
+  this.getCartItems();
   const cartItems = wx.getStorageSync('cart') || [];
   let MaxPrice = 0;
   let MaxNum = 0;
@@ -253,17 +255,27 @@ onShow: function () {
   cartItems.forEach(v => {
     // 确保 v 中的 totalPrice 和 quantity 存在且有效
     if (v.totalPrice && v.quantity) { 
+      v.selected = 'true';
       MaxPrice += v.totalPrice;
       MaxNum += v.quantity;
     }
   });
 
+  // 更新页面数据，使用 cartItems
   this.setData({
-    cartItems,
-    MaxPrice,
-    MaxNum
+    cartItems: cartItems,
+    MaxPrice: MaxPrice,
+    MaxNum: MaxNum,
   });
+
+  // 如果购物车为空，则取消全选
+  if (cartItems.length === 0) {
+    this.setData({
+      isAllSelected: false,
+    });
+  }
 },
+
 
 selectAllItems: function () {
 let { cartItems, isAllSelected } = this.data;

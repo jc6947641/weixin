@@ -5,7 +5,6 @@ Page({
     pillDetail: {}, // 存储详情页数据
     productId: null, // 存储从 options 中获取的 id
   },
-
   onLoad: function (options) {
     console.log(options);
     // 直接从 options 中获取传递的 id 和 fromCart 并存储到 data 中
@@ -32,7 +31,6 @@ Page({
       },
     });
   },
-
   addToCart: function () {
     const { productId } = this.data; // 直接使用从 options 中获取的 productId
     const userId = wx.getStorageSync('userId');
@@ -127,7 +125,7 @@ Page({
       } else {
         // 如果不是从购物车页面进入的详情页，进入购物车页面
         wx.navigateTo({
-          url: '/pages/cart/cart', // 请根据实际的购物车页面路径进行修改
+          url: '/pages/cart/cart?', // 请根据实际的购物车页面路径进行修改
         });
       }
     },
