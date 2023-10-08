@@ -13,7 +13,11 @@ Page({
       up1:options.up1,
       price:options.price
     })
-  }
+  },
+  
 })
+wx.navigateTo({
+  url: '/pages/paySuccess/paySuccess'
+  })
 
 

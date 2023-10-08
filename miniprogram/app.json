@@ -18,7 +18,8 @@
     "pages/cart/cart",
     "pages/book/book",
     "pages/show/show",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/paySuccess/paySuccess"
   ],
   "window": {
     "backgroundColor": "#b0e57c",

@@ -1,15 +1,15 @@
 <!-- 支付页面 -->
 <view class="goods-info">
-  <image src="{{up1}}" mode="aspectFit"></image>
+<image src="{{up1}}" mode="aspectFit"></image>
 </view>
 <view class="goods-detail">
-  <text>\n</text>
-  <text>\n</text><text>\n</text>
-  <text class="goods-name">{{title}}</text>
+<text>\n</text>
+<text>\n</text><text>\n</text>
+<text class="goods-name">{{title}}</text>
 </view>
 
 <button class="pay-btn" bindtap="onPay">立即支付
-  <text class="goods-price">¥{{price}}</text>
+<text class="goods-price">¥{{price}}</text>
 </button>
 
 
