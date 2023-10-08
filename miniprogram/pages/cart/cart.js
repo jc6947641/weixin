@@ -343,9 +343,9 @@ gotoProductDetail(event) {
   const detailPagePath = selectedItem.detailPagePath;
 
   // 将商品的 _id 参数添加到 URL
-  const url = `${detailPagePath}?id=${selectedItem.id}`;
+  const url = `${detailPagePath}?id=${selectedItem.id}&fromCart=true`; // 在 URL 中添加标志参数
 
-  // 跳转到详情页
+  // 跳转到详情页，并传递标志参数
   wx.navigateTo({
     url: url,
     success: (res) => {

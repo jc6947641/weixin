@@ -31,9 +31,10 @@
 <!-- 购物车和立即购买按钮在同一行 -->
 <view class="action-buttons">
   <!-- 购物车图标 -->
-  <navigator url="/pages/cart/cart" open-type="navigate">
-    <image src="/images/cart.png" class="cart-icon" />
-  </navigator>
+  <view>
+  <!-- 购物车图标 -->
+  <image src="/images/cart.png" class="cart-icon" bindtap="returnToCartPage" />
+</view>
 
   <!-- 立即购买按钮 -->
 
