@@ -9,7 +9,7 @@
   <!-- 自定义1 -->
   <view class="Lin">
   <navigator  class="Lin-item" url="/pages/shoplist/shoplist">
-    <image src="/images/button.jpg"></image>
+    <image src="/images/healthshop.jpg"></image>
   <text>健康商城</text>
  </navigator>
  </view>
@@ -18,7 +18,7 @@
  <!-- 自定义2 -->
  <view class="Lin">
   <navigator  class="Lin-item" url="/pages/pill/pill">
-  <image src="/images/button.jpg"></image>
+  <image src="/images/pill.jpg"></image>
   <text>医疗药品</text>
  </navigator>
  </view>
@@ -27,8 +27,8 @@
 <view class="Lin">
 <!-- 切换地址 -->
   <navigator  class="Lin-item" url="/pages/book/book">
-    <image src="/images/button.jpg"></image>
-  <text>健康档案</text>
+    <image src="/images/shopcar.jpg"></image>
+  <text>购物车</text>
  </navigator>
  </view>
 
