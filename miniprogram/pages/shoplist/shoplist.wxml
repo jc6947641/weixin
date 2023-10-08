@@ -6,7 +6,7 @@
     <view class="item" bind:tap="onItemClick" data-index="{{index}}" hover-class="item-hover">
       <!-- 图片容器，占据左侧的三分之一 -->
       <view class="item-image-container">
-        <image class="item-image" src="{{item.up1}}" mode="aspectFit"></image>
+        <image class="item-image" src="{{item.up1}}" mode="aspectFill"></image>
       </view>
       <!-- 商品详情容器，占据右侧的两分之一 -->
       <view class="item-details">
