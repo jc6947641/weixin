@@ -66,18 +66,21 @@ Page({
     wx.cloud.init({
       env: 'cloud1-4gu3ydprf906aaba', // 小程序环境 ID
     });
-
+  
+    // 将 hits 字段转换为数字
+    const hitsAsNumber = parseInt(this.data.hits);
+  
     // 上传数据到云数据库
     wx.cloud.database().collection('news').add({
       data: {
         title: this.data.title,
         auther: this.data.auther,
         date: this.data.date,
-        hits: this.data.hits,
+        hits: hitsAsNumber, // 将 hits 转换为数字
         content: this.data.content,
-        imagesurl:this.data.imagesurl,
-        image1:this.data.image1,
-        image2:this.data.image2
+        imagesurl: this.data.imagesurl,
+        image1: this.data.image1,
+        image2: this.data.image2
       },
       success: function (res) {
         wx.showToast({
@@ -96,4 +99,5 @@ Page({
       }
     });
   }
+  
 });

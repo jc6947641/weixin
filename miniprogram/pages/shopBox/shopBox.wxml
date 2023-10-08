@@ -1,5 +1,6 @@
 <view>
-  <input placeholder="标题" bindinput="inputTitle" value="{{title}}" />
+  <input placeholder="商品名，下面记得填价格" bindinput="inputTitle" value="{{title}}" />
+  <input placeholder="价格" bindinput="inputPrice" value="{{price}}" />
   <textarea placeholder="介绍图片1" bindinput="inputUp1" maxlength="-1">{{up1}}</textarea>
   <textarea placeholder="介绍图片2" bindinput="inputUp2" maxlength="-1">{{up2}}</textarea>
   <textarea placeholder="长图片2" bindinput="inputDown" maxlength="-1">{{down}}</textarea>

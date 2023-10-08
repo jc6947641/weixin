@@ -17,7 +17,8 @@
     "pages/wechatpay/wechatpay",
     "pages/cart/cart",
     "pages/book/book",
-    "pages/show/show"
+    "pages/show/show",
+    "pages/search/search"
   ],
   "window": {
     "backgroundColor": "#b0e57c",

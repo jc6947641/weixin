@@ -1,4 +1,7 @@
 <!-- pages/pill/pill.wxml -->
+<view class="pyg_index">
+  <SearchInput></SearchInput>
+</view>
 
 <view class="item-list">
   <!-- 使用wx:for遍历从云数据库中获取的数据并渲染商品列表 -->

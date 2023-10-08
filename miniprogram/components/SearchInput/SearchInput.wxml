@@ -1,0 +1,4 @@
+<!-- components/SearchInput/SearchInput.wxml -->
+<view class="search-container">
+  <navigator class="search-icon" url="/pages/search/search">搜索</navigator>
+</view>

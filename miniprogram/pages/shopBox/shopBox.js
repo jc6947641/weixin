@@ -3,12 +3,19 @@ Page({
     title: "",
     down: "",
     up1: "",
-    up2: ""
+    up2: "",
+    price: " ",
   },
 
   inputTitle: function (e) {
     this.setData({
       title: e.detail.value
+    });
+  },
+
+  inputPrice: function (e) {
+    this.setData({
+      price: e.detail.value
     });
   },
 
@@ -30,15 +37,19 @@ Page({
     });
   },
 
+
+
   uploadToDatabase: function () {
+
     // 初始化云开发
     wx.cloud.init({
       env: 'cloud1-4gu3ydprf906aaba', // 小程序环境 ID
     });
-
+    const priceAsNumber = parseInt(this.data.price);
     // 上传数据到云数据库
     wx.cloud.database().collection('shop').add({
       data: {
+        price:priceAsNumber,
         title: this.data.title,
         down: this.data.down,
         up1: this.data.up1,

@@ -1,0 +1,33 @@
+/* components/SearchInput/SearchInput.wxss */
+/* 为搜索框外层容器添加样式，设置背景色和居中 */
+.search-container {
+  width: 100%; /* 宽度占满父容器 */
+  display: flex; /* 让内容横向排列 */
+  align-items: center; /* 垂直居中 */
+  justify-content: space-between; /* 使输入框和按钮分散对齐 */
+  background-color: #b0e57c; /* 背景色 */
+  padding: 10rpx; /* 边距 */
+  box-sizing: border-box; /* 包含内边距在内的盒模型 */
+  border-radius: 5rpx; /* 圆角 */
+}
+
+/* 为搜索框输入框添加样式 */
+.search_input {
+  flex: 1; /* 自动扩展填充剩余空间 */
+  height: 30px;
+  border: none; /* 去掉边框 */
+  background-color: transparent; /* 透明背景色 */
+  font-size: 14px; /* 字体大小 */
+  outline: none; /* 去掉输入框的默认外边框 */
+}
+
+/* 为搜索按钮添加样式 */
+.search-icon {
+  margin-left: 35px;
+  padding: 5rpx 10rpx; /* 内边距 */
+  background-color: #f0f0f0; /* 按钮背景色 */
+  color: #000000; /* 文本颜色 */
+  border-radius: 5rpx; /* 圆角 */
+  text-align: center;
+  width: 80%;
+}
