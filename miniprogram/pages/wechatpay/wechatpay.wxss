@@ -1,39 +1,27 @@
-/* .goods-info {
-  display: flex;
-  align-items: center;
-  padding: 20rpx;
-  background-color: #fff;
-} */
-
-.goods-info image {
-  width: 400px;
-  height: 200px;
-  margin-right: 20rpx;
-}
-
-.goods-detail {
-  flex: 1;
-}
-
-.goods-detail .goods-name {
-  font-size: 32rpx;
-  font-weight: bold;
-  margin-bottom: 10rpx;
-}
-
-.goods-detail .goods-price {
-  font-size: 28rpx;
-  color: #f60;
+.goods-name {
+  text-align: center; /* 文本水平居中 */
+  margin: 0 auto; /* 容器水平居中 */
+  width: 90%; /* 可以根据需要调整容器的宽度 */
+  size: 24px;
 }
 
 .pay-btn {
-  display: block;
-  margin: 20rpx auto;
-  padding: 20rpx;
-  background-color: #f60;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  font-size: 24px;
+  background-color: #007aff;
   color: #fff;
-  border-radius: 5rpx;
-  font-size: 32rpx;
-  text-align: center;
-}
+  }
+  
+  .goods-price {
+  font-size: 28px;
+  font-weight: bold;
+  margin-left: 20px;
+  }
+
 

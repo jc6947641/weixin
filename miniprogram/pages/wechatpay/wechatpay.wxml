@@ -1,10 +1,11 @@
 <!-- 支付页面 -->
 <view class="goods-info">
   <image src="{{up1}}" mode="aspectFit"></image>
-  <view class="goods-detail">
-    <text class="goods-name">{{title}}</text>
-    
-  </view>
+</view>
+<view class="goods-detail">
+  <text>\n</text>
+  <text>\n</text><text>\n</text>
+  <text class="goods-name">{{title}}</text>
 </view>
 
 <button class="pay-btn" bindtap="onPay">立即支付

@@ -20,6 +20,7 @@
   text-align: center; /* 文本水平居中 */
   margin: 0 auto; /* 容器水平居中 */
   width: 90%; /* 可以根据需要调整容器的宽度 */
+  
 }
 /* 商品名称样式 */
 .product-name {
