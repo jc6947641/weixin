@@ -1,13 +1,13 @@
-.goods-info {
+/* .goods-info {
   display: flex;
   align-items: center;
   padding: 20rpx;
   background-color: #fff;
-}
+} */
 
 .goods-info image {
-  width: 200rpx;
-  height: 200rpx;
+  width: 400px;
+  height: 200px;
   margin-right: 20rpx;
 }
 
