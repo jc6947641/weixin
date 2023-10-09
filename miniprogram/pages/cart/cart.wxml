@@ -53,3 +53,5 @@
     <button class="buy-button" bindtap="gotoWechatPay">结算({{MaxNum}})</button>
   </navigator>
 </view>
+
+

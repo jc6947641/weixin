@@ -73,7 +73,8 @@
 }
 
 .action-buttons {
-  position: sticky; /* 固定在屏幕底部 */
+  position:sticky; /* 固定在屏幕底部 */
+  margin-top:500px;
   bottom: 0; /* 距离底部的距离为0 */
   left: 0; /* 距离左边的距离为0 */
   width: 100%; /* 宽度占满整个屏幕 */
