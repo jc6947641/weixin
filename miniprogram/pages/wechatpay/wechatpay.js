@@ -16,8 +16,6 @@ Page({
   },
   
 })
-wx.navigateTo({
-  url: '/pages/paySuccess/paySuccess'
-  })
+
 
 
