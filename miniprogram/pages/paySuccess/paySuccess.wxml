@@ -3,5 +3,5 @@
   <image src="/images/success.png" ></image>
 </view>
 <button style="position: relative; left: 1rpx; top: 872rpx; width: 554rpx; height: 96rpx; display: block; box-sizing: border-box" class="success-btn" bind:tap="onsuccess">
-<image src=""></image>
+<image src="/images/ok.png"></image>
 </button>
