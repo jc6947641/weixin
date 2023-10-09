@@ -1,0 +1,8 @@
+<view>
+  <input placeholder="商品名，下面记得填价格" bindinput="inputName" value="{{name}}" />
+  <input placeholder="价格" bindinput="inputPrice" value="{{price}}" />
+  <textarea placeholder="介绍图片1" bindinput="inputImage1" maxlength="-1">{{image1}}</textarea>
+  <textarea placeholder="介绍图片2" bindinput="inputImage2" maxlength="-1">{{image2}}</textarea>
+  <textarea placeholder="长图片2" bindinput="inputImage3" maxlength="-1">{{image3}}</textarea>
+  <button type="primary" bindtap="uploadToDatabase">上传到数据库</button>
+</view>

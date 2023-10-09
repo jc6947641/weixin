@@ -69,11 +69,11 @@
   font-size: 18px;
   font-weight: bold;
   margin-right: 10px;
-  color: #ff0000;
+  color: #d13535;
 }
 
 .action-buttons {
-  position: fixed; /* 固定在屏幕底部 */
+  position: sticky; /* 固定在屏幕底部 */
   bottom: 0; /* 距离底部的距离为0 */
   left: 0; /* 距离左边的距离为0 */
   width: 100%; /* 宽度占满整个屏幕 */

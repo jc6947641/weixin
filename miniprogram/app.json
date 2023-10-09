@@ -19,7 +19,8 @@
     "pages/book/book",
     "pages/show/show",
     "pages/search/search",
-    "pages/paySuccess/paySuccess"
+    "pages/paySuccess/paySuccess",
+    "pages/pillBox/pillBox"
   ],
   "window": {
     "backgroundColor": "#b0e57c",
