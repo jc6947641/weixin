@@ -11,21 +11,17 @@
 <!-- 商品信息 -->
 <view class="product-info">
   <!-- 商品名称 -->
-
-  <!-- 商品描述 -->
-  <text class="product-description">{{ pillDetail.description }}</text>
-
+   <text class="title">{{pillDetail.name}}\n</text>
   <!-- 商品价格 -->
   <text class="product-price">价格: ¥{{ pillDetail.price }}</text>
+  <!-- 商品描述 -->
+  <image class="picture" src="{{pillDetail.image3}}"  mode="widthFix"></image>
+
+
 </view>
 
 <view class="divider"></view>
 
-<view>
-  <view class="name-container">
-    <text class="product-name">{{ pillDetail.name }}</text>
-  </view>
-</view>
 
 <!-- 购物车和立即购买按钮在同一行 -->
 <view class="action-buttons">
@@ -34,12 +30,14 @@
   <!-- 购物车图标 -->
   <image src="/images/cart.png" class="cart-icon" bindtap="returnToCartPage" />
 </view>
+
   <!-- 立即购买按钮 -->
 
     <button class="cart111-button"bindtap="addToCart">加入购物车</button>
  
   
-  <navigator url="/pages/order/order" open-type="navigate">
-    <button class="buy-button" bindtap="gotoWechatPay">立即购买</button>
-  </navigator>
+  <navigator url="/pages/wechatpay/wechatpay?title={{pillDetail.name}}&up1={{pillDetail.image1}}&price={{pillDetail.price}}" open-type="navigate">
+  <button class="buy-button">立即购买</button>
+</navigator>
+
 </view>

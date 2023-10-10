@@ -18,7 +18,12 @@ Page({
       url: '/pages/shopBox/shopBox'
     });
   },
-  
+  navigateToPillBoxPage() {
+    // 进入商城数据库页面的逻辑
+    wx.navigateTo({
+      url: '/pages/pillBox/pillBox'
+    });
+  },
 
   /**
    * 生命周期函数--监听页面加载

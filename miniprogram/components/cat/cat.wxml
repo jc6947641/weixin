@@ -1,0 +1,20 @@
+<view class="action-buttons">
+  <!-- 购物车总计信息 -->
+  <view class="cart-header">
+    <view class="select-all">
+      <!-- 全选框 -->
+      <checkbox-group class="select-checkbox" bindchange="selectAllItems">
+        <checkbox class="select-checkbox-inner" checked="{{ isAllSelected }}"></checkbox>
+      </checkbox-group>
+      <text>全选</text>
+    </view>
+  </view>
+  <view class="cart-summary">
+    <text>总计： ¥{{ MaxPrice }}</text>
+  </view>
+
+  <!-- 立即购买按钮 -->
+  <navigator url="/pages/order/order" open-type="navigate">
+    <button class="buy-button" bindtap="gotoWechatPay">结算({{MaxNum}})</button>
+  </navigator>
+</view>

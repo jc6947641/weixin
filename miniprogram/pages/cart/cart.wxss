@@ -50,17 +50,24 @@
 }
 
 /* 删除按钮 */
+/* 删除按钮 */
+/* 删除按钮 */
+/* 删除按钮 */
 .delete-button {
-  background-color: #ff5500;
+  width: 10%; /* 设置一个固定宽度，根据您的需求调整 */
+  background-color: #f44336;
   color: #fff;
   border: none;
-  border-radius: 10px; /* 增大圆角半径以增大按钮 */
-  padding: 10px 20px; /* 增大内边距，增加按钮的大小 */
+  border-radius: 5px;
+  padding: 20px 10px;
   cursor: pointer;
   display: flex;
-  justify-content: center; /* 文字水平居中 */
-  align-items: center; /* 文字垂直居中 */
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  margin-right: -1px;
 }
+
 
 
 /* 购物车总计信息 */
@@ -69,11 +76,16 @@
   font-size: 18px;
   font-weight: bold;
   margin-right: 10px;
-  color: #ff0000;
+  color: #d13535;
+}
+
+.placeholder {
+  height: 80px; /* 请根据实际底部结算栏的高度来调整 */
 }
 
 .action-buttons {
-  position: fixed; /* 固定在屏幕底部 */
+  position:fixed; /* 固定在屏幕底部 */
+  margin-top:500px;
   bottom: 0; /* 距离底部的距离为0 */
   left: 0; /* 距离左边的距离为0 */
   width: 100%; /* 宽度占满整个屏幕 */
@@ -118,24 +130,32 @@
   display: flex;
   align-items: center; /* 水平垂直居中对齐 */
   margin-top: 0.1px; /* 调整价格和数量与商品名称之间的间距 */
+  
 }
 /* 减少数量按钮 */
+/* 减少数量按钮 */
 .quantity-button.decrease {
-  background-color: #ddd; /* 背景颜色 */
-  color: #333; /* 文字颜色 */
-  border: none;
-  border-radius: 10px; /* 圆角半径 */
-  padding: 10px 15px; /* 内边距，可以根据需要调整按钮大小 */
+  background-color: #ddd;
+  color: #333;
+  border: 2px solid #333; /* 添加粗边框 */
+  padding: 8px 12px; /* 调整按钮大小和内边距 */
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
 }
 
 /* 增加数量按钮 */
 .quantity-button.increase {
-  background-color: #ddd; /* 背景颜色 */
-  color: #333; /* 文字颜色 */
-  border: none;
-  border-radius: 10px; /* 圆角半径 */
-  padding: 10px 15px; /* 内边距，可以根据需要调整按钮大小 */
+  background-color: #ddd;
+  color: #333;
+  border: 2px solid #333; /* 添加粗边框 */
+  padding: 8px 12px; /* 调整按钮大小和内边距 */
   cursor: pointer;
-  margin-left: -5px; /* 进一步缩小左侧间距 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  margin-right: 10px; /* 设置左侧间距 */
 }

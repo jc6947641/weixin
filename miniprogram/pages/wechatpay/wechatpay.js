@@ -14,10 +14,14 @@ Page({
       price:options.price
     })
   },
-  
+
+  onPay() {
+    // 支付逻辑，成功后跳转到 paySuccess 页面
+    wx.navigateTo({
+      url: '/pages/paySuccess/paySuccess'
+    })
+  }
 })
-wx.navigateTo({
-  url: '/pages/paySuccess/paySuccess'
-  })
+
 
 

@@ -5,3 +5,8 @@
 <view style="margin-bottom: 20px;">
   <button type="primary" bindtap="navigateToShopBoxPage">进入商城数据库</button>
 </view>
+
+
+<view style="margin-bottom: 20px;">
+  <button type="primary" bindtap="navigateToPillBoxPage">进入药品数据库</button>
+</view>

@@ -11,6 +11,8 @@
       <!-- 商品详情容器，占据右侧的两分之一 -->
       <view class="item-details">
         <text class="item-name">{{item.title}}</text>
+        <view>  </view>
+        <text class="item-price">价格： ¥{{item.price}}</text>
         <!-- 可以添加其他商品详情信息 -->
       </view>
     </view>

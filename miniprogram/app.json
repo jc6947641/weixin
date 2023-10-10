@@ -19,13 +19,14 @@
     "pages/book/book",
     "pages/show/show",
     "pages/search/search",
-    "pages/paySuccess/paySuccess"
+    "pages/paySuccess/paySuccess",
+    "pages/pillBox/pillBox"
   ],
   "window": {
     "backgroundColor": "#b0e57c",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#b0e57c",
-    "navigationBarTitleText": "老年医养",
+    "navigationBarTitleText": "健康长寿屋",
     "navigationBarTextStyle": "black"
   },
  

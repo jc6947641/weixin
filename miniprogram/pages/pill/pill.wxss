@@ -1,3 +1,4 @@
+
 /* pages/pill/pill.wxss */
 
 .item-list {
@@ -38,10 +39,14 @@
   color: #333; /* 文字颜色 */
 }
 
-/* 在.wxss文件中 */
 .item-hover {
   background-color: #CCCCCC; /* 点击时的背景颜色 */
   color: #333; /* 点击时的文字颜色 */
   transition: background-color 0.2s ease, color 0.2s ease; /* 添加过渡效果 */
 }
 
+.item-price {
+  color: #ff0000; /* 设置价格文字颜色为红色 */
+  line-height: 3.6;
+  font-size: 18px /* 增加文本行高度，可以根据需要调整距离 */
+}

@@ -35,7 +35,7 @@
 
 .product-price {
   font-size: 20px;
-  color: #f00;
+  color: #ff0000;
   margin-top: 5px;
   bottom: 10px;
 }
@@ -61,10 +61,11 @@
 }
 
 .action-buttons {
-  position: fixed; /* 固定在屏幕底部 */
+  position: sticky; /* 固定在屏幕底部 */
   bottom: 0; /* 距离底部的距离为0 */
   left: 0; /* 距离左边的距离为0 */
   width: 100%; /* 宽度占满整个屏幕 */
+  height: 40px; /* 减小容器的竖直高度 */
   display: flex; /* 使用弹性盒子布局，使图标和按钮水平排列 */
   justify-content: space-between; /* 两者之间的空间平均分布 */
   align-items: center; /* 垂直居中对齐 */

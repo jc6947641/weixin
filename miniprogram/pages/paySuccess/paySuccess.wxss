@@ -1,1 +1,52 @@
 /* pages/paySuccess/paySuccess.wxss */
+/* .success {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.success image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; 
+} */
+
+.success {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background-image: url('/images/success.png'); */
+  background-size: contain; /* 可以根据需要使用不同的 background-size 属性 */
+  background-position: center; /* 可以根据需要使用不同的 background-position 属性 */
+  background-repeat: no-repeat;
+}
+.success image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  }
+  .success-btn {
+    position: relative;
+    left: 1rpx;
+    top: 872rpx;
+    width: 554rpx;
+    height: 96rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  
+  .success-btn image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 可以根据需要使用不同的 object-fit 属性 */
+  }
+  
