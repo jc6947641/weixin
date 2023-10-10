@@ -33,6 +33,8 @@
   </view>
 </block>
 
+<view class="placeholder"></view>
+
 <view class="action-buttons">
   <!-- 购物车总计信息 -->
   <view class="cart-header">

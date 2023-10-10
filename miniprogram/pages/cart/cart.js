@@ -177,22 +177,19 @@
     });
   },
 
-  deleteCartItem: function (event) {
+// 删除购物车项的函数
+deleteCartItem: function (event) {
   const index = event.currentTarget.dataset.index;
   let cartItems = this.data.cartItems;
 
-  // 检查索引是否有效
   if (typeof index !== 'undefined' && index >= 0 && index < cartItems.length) {
-    // 获取要删除的购物车项的 _id
     const cartItemId = cartItems[index]._id;
 
-    // 显示加载中提示
     wx.showLoading({
       title: '删除中...',
-      mask: true, // 遮罩层，防止用户点击其他操作
+      mask: true,
     });
 
-    // 调用云函数删除购物车项
     wx.cloud.callFunction({
       name: 'deleteCartItem',
       data: {
@@ -200,10 +197,8 @@
       },
       success: res => {
         if (res.result.success) {
-          // 从页面的购物车项列表中移除已删除的购物车项
           cartItems.splice(index, 1);
 
-          // 手动计算总计金额和结算个数，只计算已勾选的商品
           let MaxPrice = 0;
           let MaxNum = 0;
 
@@ -214,19 +209,11 @@
             }
           });
 
-          // 更新总计金额和结算个数
           this.setData({
             cartItems: cartItems,
             MaxPrice: MaxPrice,
             MaxNum: MaxNum,
           });
-
-          // 如果购物车为空，则取消全选
-          if (cartItems.length === 0) {
-            this.setData({
-              isAllSelected: false,
-            });
-          }
 
           // 更新 storage 中的购物车数据，只保留没有被删除的商品项
           wx.setStorageSync('cart', cartItems);
@@ -235,6 +222,21 @@
             title: '删除成功',
             icon: 'success',
           });
+
+          // 检查购物车是否为空，如果为空则设置全选状态为未勾选
+          if (cartItems.length === 0) {
+            this.setData({
+              isAllSelected: false,
+            });
+          } else {
+            // 如果购物车不为空，检查是否有未勾选的商品，如果有则不设置全选状态
+            const hasUnselectedItem = cartItems.some(item => !item.selected);
+            if (!hasUnselectedItem) {
+              this.setData({
+                isAllSelected: true,
+              });
+            }
+          }
         } else {
           wx.showToast({
             title: '删除失败',
@@ -250,19 +252,18 @@
         });
       },
       complete: () => {
-        // 隐藏加载中提示，无论成功或失败都需要执行
         wx.hideLoading();
       },
     });
   } else {
-    // 如果索引无效，显示错误信息
     console.error('无效的索引:', index);
     wx.showToast({
       title: '删除失败，无效的索引',
       icon: 'none',
     });
   }
-  },
+},
+
 
   onShow: function () {
     this.getCartItems();
