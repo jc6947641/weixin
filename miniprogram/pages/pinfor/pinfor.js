@@ -116,7 +116,7 @@ onLoad(options){
 
 
   })
-},
+}
 //刷新
 /*onShow(){
   wx.cloud.callFunction({
@@ -129,13 +129,20 @@ onLoad(options){
       openid:res.result.openid
     }).get().then(res=>{
       console.log("获取的用户信息",res.data)
+      console.log("用户是否存在",res.data.length)
       this.setData({
-        name:res.data[1].name
+        person:res.data.length,
+        name:res.data[0].name,
+        sex:res.data[0].sex,
+        age:res.data[0].age,
+        tel:res.data[0].tel,
+        address:res.data[0].address,
       })
     })
 
 
   })
-}*/
 
-    })
+    }*/
+  })
+  

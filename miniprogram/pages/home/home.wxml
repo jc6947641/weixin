@@ -1,15 +1,25 @@
 <!--pages/home/home.wxml-->
 
 <!-- 插入背景图片 -->
-<view class="home-background">
-<image src="/images/linphoto1.png"></image>
-</view>
+<swiper class="home-background" autoplay="{{true}}" circular="{{true}}" indicator-dots="{{true}}" interval="3000">
+  <swiper-item>
+    <image src="/images/linphoto1.png" mode="aspectFill" class="backimage" />
+  </swiper-item>
+  <swiper-item>
+    <image src="/images/linphoto1.png" mode="aspectFill" class="backimage" />
+  </swiper-item>
+  <swiper-item>
+    <image src="/images/linphoto1.png" mode="aspectFill" class="backimage" />
+  </swiper-item>
+</swiper>
 
 
+<view class="bg"></view>
+<view class="wrap">
   <!-- 自定义1 -->
   <view class="Lin">
   <navigator  class="Lin-item" url="/pages/shoplist/shoplist">
-    <image src="/images/healthshop.jpg"></image>
+    <image class="four" src="/images/healthshop.jpg"></image>
   <text>健康商城</text>
  </navigator>
  </view>
@@ -18,7 +28,7 @@
  <!-- 自定义2 -->
  <view class="Lin">
   <navigator  class="Lin-item" url="/pages/pill/pill">
-  <image src="/images/pill.jpg"></image>
+  <image class="four" src="/images/pill.jpg"></image>
   <text>医疗药品</text>
  </navigator>
  </view>
@@ -27,11 +37,11 @@
 <view class="Lin">
 <!-- 切换地址 -->
   <navigator  class="Lin-item" url="/pages/book/book">
-    <image src="/images/shopcar.jpg"></image>
+    <image class="four" src="/images/shopcar.jpg"></image>
   <text>购物车</text>
  </navigator>
  </view>
-
+</view>
 
 
  
