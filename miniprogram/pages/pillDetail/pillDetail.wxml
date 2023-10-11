@@ -36,7 +36,7 @@
     <button class="cart111-button"bindtap="addToCart">加入购物车</button>
  
   
-  <navigator url="/pages/wechatpay/wechatpay?title={{pillDetail.name}}&up1={{pillDetail.image1}}&price={{pillDetail.price}}" open-type="navigate">
+  <navigator url="/pages/paySuccess/paySuccess?title={{pillDetail.name}}&up1={{pillDetail.image1}}&price={{pillDetail.price}}" open-type="navigate">
   <button class="buy-button">立即购买</button>
 </navigator>
 
