@@ -50,10 +50,10 @@
     <text>总计： ¥{{ MaxPrice }}</text>
   </view>
 
-  <!-- 立即购买按钮 -->
-  <navigator url="/pages/order/order" open-type="navigate">
-    <button class="buy-button" bindtap="gotoWechatPay">结算({{MaxNum}})</button>
-  </navigator>
+  <!-- 立即购买按钮 -->  
+<view>
+  <button class="buy-button" bindtap="gotoWechatPay">结算({{MaxNum}})</button>
+</view>  
 </view>
 
 
