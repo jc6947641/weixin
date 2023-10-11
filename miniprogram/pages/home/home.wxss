@@ -1,7 +1,10 @@
 /* pages/home/home.wxss */
-.home-background image{
+.home-background {
   width: 100%;
-  height: 200px;
+  height: 320rpx;
+  position: absolute;
+  z-index: 1;
+  top: 0;
 }
 
 /* 背景图片样式 */
@@ -11,43 +14,71 @@
 }
 
 /*抹平棱角*/
-.four{
-  border-radius:60rpx ;
-  box-shadow: 0 0 40rpx 10rpx rgba(0,0,0,0.00);/*渲染*/
-}
+
 
 /*最外层框框*/
 .Lin{
-  display:flex;
-  flex-wrap:wrap;
-  border-right: 1rpx solid whitesmoke;
-  border-bottom: 1rpx solid whitesmoke;
+  width:750rpx;
+  height: 800rpx;
+  background-color: rgb(246, 248, 243);
+  border-radius:60rpx 60rpx 0 0;
+  box-shadow: 0 0 40rpx 10rpx rgba(0,0,0,0.00);/*渲染*/
+  position: absolute;
+  z-index: 2;
+  top: 270rpx;
 } 
-/*每项（图片文字）占50%，高度200px*/
-.Lin-item{
-  width: 100%;
-  height:200px;
-  /*居中对齐*/
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 10rpx 80rpx;
-  /*边框*/
-  border-right: 1rpx solid #efefef;
-  border-bottom: 1rpx solid #efefef;
-  box-sizing: border-box;
 
-}
-/*图案大小限制*/
-.Lin-item image{
-  width:100%;
+
+
+/*每项（图片文字）占50%，高度200px*/
+
+/*图片操控*/
+.Lin-item1 image{
+  
+  width:670rpx;
   height:150px;
+  margin-left: 40rpx;
+  box-shadow: 0 0 40rpx 10rpx rgba(245, 235, 235, 0);/*渲染*/
+  align-items: center;
+  border-radius:39rpx ;
+  margin-top: 60rpx;
 }
-/*字体大小限制*/
+
+.Lin-item2 image{
+  width:320rpx;
+  height:120px;
+  margin-left: 40rpx;
+  box-shadow: 0 0 40rpx 10rpx rgba(245, 235, 235, 0);/*渲染*/
+  align-items: center;
+  border-radius:39rpx ;
+  margin-top: 80rpx;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 370rpx;
+}
+
+.Lin-item3 image{
+  
+  width:320rpx;
+  height:120px;
+  margin-left: 40rpx;
+  box-shadow: 0 0 40rpx 10rpx rgba(245, 235, 235, 0);/*渲染*/
+  align-items: center;
+  border-radius:39rpx ;
+  margin-top: 80rpx;
+  position: absolute;
+  z-index: 2;
+  top: 370rpx;
+  left: 350rpx;
+}
+
+
+
+/*字体大小限制
 .Lin-item text{
   font-size:30px;
-}
+}*/
 
 /*动态设置*/
 .bg{
@@ -157,5 +188,5 @@
 /*动态背景*/
 .wrap{
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
 }

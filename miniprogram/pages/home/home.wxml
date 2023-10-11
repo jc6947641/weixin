@@ -14,42 +14,33 @@
 </swiper>
 
 
-<view class="bg"></view>
-<view class="wrap">
+
   <!-- 自定义1 -->
   <view class="Lin">
-  <navigator  class="Lin-item" url="/pages/shoplist/shoplist">
-    <image class="four" src="/images/healthshop.jpg"></image>
-  <text>健康商城</text>
+  <view class="bg"></view>
+    <view class="wrap">
+  <navigator  class="Lin-item1" url="/pages/shoplist/shoplist">
+    <image  src="/images/healthshop.jpg"></image>
+  <!--<text>健康商城</text>-->
  </navigator>
- </view>
+
 
 
  <!-- 自定义2 -->
- <view class="Lin">
-  <navigator  class="Lin-item" url="/pages/pill/pill">
-  <image class="four" src="/images/pill.jpg"></image>
-  <text>医疗药品</text>
+  <navigator  class="Lin-item2" url="/pages/pill/pill">
+  <image  src="/images/pill.jpg"></image>
+  <!--<text>医疗药品</text>-->
  </navigator>
- </view>
 
- <view class="Lin">
-<!-- 切换地址 -->
-  <navigator  class="Lin-item" url="/pages/cart/cart">
-    <image class="four" src="/images/shopcar.jpg"></image>
-  <text>购物车</text>
- </navigator>
- </view>
 
-<!-- 自定义3 -->
-<view class="Lin">
 <!-- 切换地址 -->
-  <navigator  class="Lin-item" url="/pages/book/book">
-    <image class="four" src="/images/shopcar.jpg"></image>
-  <text>健康档案（待定）</text>
+  <navigator  class="Lin-item3" url="/pages/cart/cart">
+    <image  src="/images/shopcar.jpg"></image>
+  <!--<text>购物车</text>-->
  </navigator>
  </view>
 </view>
+
 
 
 
