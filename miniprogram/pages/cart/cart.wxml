@@ -1,3 +1,5 @@
+<view class="bg"></view>
+
 <block wx:for="{{ cartItems }}" wx:key="_id">
   <view class="cart-item">
     <view class="item-info">

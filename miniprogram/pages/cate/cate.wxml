@@ -1,4 +1,7 @@
+<view class="bg"></view>
 <view wx:for="{{dataList}}" wx:key="index">
+
+  <view class="wrap">
   <view bindtap="clickRow" data-id="{{item._id}}" data-idx="{{index}}" class="row"hover-class="item-hover">
     <view class="news-item">
       <view class="news-content">
@@ -9,5 +12,6 @@
       <image class="news-image" src="{{ item.imagesurl }}"></image>
     </view>
     <view class="news-hits">浏览:{{item.hits}}</view>
+  </view>
   </view>
 </view>

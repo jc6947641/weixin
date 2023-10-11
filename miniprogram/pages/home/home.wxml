@@ -1,15 +1,15 @@
 <!--pages/home/home.wxml-->
 
 <!-- 插入背景图片 -->
-<swiper class="home-background" autoplay="{{true}}" circular="{{true}}" indicator-dots="{{true}}" interval="3000">
+<swiper class="home-background" autoplay="{{true}}" circular="{{true}}" indicator-dots="{{true}}" interval="4000">
   <swiper-item>
-    <image src="/images/linphoto1.png" mode="aspectFill" class="backimage" />
+    <image src="/images/350.jpg" mode="aspectFill" class="backimage" />
   </swiper-item>
   <swiper-item>
-    <image src="/images/linphoto1.png" mode="aspectFill" class="backimage" />
+    <image src="/images/lulu.jpg" mode="aspectFill" class="backimage" />
   </swiper-item>
   <swiper-item>
-    <image src="/images/linphoto1.png" mode="aspectFill" class="backimage" />
+    <image src="/images/114514.png" mode="aspectFill" class="backimage" />
   </swiper-item>
 </swiper>
 

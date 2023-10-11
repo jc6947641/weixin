@@ -1,4 +1,6 @@
 <!-- 商品图片轮播 -->
+
+<view class="bg"></view>
 <swiper class="swiper" autoplay="{{true}}" circular="{{true}}" indicator-dots="{{true}}" interval="3000">
   <swiper-item>
     <image src="{{ pillDetail.up1 }}" mode="aspectFill" class="swiper-image" />
