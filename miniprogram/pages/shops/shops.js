@@ -49,7 +49,7 @@ Page({
 
   gotoWechatPay: function () {
     wx.navigateTo({
-      url: '/pages/wechatpay/wechatpay',
+      url: '/pages/paySuccess/paySuccess',
     });
   },
 
