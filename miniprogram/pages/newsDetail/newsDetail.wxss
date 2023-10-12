@@ -1,7 +1,7 @@
 /* 在 getNewsDetail 页面的 wxss 文件中设置样式 */
 .news-detail {
   padding: 20rpx;
-  font-size: 30rpx;
+  font-size: 40rpx;
   color: #333;
   text-align: left;
 }
@@ -16,7 +16,7 @@
 }
 
 .news-title {
-  font-size: 36rpx;
+  font-size: 40rpx;
   margin-bottom: 16rpx;
   font-weight: bold;
 }
@@ -33,7 +33,7 @@
 }
 
 .news-body {
-  font-size: 32rpx;
+  font-size: 36rpx;
   margin-top: 16rpx;
   line-height: 1.5;
   text-indent: 2em;

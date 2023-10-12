@@ -388,11 +388,83 @@ deleteCartItem: function (event) {
       },
     });
   },
-  gotoWechatPay() {
-    // 支付逻辑，成功后跳转到 paySuccess 页面
-    wx.navigateTo({
-      url: '/pages/paySuccess/paySuccess'
-    })
-  },
+  gotoWechatPay: function () {
+    const cartItems = this.data.cartItems;
 
-  });
+    // Check if the cart is empty
+    if (cartItems.length === 0) {
+      wx.showToast({
+        title: '购物车为空，无法结算',
+        icon: 'none',
+      });
+      return;
+    }
+
+    // Create an array to hold Promises for item deletion
+    const deletePromises = [];
+
+    // Filter the selected items to be deleted
+    const selectedItems = cartItems.filter(item => item.selected);
+
+    if (selectedItems.length === 0) {
+      wx.showToast({
+        title: '请选择要删除的商品',
+        icon: 'none',
+      });
+      return;
+    }
+
+    // Loop through the selected items and create Promises to delete them
+    selectedItems.forEach(item => {
+      deletePromises.push(
+        new Promise((resolve, reject) => {
+          wx.cloud.callFunction({
+            name: 'deleteCartItem', // Replace with your cloud function name
+            data: {
+              cartItemId: item._id, // Pass the unique identifier of the cart item
+            },
+            success: res => {
+              if (res.result.success) {
+                resolve();
+              } else {
+                reject(res.result.error);
+              }
+            },
+            fail: error => {
+              reject(error);
+            },
+          });
+        })
+      );
+    });
+
+    // Use Promise.all to wait for all deletions to complete
+    Promise.all(deletePromises)
+      .then(() => {
+        // Delete was successful
+
+        // Clear the cart data
+        this.setData({
+          cartItems: [],
+          MaxPrice: 0,
+          MaxNum: 0,
+          isAllSelected: false,
+        });
+
+        // Navigate to the payment success page
+        wx.navigateTo({
+          url: '/pages/paySuccess/paySuccess'
+        });
+      })
+      .catch(error => {
+        wx.hideLoading();
+        console.error('删除购物车项失败：', error);
+        wx.showToast({
+          title: '删除失败',
+          icon: 'none',
+        });
+      });
+  }
+  
+
+});
