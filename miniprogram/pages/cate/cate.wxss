@@ -162,3 +162,12 @@
   width: 100%;
   min-height: 100%;
 }
+
+/* 下拉刷新容器样式 */
+
+/* 下拉刷新提示文字样式 */
+.refresh-text {
+  color: #888; /* 文字颜色为灰色 */
+  font-size: 14px; /* 文字大小 */
+  text-align: center
+}

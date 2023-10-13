@@ -1,4 +1,6 @@
 <view class="bg"></view>
+
+  <text class="refresh-text">下拉刷新</text>
 <view wx:for="{{dataList}}" wx:key="index">
 
   <view class="wrap">
