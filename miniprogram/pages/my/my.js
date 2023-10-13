@@ -2,7 +2,7 @@
 
 const db=wx.cloud.database()
 Page({
-  data:{
+  /*data:{
     userInfo:''
   },
   onLoad(){
@@ -38,7 +38,7 @@ Page({
       userInfo:''
     })
     wx.setStorageSync('user', null)
-  },
+  },*/
 
 //转跳
   goPage(){

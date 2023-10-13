@@ -1,6 +1,9 @@
 <view class="bg"></view>
 <view class="wrap">
 <view class="container">
+<view class="role" bind:tap="upload">
+  <image src="{{imgurl}}" mode=""/>
+</view>
   <!--表单-->
 <view class="form">
   <view class="inputs"></view>
