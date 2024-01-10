@@ -47,7 +47,7 @@
       "selectedIconPath": "/images/icon_notebook_active.png"
     },
     {
-      "pagePath": "pages/my/my",
+      "pagePath": "pages/pinfor/pinfor",
       "text": "我的",
       "iconPath": "/images/icon_me.png",
       "selectedIconPath": "/images/icon_me_active.png"
