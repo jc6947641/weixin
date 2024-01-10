@@ -28,6 +28,9 @@ Page({
 
       if (page === 0) {
         // 下拉刷新，重置数据列表
+        let newData = res.result.data;
+        const firstFiveItems = newData.slice(0, this.data.pageSize);
+        newData = [...newData.slice(this.data.pageSize), ...firstFiveItems]; // Move the first 5 items to the end
         this.setData({
           totalData: newData,
           dataList: newData.slice(0, this.data.pageSize),
